@@ -28,12 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "MainForm";
+            TabControlOfEnums = new TabControl();
+            Enums = new TabPage();
+            TabControlOfEnums.SuspendLayout();
+            SuspendLayout();
+            // 
+            // TabControlOfEnums
+            // 
+            TabControlOfEnums.Controls.Add(Enums);
+            TabControlOfEnums.Location = new Point(253, 12);
+            TabControlOfEnums.Name = "TabControlOfEnums";
+            TabControlOfEnums.SelectedIndex = 0;
+            TabControlOfEnums.Size = new Size(318, 170);
+            TabControlOfEnums.TabIndex = 0;
+            // 
+            // Enums
+            // 
+            Enums.Location = new Point(4, 29);
+            Enums.Name = "Enums";
+            Enums.Padding = new Padding(3);
+            Enums.Size = new Size(310, 137);
+            Enums.TabIndex = 0;
+            Enums.Text = "Enums";
+            Enums.UseVisualStyleBackColor = true;
+            Enums.Click += tabPage1_Click;
+            // 
+            // MainForm
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(TabControlOfEnums);
+            Name = "MainForm";
+            Text = "MainForm";
+            Load += MainForm_Load;
+            TabControlOfEnums.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private TabControl TabControlOfEnums;
+        private TabPage Enums;
     }
 }
