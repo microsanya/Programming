@@ -79,7 +79,7 @@
             // ParsingAnswer
             // 
             ParsingAnswer.AutoSize = true;
-            ParsingAnswer.Location = new Point(6, 90);
+            ParsingAnswer.Location = new Point(11, 90);
             ParsingAnswer.Name = "ParsingAnswer";
             ParsingAnswer.Size = new Size(53, 20);
             ParsingAnswer.TabIndex = 10;

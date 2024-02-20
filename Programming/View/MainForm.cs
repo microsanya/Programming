@@ -32,7 +32,9 @@ namespace Programming
         private void ParsingWeekdayButton_Click(object sender, EventArgs e)
         {
             string userInput = ParsingWeekdayTextbox.Text;
-            if (Enum.TryParse(userInput, out Weekday userWeekday) && (Convert.ToInt32(Enum.Parse(typeof(Weekday), userInput)) != Convert.ToInt32(userInput)))
+
+            bool isNumber = int.TryParse(userInput, out int numericValue);
+            if (Enum.TryParse(userInput, out Weekday userWeekday) && isNumber == false)
             {
                 ParsingAnswer.Text = $"Это день недели ({userInput} = {Convert.ToInt32(Enum.Parse(typeof(Weekday), userInput)) + 1})";
             }
