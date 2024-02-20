@@ -30,19 +30,27 @@
         {
             TabControlOfEnums = new TabControl();
             Enums = new TabPage();
+            ParsingAnswer = new Label();
+            EnumarationsGroupBox = new GroupBox();
+            EnumarationLabel = new Label();
+            ValueLabel = new Label();
+            EnumsListBox = new ListBox();
+            ValuesListBox = new ListBox();
+            IntingValueLabel = new Label();
+            IntingValueTextbox = new TextBox();
+            WeekdayParsingGroupBox = new GroupBox();
             ParsingInputingLabel = new Label();
             ParsingWeekdayButton = new Button();
             ParsingWeekdayTextbox = new TextBox();
-            ParsingLabelNaming = new Label();
-            IntingValueLabel = new Label();
-            ValueLabel = new Label();
-            EnumarationLabel = new Label();
-            IntingValueTextbox = new TextBox();
-            ValuesListBox = new ListBox();
-            EnumsListBox = new ListBox();
-            ParsingAnswer = new Label();
+            SeasonHandleGroupBox = new GroupBox();
+            GoButton = new Button();
+            SeasonsComboBox = new ComboBox();
+            ChooseSeasonLabel = new Label();
             TabControlOfEnums.SuspendLayout();
             Enums.SuspendLayout();
+            EnumarationsGroupBox.SuspendLayout();
+            WeekdayParsingGroupBox.SuspendLayout();
+            SeasonHandleGroupBox.SuspendLayout();
             SuspendLayout();
             // 
             // TabControlOfEnums
@@ -57,17 +65,9 @@
             // 
             // Enums
             // 
-            Enums.Controls.Add(ParsingAnswer);
-            Enums.Controls.Add(ParsingWeekdayButton);
-            Enums.Controls.Add(ParsingWeekdayTextbox);
-            Enums.Controls.Add(ParsingInputingLabel);
-            Enums.Controls.Add(ParsingLabelNaming);
-            Enums.Controls.Add(IntingValueLabel);
-            Enums.Controls.Add(ValueLabel);
-            Enums.Controls.Add(EnumarationLabel);
-            Enums.Controls.Add(IntingValueTextbox);
-            Enums.Controls.Add(ValuesListBox);
-            Enums.Controls.Add(EnumsListBox);
+            Enums.Controls.Add(EnumarationsGroupBox);
+            Enums.Controls.Add(WeekdayParsingGroupBox);
+            Enums.Controls.Add(SeasonHandleGroupBox);
             Enums.Location = new Point(4, 29);
             Enums.Name = "Enums";
             Enums.Padding = new Padding(3);
@@ -76,10 +76,102 @@
             Enums.Text = "Enums";
             Enums.UseVisualStyleBackColor = true;
             // 
+            // ParsingAnswer
+            // 
+            ParsingAnswer.AutoSize = true;
+            ParsingAnswer.Location = new Point(6, 90);
+            ParsingAnswer.Name = "ParsingAnswer";
+            ParsingAnswer.Size = new Size(53, 20);
+            ParsingAnswer.TabIndex = 10;
+            ParsingAnswer.Text = "           ";
+            // 
+            // EnumarationsGroupBox
+            // 
+            EnumarationsGroupBox.Controls.Add(EnumarationLabel);
+            EnumarationsGroupBox.Controls.Add(ValueLabel);
+            EnumarationsGroupBox.Controls.Add(EnumsListBox);
+            EnumarationsGroupBox.Controls.Add(ValuesListBox);
+            EnumarationsGroupBox.Controls.Add(IntingValueLabel);
+            EnumarationsGroupBox.Controls.Add(IntingValueTextbox);
+            EnumarationsGroupBox.Location = new Point(18, 6);
+            EnumarationsGroupBox.Name = "EnumarationsGroupBox";
+            EnumarationsGroupBox.Size = new Size(805, 426);
+            EnumarationsGroupBox.TabIndex = 11;
+            EnumarationsGroupBox.TabStop = false;
+            EnumarationsGroupBox.Text = "Enumarations";
+            // 
+            // EnumarationLabel
+            // 
+            EnumarationLabel.AutoSize = true;
+            EnumarationLabel.Location = new Point(11, 23);
+            EnumarationLabel.Name = "EnumarationLabel";
+            EnumarationLabel.Size = new Size(149, 20);
+            EnumarationLabel.TabIndex = 3;
+            EnumarationLabel.Text = "Choose enumaration:";
+            // 
+            // ValueLabel
+            // 
+            ValueLabel.AutoSize = true;
+            ValueLabel.Location = new Point(211, 23);
+            ValueLabel.Name = "ValueLabel";
+            ValueLabel.Size = new Size(100, 20);
+            ValueLabel.TabIndex = 4;
+            ValueLabel.Text = "Choose value:";
+            // 
+            // EnumsListBox
+            // 
+            EnumsListBox.FormattingEnabled = true;
+            EnumsListBox.ItemHeight = 20;
+            EnumsListBox.Items.AddRange(new object[] { "Color", "EducationForm", "Genre", "Season", "SmartphoneManufactures", "Weekday" });
+            EnumsListBox.Location = new Point(11, 46);
+            EnumsListBox.Name = "EnumsListBox";
+            EnumsListBox.Size = new Size(194, 344);
+            EnumsListBox.TabIndex = 0;
+            EnumsListBox.SelectedIndexChanged += EnumsListBox_SelectedIndexChanged;
+            // 
+            // ValuesListBox
+            // 
+            ValuesListBox.FormattingEnabled = true;
+            ValuesListBox.ItemHeight = 20;
+            ValuesListBox.Location = new Point(211, 46);
+            ValuesListBox.Name = "ValuesListBox";
+            ValuesListBox.Size = new Size(186, 344);
+            ValuesListBox.TabIndex = 1;
+            ValuesListBox.SelectedIndexChanged += ValuesListBox_SelectedIndexChanged;
+            // 
+            // IntingValueLabel
+            // 
+            IntingValueLabel.AutoSize = true;
+            IntingValueLabel.Location = new Point(403, 23);
+            IntingValueLabel.Name = "IntingValueLabel";
+            IntingValueLabel.Size = new Size(68, 20);
+            IntingValueLabel.TabIndex = 5;
+            IntingValueLabel.Text = "Int value:";
+            // 
+            // IntingValueTextbox
+            // 
+            IntingValueTextbox.Location = new Point(403, 46);
+            IntingValueTextbox.Name = "IntingValueTextbox";
+            IntingValueTextbox.Size = new Size(125, 27);
+            IntingValueTextbox.TabIndex = 2;
+            // 
+            // WeekdayParsingGroupBox
+            // 
+            WeekdayParsingGroupBox.Controls.Add(ParsingAnswer);
+            WeekdayParsingGroupBox.Controls.Add(ParsingInputingLabel);
+            WeekdayParsingGroupBox.Controls.Add(ParsingWeekdayButton);
+            WeekdayParsingGroupBox.Controls.Add(ParsingWeekdayTextbox);
+            WeekdayParsingGroupBox.Location = new Point(18, 438);
+            WeekdayParsingGroupBox.Name = "WeekdayParsingGroupBox";
+            WeekdayParsingGroupBox.Size = new Size(397, 178);
+            WeekdayParsingGroupBox.TabIndex = 12;
+            WeekdayParsingGroupBox.TabStop = false;
+            WeekdayParsingGroupBox.Text = "Weekday Parsing";
+            // 
             // ParsingInputingLabel
             // 
             ParsingInputingLabel.AutoSize = true;
-            ParsingInputingLabel.Location = new Point(29, 439);
+            ParsingInputingLabel.Location = new Point(11, 37);
             ParsingInputingLabel.Name = "ParsingInputingLabel";
             ParsingInputingLabel.Size = new Size(158, 20);
             ParsingInputingLabel.TabIndex = 7;
@@ -87,7 +179,7 @@
             // 
             // ParsingWeekdayButton
             // 
-            ParsingWeekdayButton.Location = new Point(302, 460);
+            ParsingWeekdayButton.Location = new Point(284, 59);
             ParsingWeekdayButton.Name = "ParsingWeekdayButton";
             ParsingWeekdayButton.Size = new Size(94, 29);
             ParsingWeekdayButton.TabIndex = 9;
@@ -97,83 +189,51 @@
             // 
             // ParsingWeekdayTextbox
             // 
-            ParsingWeekdayTextbox.Location = new Point(29, 462);
+            ParsingWeekdayTextbox.Location = new Point(11, 60);
             ParsingWeekdayTextbox.Name = "ParsingWeekdayTextbox";
             ParsingWeekdayTextbox.Size = new Size(267, 27);
             ParsingWeekdayTextbox.TabIndex = 8;
             // 
-            // ParsingLabelNaming
+            // SeasonHandleGroupBox
             // 
-            ParsingLabelNaming.AutoSize = true;
-            ParsingLabelNaming.Location = new Point(8, 410);
-            ParsingLabelNaming.Name = "ParsingLabelNaming";
-            ParsingLabelNaming.Size = new Size(122, 20);
-            ParsingLabelNaming.TabIndex = 6;
-            ParsingLabelNaming.Text = "Weekday parsing";
+            SeasonHandleGroupBox.Controls.Add(GoButton);
+            SeasonHandleGroupBox.Controls.Add(SeasonsComboBox);
+            SeasonHandleGroupBox.Controls.Add(ChooseSeasonLabel);
+            SeasonHandleGroupBox.Location = new Point(421, 438);
+            SeasonHandleGroupBox.Name = "SeasonHandleGroupBox";
+            SeasonHandleGroupBox.Size = new Size(402, 178);
+            SeasonHandleGroupBox.TabIndex = 13;
+            SeasonHandleGroupBox.TabStop = false;
+            SeasonHandleGroupBox.Text = "Season Handle";
             // 
-            // IntingValueLabel
+            // GoButton
             // 
-            IntingValueLabel.AutoSize = true;
-            IntingValueLabel.Location = new Point(421, 8);
-            IntingValueLabel.Name = "IntingValueLabel";
-            IntingValueLabel.Size = new Size(68, 20);
-            IntingValueLabel.TabIndex = 5;
-            IntingValueLabel.Text = "Int value:";
+            GoButton.Location = new Point(163, 58);
+            GoButton.Name = "GoButton";
+            GoButton.Size = new Size(94, 29);
+            GoButton.TabIndex = 2;
+            GoButton.Text = "Go!";
+            GoButton.UseVisualStyleBackColor = true;
+            GoButton.Click += GoButton_Click;
             // 
-            // ValueLabel
+            // SeasonsComboBox
             // 
-            ValueLabel.AutoSize = true;
-            ValueLabel.Location = new Point(229, 8);
-            ValueLabel.Name = "ValueLabel";
-            ValueLabel.Size = new Size(100, 20);
-            ValueLabel.TabIndex = 4;
-            ValueLabel.Text = "Choose value:";
+            SeasonsComboBox.FormattingEnabled = true;
+            SeasonsComboBox.Items.AddRange(new object[] { "Winter", "Spring", "Summer", "Autumn" });
+            SeasonsComboBox.Location = new Point(6, 60);
+            SeasonsComboBox.Name = "SeasonsComboBox";
+            SeasonsComboBox.Size = new Size(151, 28);
+            SeasonsComboBox.TabIndex = 1;
             // 
-            // EnumarationLabel
+            // ChooseSeasonLabel
             // 
-            EnumarationLabel.AutoSize = true;
-            EnumarationLabel.Location = new Point(29, 8);
-            EnumarationLabel.Name = "EnumarationLabel";
-            EnumarationLabel.Size = new Size(149, 20);
-            EnumarationLabel.TabIndex = 3;
-            EnumarationLabel.Text = "Choose enumaration:";
-            // 
-            // IntingValueTextbox
-            // 
-            IntingValueTextbox.Location = new Point(421, 39);
-            IntingValueTextbox.Name = "IntingValueTextbox";
-            IntingValueTextbox.Size = new Size(125, 27);
-            IntingValueTextbox.TabIndex = 2;
-            // 
-            // ValuesListBox
-            // 
-            ValuesListBox.FormattingEnabled = true;
-            ValuesListBox.ItemHeight = 20;
-            ValuesListBox.Location = new Point(229, 39);
-            ValuesListBox.Name = "ValuesListBox";
-            ValuesListBox.Size = new Size(186, 344);
-            ValuesListBox.TabIndex = 1;
-            ValuesListBox.SelectedIndexChanged += ValuesListBox_SelectedIndexChanged;
-            // 
-            // EnumsListBox
-            // 
-            EnumsListBox.FormattingEnabled = true;
-            EnumsListBox.ItemHeight = 20;
-            EnumsListBox.Items.AddRange(new object[] { "Color", "EducationForm", "Genre", "Season", "SmartphoneManufactures", "Weekday" });
-            EnumsListBox.Location = new Point(29, 39);
-            EnumsListBox.Name = "EnumsListBox";
-            EnumsListBox.Size = new Size(194, 344);
-            EnumsListBox.TabIndex = 0;
-            EnumsListBox.SelectedIndexChanged += EnumsListBox_SelectedIndexChanged;
-            // 
-            // ParsingAnswer
-            // 
-            ParsingAnswer.AutoSize = true;
-            ParsingAnswer.Location = new Point(29, 501);
-            ParsingAnswer.Name = "ParsingAnswer";
-            ParsingAnswer.Size = new Size(53, 20);
-            ParsingAnswer.TabIndex = 10;
-            ParsingAnswer.Text = "           ";
+            ChooseSeasonLabel.AutoSize = true;
+            ChooseSeasonLabel.ImageAlign = ContentAlignment.TopCenter;
+            ChooseSeasonLabel.Location = new Point(6, 37);
+            ChooseSeasonLabel.Name = "ChooseSeasonLabel";
+            ChooseSeasonLabel.Size = new Size(110, 20);
+            ChooseSeasonLabel.TabIndex = 0;
+            ChooseSeasonLabel.Text = "Choose season:";
             // 
             // MainForm
             // 
@@ -186,7 +246,12 @@
             Load += MainForm_Load;
             TabControlOfEnums.ResumeLayout(false);
             Enums.ResumeLayout(false);
-            Enums.PerformLayout();
+            EnumarationsGroupBox.ResumeLayout(false);
+            EnumarationsGroupBox.PerformLayout();
+            WeekdayParsingGroupBox.ResumeLayout(false);
+            WeekdayParsingGroupBox.PerformLayout();
+            SeasonHandleGroupBox.ResumeLayout(false);
+            SeasonHandleGroupBox.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -200,10 +265,15 @@
         private Label EnumarationLabel;
         private TextBox IntingValueTextbox;
         private ListBox ValuesListBox;
-        private Label ParsingLabelNaming;
         private Button ParsingWeekdayButton;
         private TextBox ParsingWeekdayTextbox;
         private Label ParsingInputingLabel;
         private Label ParsingAnswer;
+        private GroupBox EnumarationsGroupBox;
+        private GroupBox WeekdayParsingGroupBox;
+        private GroupBox SeasonHandleGroupBox;
+        private Label ChooseSeasonLabel;
+        private ComboBox SeasonsComboBox;
+        private Button GoButton;
     }
 }

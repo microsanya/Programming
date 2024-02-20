@@ -32,9 +32,34 @@ namespace Programming
         private void ParsingWeekdayButton_Click(object sender, EventArgs e)
         {
             string userInput = ParsingWeekdayTextbox.Text;
-            if (Enum.Parse(typeof(Weekday), userInput) != null)
+            if (Enum.TryParse(userInput, out Weekday userWeekday) && (Convert.ToInt32(Enum.Parse(typeof(Weekday), userInput)) != Convert.ToInt32(userInput)))
             {
-                ParsingAnswer.Text = $"Это день недели ({userInput} = {Convert.ToInt32(Enum.Parse(typeof(Weekday), userInput))+1})";
+                ParsingAnswer.Text = $"Это день недели ({userInput} = {Convert.ToInt32(Enum.Parse(typeof(Weekday), userInput)) + 1})";
+            }
+            else
+            {
+                ParsingAnswer.Text = "Ожидалось значение дня недели!";
+            }
+        }
+
+        private void GoButton_Click(object sender, EventArgs e)
+        {
+            switch (SeasonsComboBox.SelectedIndex)
+            {
+                case 0:
+                    SeasonHandleGroupBox.BackColor = System.Drawing.Color.White;
+                    MessageBox.Show("Брр, холодно!");
+                    break;
+                case 1:
+                    SeasonHandleGroupBox.BackColor = System.Drawing.Color.Green;
+                    break;
+                case 2:
+                    SeasonHandleGroupBox.BackColor = System.Drawing.Color.White;
+                    MessageBox.Show("Ура! Солнце!");
+                    break;
+                case 3:
+                    SeasonHandleGroupBox.BackColor = System.Drawing.Color.Orange;
+                    break;
             }
         }
     }
