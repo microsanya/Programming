@@ -64,4 +64,12 @@
         Genre = genre;
         Rating = rating;
     }
+
+    public Film ()
+    {
+        Name = "";
+        Duration = 0;
+        Year = 0;
+        Rating = 0;
+    }
 }

@@ -42,4 +42,11 @@
         Width = width;
         Color = color;
     }
+
+    public Rectangle()
+    {
+        Length = 0;
+        Width = 0;
+        Color = "";
+    }
 }

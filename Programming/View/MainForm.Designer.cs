@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            TabControlOfEnums = new TabControl();
+            TabControlOfItems = new TabControl();
             Enums = new TabPage();
-            ParsingAnswer = new Label();
             EnumarationsGroupBox = new GroupBox();
             EnumarationLabel = new Label();
             ValueLabel = new Label();
@@ -39,6 +38,7 @@
             IntingValueLabel = new Label();
             IntingValueTextbox = new TextBox();
             WeekdayParsingGroupBox = new GroupBox();
+            ParsingAnswer = new Label();
             ParsingInputingLabel = new Label();
             ParsingWeekdayButton = new Button();
             ParsingWeekdayTextbox = new TextBox();
@@ -46,22 +46,26 @@
             GoButton = new Button();
             SeasonsComboBox = new ComboBox();
             ChooseSeasonLabel = new Label();
-            TabControlOfEnums.SuspendLayout();
+            Classes = new TabPage();
+            RectanglesGroupBox = new GroupBox();
+            TabControlOfItems.SuspendLayout();
             Enums.SuspendLayout();
             EnumarationsGroupBox.SuspendLayout();
             WeekdayParsingGroupBox.SuspendLayout();
             SeasonHandleGroupBox.SuspendLayout();
+            Classes.SuspendLayout();
             SuspendLayout();
             // 
-            // TabControlOfEnums
+            // TabControlOfItems
             // 
-            TabControlOfEnums.Controls.Add(Enums);
-            TabControlOfEnums.Dock = DockStyle.Fill;
-            TabControlOfEnums.Location = new Point(0, 0);
-            TabControlOfEnums.Name = "TabControlOfEnums";
-            TabControlOfEnums.SelectedIndex = 0;
-            TabControlOfEnums.Size = new Size(839, 688);
-            TabControlOfEnums.TabIndex = 0;
+            TabControlOfItems.Controls.Add(Enums);
+            TabControlOfItems.Controls.Add(Classes);
+            TabControlOfItems.Dock = DockStyle.Fill;
+            TabControlOfItems.Location = new Point(0, 0);
+            TabControlOfItems.Name = "TabControlOfItems";
+            TabControlOfItems.SelectedIndex = 0;
+            TabControlOfItems.Size = new Size(839, 688);
+            TabControlOfItems.TabIndex = 0;
             // 
             // Enums
             // 
@@ -75,15 +79,6 @@
             Enums.TabIndex = 0;
             Enums.Text = "Enums";
             Enums.UseVisualStyleBackColor = true;
-            // 
-            // ParsingAnswer
-            // 
-            ParsingAnswer.AutoSize = true;
-            ParsingAnswer.Location = new Point(11, 90);
-            ParsingAnswer.Name = "ParsingAnswer";
-            ParsingAnswer.Size = new Size(53, 20);
-            ParsingAnswer.TabIndex = 10;
-            ParsingAnswer.Text = "           ";
             // 
             // EnumarationsGroupBox
             // 
@@ -168,6 +163,15 @@
             WeekdayParsingGroupBox.TabStop = false;
             WeekdayParsingGroupBox.Text = "Weekday Parsing";
             // 
+            // ParsingAnswer
+            // 
+            ParsingAnswer.AutoSize = true;
+            ParsingAnswer.Location = new Point(11, 90);
+            ParsingAnswer.Name = "ParsingAnswer";
+            ParsingAnswer.Size = new Size(53, 20);
+            ParsingAnswer.TabIndex = 10;
+            ParsingAnswer.Text = "           ";
+            // 
             // ParsingInputingLabel
             // 
             ParsingInputingLabel.AutoSize = true;
@@ -235,16 +239,36 @@
             ChooseSeasonLabel.TabIndex = 0;
             ChooseSeasonLabel.Text = "Choose season:";
             // 
+            // Classes
+            // 
+            Classes.Controls.Add(RectanglesGroupBox);
+            Classes.Location = new Point(4, 29);
+            Classes.Name = "Classes";
+            Classes.Padding = new Padding(3);
+            Classes.Size = new Size(831, 655);
+            Classes.TabIndex = 1;
+            Classes.Text = "Classes";
+            Classes.UseVisualStyleBackColor = true;
+            // 
+            // RectanglesGroupBox
+            // 
+            RectanglesGroupBox.Location = new Point(8, 6);
+            RectanglesGroupBox.Name = "RectanglesGroupBox";
+            RectanglesGroupBox.Size = new Size(250, 125);
+            RectanglesGroupBox.TabIndex = 0;
+            RectanglesGroupBox.TabStop = false;
+            RectanglesGroupBox.Text = "Rectangles";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(839, 688);
-            Controls.Add(TabControlOfEnums);
+            Controls.Add(TabControlOfItems);
             Name = "MainForm";
             Text = "MainForm";
             Load += MainForm_Load;
-            TabControlOfEnums.ResumeLayout(false);
+            TabControlOfItems.ResumeLayout(false);
             Enums.ResumeLayout(false);
             EnumarationsGroupBox.ResumeLayout(false);
             EnumarationsGroupBox.PerformLayout();
@@ -252,12 +276,13 @@
             WeekdayParsingGroupBox.PerformLayout();
             SeasonHandleGroupBox.ResumeLayout(false);
             SeasonHandleGroupBox.PerformLayout();
+            Classes.ResumeLayout(false);
             ResumeLayout(false);
         }
 
         #endregion
 
-        private TabControl TabControlOfEnums;
+        private TabControl TabControlOfItems;
         private TabPage Enums;
         private ListBox EnumsListBox;
         private Label IntingValueLabel;
@@ -275,5 +300,7 @@
         private Label ChooseSeasonLabel;
         private ComboBox SeasonsComboBox;
         private Button GoButton;
+        private TabPage Classes;
+        private GroupBox RectanglesGroupBox;
     }
 }

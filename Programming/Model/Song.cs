@@ -26,4 +26,11 @@
         Name = name;
         Singer = singer;
     }
+
+    public Song()
+    {
+        Id = 0;
+        Name = "";
+        Singer = "";
+    }
 }

@@ -28,4 +28,11 @@
         Destination = destination;
         _timeFlight = timeFlight;
     }
+
+    public Flight()
+    {
+        DeparturePoint = "";
+        Destination = "";
+        _timeFlight = 0;
+    }
 }

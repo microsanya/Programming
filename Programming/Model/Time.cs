@@ -57,4 +57,11 @@
         Minutes = minutes;
         Seconds = seconds;
     }
+
+    public Time()
+    {
+        Hours = 0;
+        Minutes = 0;
+        Seconds = 0;
+    }
 }

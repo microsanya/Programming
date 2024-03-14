@@ -40,4 +40,11 @@
         LectureHours = lectureHours;
         PracticeHours = practiceHours;
     }
+
+    public Discipline()
+    {
+        Name = "";
+        LectureHours = 0;
+        PracticeHours = 0;
+    }
 }

@@ -10,4 +10,11 @@
         LastName = lastName;
         PhoneNumber = phoneNumber;
     }
+
+    public PhoneContact()
+    {
+        FirstName = "";
+        LastName = "";
+        PhoneNumber = "";
+    }
 }
