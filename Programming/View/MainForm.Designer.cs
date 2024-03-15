@@ -61,6 +61,11 @@
             NameLabel = new Label();
             FilmsListBox = new ListBox();
             RectanglesGroupBox = new GroupBox();
+            YTextBox = new TextBox();
+            XTextBox = new TextBox();
+            CenterYLabel = new Label();
+            CenterXLabel = new Label();
+            CenterMainLabel = new Label();
             FindRectangleButton = new Button();
             ColorTextBox = new TextBox();
             ColorLabel = new Label();
@@ -288,7 +293,7 @@
             FilmGroupBox.Controls.Add(FilmNameTextBox);
             FilmGroupBox.Controls.Add(NameLabel);
             FilmGroupBox.Controls.Add(FilmsListBox);
-            FilmGroupBox.Location = new Point(8, 291);
+            FilmGroupBox.Location = new Point(440, 6);
             FilmGroupBox.Name = "FilmGroupBox";
             FilmGroupBox.Size = new Size(351, 334);
             FilmGroupBox.TabIndex = 1;
@@ -403,6 +408,11 @@
             // 
             // RectanglesGroupBox
             // 
+            RectanglesGroupBox.Controls.Add(YTextBox);
+            RectanglesGroupBox.Controls.Add(XTextBox);
+            RectanglesGroupBox.Controls.Add(CenterYLabel);
+            RectanglesGroupBox.Controls.Add(CenterXLabel);
+            RectanglesGroupBox.Controls.Add(CenterMainLabel);
             RectanglesGroupBox.Controls.Add(FindRectangleButton);
             RectanglesGroupBox.Controls.Add(ColorTextBox);
             RectanglesGroupBox.Controls.Add(ColorLabel);
@@ -411,17 +421,60 @@
             RectanglesGroupBox.Controls.Add(LengthTextBox);
             RectanglesGroupBox.Controls.Add(LengthLabel);
             RectanglesGroupBox.Controls.Add(RectangleListBox);
-            RectanglesGroupBox.Location = new Point(8, 6);
+            RectanglesGroupBox.Location = new Point(43, 6);
             RectanglesGroupBox.Name = "RectanglesGroupBox";
-            RectanglesGroupBox.Size = new Size(351, 279);
+            RectanglesGroupBox.Size = new Size(351, 334);
             RectanglesGroupBox.TabIndex = 0;
             RectanglesGroupBox.TabStop = false;
             RectanglesGroupBox.Text = "Rectangles";
             // 
+            // YTextBox
+            // 
+            YTextBox.Location = new Point(237, 226);
+            YTextBox.Name = "YTextBox";
+            YTextBox.ReadOnly = true;
+            YTextBox.Size = new Size(57, 27);
+            YTextBox.TabIndex = 12;
+            // 
+            // XTextBox
+            // 
+            XTextBox.Location = new Point(162, 226);
+            XTextBox.Name = "XTextBox";
+            XTextBox.ReadOnly = true;
+            XTextBox.Size = new Size(57, 27);
+            XTextBox.TabIndex = 11;
+            // 
+            // CenterYLabel
+            // 
+            CenterYLabel.AutoSize = true;
+            CenterYLabel.Location = new Point(237, 203);
+            CenterYLabel.Name = "CenterYLabel";
+            CenterYLabel.Size = new Size(19, 20);
+            CenterYLabel.TabIndex = 10;
+            CenterYLabel.Text = "y:";
+            // 
+            // CenterXLabel
+            // 
+            CenterXLabel.AutoSize = true;
+            CenterXLabel.Location = new Point(164, 203);
+            CenterXLabel.Name = "CenterXLabel";
+            CenterXLabel.Size = new Size(19, 20);
+            CenterXLabel.TabIndex = 9;
+            CenterXLabel.Text = "x:";
+            // 
+            // CenterMainLabel
+            // 
+            CenterMainLabel.AutoSize = true;
+            CenterMainLabel.Location = new Point(159, 183);
+            CenterMainLabel.Name = "CenterMainLabel";
+            CenterMainLabel.Size = new Size(55, 20);
+            CenterMainLabel.TabIndex = 8;
+            CenterMainLabel.Text = "Center:";
+            // 
             // FindRectangleButton
             // 
             FindRectangleButton.FlatStyle = FlatStyle.System;
-            FindRectangleButton.Location = new Point(162, 241);
+            FindRectangleButton.Location = new Point(162, 295);
             FindRectangleButton.Name = "FindRectangleButton";
             FindRectangleButton.Size = new Size(94, 29);
             FindRectangleButton.TabIndex = 7;
@@ -485,9 +538,9 @@
             RectangleListBox.FormattingEnabled = true;
             RectangleListBox.ItemHeight = 20;
             RectangleListBox.Items.AddRange(new object[] { "Rectangle 1", "Rectangle 2", "Rectangle 3", "Rectangle 4", "Rectangle 5" });
-            RectangleListBox.Location = new Point(6, 26);
+            RectangleListBox.Location = new Point(6, 20);
             RectangleListBox.Name = "RectangleListBox";
-            RectangleListBox.Size = new Size(150, 244);
+            RectangleListBox.Size = new Size(150, 304);
             RectangleListBox.TabIndex = 0;
             RectangleListBox.SelectedIndexChanged += RectangleListBox_SelectedIndexChanged;
             // 
@@ -559,5 +612,10 @@
         private TextBox RatingTextBox;
         private Label RatingLabel;
         private Button FilmFindButton;
+        private TextBox YTextBox;
+        private TextBox XTextBox;
+        private Label CenterYLabel;
+        private Label CenterXLabel;
+        private Label CenterMainLabel;
     }
 }

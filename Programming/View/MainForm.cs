@@ -19,7 +19,11 @@ namespace Programming
             Random rnd = new Random();
             for (int i = 0; i < 5; ++i)
             {
-                rectangles[i] = new Rectangle(rnd.Next(1, 100), rnd.Next(1, 100), Convert.ToString((Color)rnd.Next(0, 6)));
+                double recLength = rnd.Next(1, 100);
+                double recWidth = rnd.Next(1, 100);
+                string recColor = Convert.ToString((Color)rnd.Next(0, 6));
+                Point2D recCenter = new Point2D(recLength / 2, recWidth / 2);
+                rectangles[i] = new Rectangle(recLength, recWidth, recColor, recCenter);
             }
         }
         // поиск прямоугольника с наибольшей шириной
@@ -150,6 +154,8 @@ namespace Programming
                 LengthTextBox.Text = Convert.ToString(_currentRectangle.Length);
                 WidthTextBox.Text = Convert.ToString(_currentRectangle.Width);
                 ColorTextBox.Text = Convert.ToString(_currentRectangle.Color);
+                XTextBox.Text = Convert.ToString(_currentRectangle.Center.X);
+                YTextBox.Text = Convert.ToString(_currentRectangle.Center.Y);
             }
         }
 

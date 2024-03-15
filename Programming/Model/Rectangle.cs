@@ -29,12 +29,14 @@
     }
 
     public string Color { get; set; }
+    public Point2D Center { get; set; }
 
-    public Rectangle(double length, double width, string color)
+    public Rectangle(double length, double width, string color, Point2D center)
     {
         Length = length;
         Width = width;
         Color = color;
+        Center = center;
     }
 
     public Rectangle()
@@ -42,5 +44,6 @@
         Length = 0;
         Width = 0;
         Color = "";
+        Center = new Point2D(0, 0);
     }
 }
