@@ -9,10 +9,7 @@
         }
         set
         {
-            if (value < 0)
-            {
-                throw new ArgumentOutOfRangeException("Wrong Value");
-            }
+            Validator.AssertOnPositiveValue(value);
             _length = value;
         }
     }
@@ -26,10 +23,7 @@
         }
         set
         {
-            if (value < 0)
-            {
-                throw new ArgumentOutOfRangeException("Wrong Value");
-            }
+            Validator.AssertOnPositiveValue(value);
             _width = value;
         }
     }

@@ -10,10 +10,7 @@
         }
         set
         {
-            if (value < 0)
-            {
-                throw new ArgumentOutOfRangeException("Wrong value");
-            }
+            Validator.AssertOnPositiveValue(value);
             _lectureHours = value;
         }
     }
@@ -26,10 +23,7 @@
         }
         set
         {
-            if (value < 0)
-            {
-                throw new ArgumentOutOfRangeException("Wrong value");
-            }
+            Validator.AssertOnPositiveValue(value);
             _practiceHours = value;
         }
     }

@@ -11,16 +11,12 @@
         }
         set
         {
-            if (value < 0)
-            {
-                throw new ArgumentOutOfRangeException("Wrong value");
-            }
+            Validator.AssertOnPositiveValue(value);
             _duration = value;
         }
     }
 
     private int _year;
-
     public int Year
     {
         get
@@ -29,10 +25,7 @@
         }
         set
         {
-            if (value < 1900 || value > 2024)
-            {
-                throw new ArgumentOutOfRangeException("Wrong value");
-            }
+            Validator.AssertValueInRange(value, 1900, 2024);
             _year = value;
         }
     }
@@ -48,10 +41,7 @@
         }
         set
         {
-            if (value < 0 || value > 10)
-            {
-                throw new ArgumentOutOfRangeException("Wrong value");
-            }
+            Validator.AssertValueInRange(value, 0, 10);
             _rating = value;
         }
     }

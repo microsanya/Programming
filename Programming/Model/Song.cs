@@ -9,10 +9,7 @@
         }
         set
         {
-            if (value < 0)
-            {
-                throw new ArgumentOutOfRangeException("Wrong value");
-            }
+            Validator.AssertOnPositiveValue(value);
             _id = value;
         }
     }

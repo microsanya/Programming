@@ -9,10 +9,7 @@
         }
         set
         {
-            if (value < 0 || value > 23)
-            {
-                throw new ArgumentOutOfRangeException("Wrong value");
-            }
+            Validator.AssertValueInRange(value, 0, 23);
             _hours = value;
         }
     }
@@ -26,10 +23,7 @@
         }
         set
         {
-            if (value < 0 || value> 60)
-            {
-                throw new ArgumentOutOfRangeException("Wrong value");
-            }
+            Validator.AssertValueInRange(value, 0, 60);
             _minutes = value;
         }
     }
@@ -43,10 +37,7 @@
         }
         set
         {
-            if (value < 0 || value > 60)
-            {
-                throw new ArgumentOutOfRangeException("Wrong value");
-            }
+            Validator.AssertValueInRange(value, 0, 60);
             _seconds = value;
         }
     }

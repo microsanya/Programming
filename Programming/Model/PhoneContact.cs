@@ -1,20 +1,63 @@
-﻿class PhoneContact
+﻿using System.Text.RegularExpressions;
+class PhoneContact
 {
-    public string FirstName { get; set; }
-    public string LastName { get; set; }
+    private bool AssertStringContainsOnlyLetters(string value)
+    {
+        if (!Regex.IsMatch(value, "^[a-zA-Z]*$"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    private string _firstName;
+    public string FirstName
+    {
+        get
+        {
+            return _firstName;
+        }
+        set
+        {
+            if (AssertStringContainsOnlyLetters(value) == false)
+            {
+                throw new ArgumentException("Wrong name");
+            }
+            _firstName = value;
+        }
+    }
+
+    private string _surname;
+    public string Surname
+    {
+        get
+        {
+            return _surname;
+        }
+        set
+        {
+            if (AssertStringContainsOnlyLetters(value) == false)
+            {
+                throw new ArgumentException("Wrong surname");
+            }
+            _surname = value;
+        }
+    }
     public string PhoneNumber { get; set; }
 
     public PhoneContact (string firstName, string lastName, string phoneNumber)
     {
-        FirstName = firstName;
-        LastName = lastName;
+        _firstName = firstName;
+        _surname = lastName;
         PhoneNumber = phoneNumber;
     }
 
     public PhoneContact()
     {
-        FirstName = "";
-        LastName = "";
+        _firstName = "";
+        Surname = "";
         PhoneNumber = "";
     }
 }
