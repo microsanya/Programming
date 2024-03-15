@@ -48,12 +48,21 @@
             ChooseSeasonLabel = new Label();
             Classes = new TabPage();
             RectanglesGroupBox = new GroupBox();
+            FindRectangleButton = new Button();
+            ColorTextBox = new TextBox();
+            ColorLabel = new Label();
+            WidthTextBox = new TextBox();
+            WidthLabel = new Label();
+            LengthTextBox = new TextBox();
+            LengthLabel = new Label();
+            RectangleListBox = new ListBox();
             TabControlOfItems.SuspendLayout();
             Enums.SuspendLayout();
             EnumarationsGroupBox.SuspendLayout();
             WeekdayParsingGroupBox.SuspendLayout();
             SeasonHandleGroupBox.SuspendLayout();
             Classes.SuspendLayout();
+            RectanglesGroupBox.SuspendLayout();
             SuspendLayout();
             // 
             // TabControlOfItems
@@ -252,12 +261,93 @@
             // 
             // RectanglesGroupBox
             // 
+            RectanglesGroupBox.Controls.Add(FindRectangleButton);
+            RectanglesGroupBox.Controls.Add(ColorTextBox);
+            RectanglesGroupBox.Controls.Add(ColorLabel);
+            RectanglesGroupBox.Controls.Add(WidthTextBox);
+            RectanglesGroupBox.Controls.Add(WidthLabel);
+            RectanglesGroupBox.Controls.Add(LengthTextBox);
+            RectanglesGroupBox.Controls.Add(LengthLabel);
+            RectanglesGroupBox.Controls.Add(RectangleListBox);
             RectanglesGroupBox.Location = new Point(8, 6);
             RectanglesGroupBox.Name = "RectanglesGroupBox";
-            RectanglesGroupBox.Size = new Size(250, 125);
+            RectanglesGroupBox.Size = new Size(351, 279);
             RectanglesGroupBox.TabIndex = 0;
             RectanglesGroupBox.TabStop = false;
             RectanglesGroupBox.Text = "Rectangles";
+            // 
+            // FindRectangleButton
+            // 
+            FindRectangleButton.FlatStyle = FlatStyle.System;
+            FindRectangleButton.Location = new Point(162, 241);
+            FindRectangleButton.Name = "FindRectangleButton";
+            FindRectangleButton.Size = new Size(94, 29);
+            FindRectangleButton.TabIndex = 7;
+            FindRectangleButton.Text = "Find";
+            FindRectangleButton.UseVisualStyleBackColor = true;
+            FindRectangleButton.Click += FindRectangleButton_Click;
+            // 
+            // ColorTextBox
+            // 
+            ColorTextBox.Location = new Point(162, 152);
+            ColorTextBox.Name = "ColorTextBox";
+            ColorTextBox.Size = new Size(125, 27);
+            ColorTextBox.TabIndex = 6;
+            ColorTextBox.TextChanged += ColorTextBox_TextChanged;
+            // 
+            // ColorLabel
+            // 
+            ColorLabel.AutoSize = true;
+            ColorLabel.Location = new Point(162, 129);
+            ColorLabel.Name = "ColorLabel";
+            ColorLabel.Size = new Size(48, 20);
+            ColorLabel.TabIndex = 5;
+            ColorLabel.Text = "Color:";
+            // 
+            // WidthTextBox
+            // 
+            WidthTextBox.Location = new Point(162, 99);
+            WidthTextBox.Name = "WidthTextBox";
+            WidthTextBox.Size = new Size(125, 27);
+            WidthTextBox.TabIndex = 4;
+            WidthTextBox.TextChanged += WidthTextBox_TextChanged;
+            // 
+            // WidthLabel
+            // 
+            WidthLabel.AutoSize = true;
+            WidthLabel.Location = new Point(162, 76);
+            WidthLabel.Name = "WidthLabel";
+            WidthLabel.Size = new Size(52, 20);
+            WidthLabel.TabIndex = 3;
+            WidthLabel.Text = "Width:";
+            // 
+            // LengthTextBox
+            // 
+            LengthTextBox.Location = new Point(162, 46);
+            LengthTextBox.Name = "LengthTextBox";
+            LengthTextBox.Size = new Size(125, 27);
+            LengthTextBox.TabIndex = 2;
+            LengthTextBox.TextChanged += LengthTextBox_TextChanged;
+            // 
+            // LengthLabel
+            // 
+            LengthLabel.AutoSize = true;
+            LengthLabel.Location = new Point(162, 23);
+            LengthLabel.Name = "LengthLabel";
+            LengthLabel.Size = new Size(57, 20);
+            LengthLabel.TabIndex = 1;
+            LengthLabel.Text = "Length:";
+            // 
+            // RectangleListBox
+            // 
+            RectangleListBox.FormattingEnabled = true;
+            RectangleListBox.ItemHeight = 20;
+            RectangleListBox.Items.AddRange(new object[] { "Rectangle 1", "Rectangle 2", "Rectangle 3", "Rectangle 4", "Rectangle 5" });
+            RectangleListBox.Location = new Point(6, 26);
+            RectangleListBox.Name = "RectangleListBox";
+            RectangleListBox.Size = new Size(150, 244);
+            RectangleListBox.TabIndex = 0;
+            RectangleListBox.SelectedIndexChanged += RectangleListBox_SelectedIndexChanged;
             // 
             // MainForm
             // 
@@ -277,6 +367,8 @@
             SeasonHandleGroupBox.ResumeLayout(false);
             SeasonHandleGroupBox.PerformLayout();
             Classes.ResumeLayout(false);
+            RectanglesGroupBox.ResumeLayout(false);
+            RectanglesGroupBox.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -302,5 +394,13 @@
         private Button GoButton;
         private TabPage Classes;
         private GroupBox RectanglesGroupBox;
+        private TextBox WidthTextBox;
+        private Label WidthLabel;
+        private TextBox LengthTextBox;
+        private Label LengthLabel;
+        private ListBox RectangleListBox;
+        private TextBox ColorTextBox;
+        private Label ColorLabel;
+        private Button FindRectangleButton;
     }
 }
