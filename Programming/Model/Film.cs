@@ -69,7 +69,8 @@
     {
         Name = "";
         Duration = 0;
-        Year = 0;
+        Year = 1900;
+        Genre = "";
         Rating = 0;
     }
 }
