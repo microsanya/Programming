@@ -158,7 +158,7 @@ namespace Programming
                 YTextBox.Text = Convert.ToString(_currentRectangle.Center.Y);
             }
         }
-
+        
         // передача индекса прямоугольника с максимальной шириной
         private void FindRectangleButton_Click(object sender, EventArgs e)
         {

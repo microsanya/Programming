@@ -19,8 +19,16 @@ static class Validator
             throw new ArgumentException($"Wrong vale in {new StackTrace().GetFrame(1).GetMethod().Name}, it needs to be positive");
         }
     }
-    // проверка на принадлежность диапазону
+    // проверка на принадлежность диапазону (целочисленные значения)
     public static void AssertValueInRange(int value, int min, int max)
+    {
+        if ((value < min) || (value > max))
+        {
+            throw new ArgumentException($"Wrong vale in {new StackTrace().GetFrame(1).GetMethod().Name}, it needs to be in range: {min} - {max}");
+        }
+    }
+
+    public static void AssertValueInRange(double value, double min, double max)
     {
         if ((value < min) || (value > max))
         {
