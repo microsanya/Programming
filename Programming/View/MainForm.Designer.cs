@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             TabControlOfItems = new TabControl();
-            Enums = new TabPage();
+            EnumsTabPage = new TabPage();
             EnumarationsGroupBox = new GroupBox();
             EnumarationLabel = new Label();
             ValueLabel = new Label();
@@ -46,7 +46,7 @@
             GoButton = new Button();
             SeasonsComboBox = new ComboBox();
             ChooseSeasonLabel = new Label();
-            Classes = new TabPage();
+            ClassesTabPage = new TabPage();
             FilmGroupBox = new GroupBox();
             FilmFindButton = new Button();
             RatingTextBox = new TextBox();
@@ -76,39 +76,58 @@
             LengthTextBox = new TextBox();
             LengthLabel = new Label();
             RectangleListBox = new ListBox();
+            RectanglesTabPage = new TabPage();
+            DeleteRectangleButton = new Button();
+            AddRectangleButton = new Button();
+            RectanglesViewlabel = new Label();
+            RectanglesViewlistBox = new ListBox();
+            SelectedRectangleLabel = new Label();
+            IdLabelNew = new Label();
+            XLabelNew = new Label();
+            YLabelNew = new Label();
+            WidthLabelNew = new Label();
+            HeightLabelNew = new Label();
+            IDTextBoxNew = new TextBox();
+            XTextBoxNew = new TextBox();
+            YTextBoxNew = new TextBox();
+            WidthTextBoxNew = new TextBox();
+            HeightTextBoxNew = new TextBox();
+            CanvaPanel = new Panel();
             TabControlOfItems.SuspendLayout();
-            Enums.SuspendLayout();
+            EnumsTabPage.SuspendLayout();
             EnumarationsGroupBox.SuspendLayout();
             WeekdayParsingGroupBox.SuspendLayout();
             SeasonHandleGroupBox.SuspendLayout();
-            Classes.SuspendLayout();
+            ClassesTabPage.SuspendLayout();
             FilmGroupBox.SuspendLayout();
             RectanglesGroupBox.SuspendLayout();
+            RectanglesTabPage.SuspendLayout();
             SuspendLayout();
             // 
             // TabControlOfItems
             // 
-            TabControlOfItems.Controls.Add(Enums);
-            TabControlOfItems.Controls.Add(Classes);
+            TabControlOfItems.Controls.Add(EnumsTabPage);
+            TabControlOfItems.Controls.Add(ClassesTabPage);
+            TabControlOfItems.Controls.Add(RectanglesTabPage);
             TabControlOfItems.Dock = DockStyle.Fill;
             TabControlOfItems.Location = new Point(0, 0);
             TabControlOfItems.Name = "TabControlOfItems";
             TabControlOfItems.SelectedIndex = 0;
-            TabControlOfItems.Size = new Size(839, 688);
+            TabControlOfItems.Size = new Size(839, 552);
             TabControlOfItems.TabIndex = 0;
             // 
-            // Enums
+            // EnumsTabPage
             // 
-            Enums.Controls.Add(EnumarationsGroupBox);
-            Enums.Controls.Add(WeekdayParsingGroupBox);
-            Enums.Controls.Add(SeasonHandleGroupBox);
-            Enums.Location = new Point(4, 29);
-            Enums.Name = "Enums";
-            Enums.Padding = new Padding(3);
-            Enums.Size = new Size(831, 655);
-            Enums.TabIndex = 0;
-            Enums.Text = "Enums";
-            Enums.UseVisualStyleBackColor = true;
+            EnumsTabPage.Controls.Add(EnumarationsGroupBox);
+            EnumsTabPage.Controls.Add(WeekdayParsingGroupBox);
+            EnumsTabPage.Controls.Add(SeasonHandleGroupBox);
+            EnumsTabPage.Location = new Point(4, 29);
+            EnumsTabPage.Name = "EnumsTabPage";
+            EnumsTabPage.Padding = new Padding(3);
+            EnumsTabPage.Size = new Size(831, 519);
+            EnumsTabPage.TabIndex = 0;
+            EnumsTabPage.Text = "Enums";
+            EnumsTabPage.UseVisualStyleBackColor = true;
             // 
             // EnumarationsGroupBox
             // 
@@ -120,7 +139,7 @@
             EnumarationsGroupBox.Controls.Add(IntingValueTextbox);
             EnumarationsGroupBox.Location = new Point(18, 6);
             EnumarationsGroupBox.Name = "EnumarationsGroupBox";
-            EnumarationsGroupBox.Size = new Size(805, 426);
+            EnumarationsGroupBox.Size = new Size(792, 389);
             EnumarationsGroupBox.TabIndex = 11;
             EnumarationsGroupBox.TabStop = false;
             EnumarationsGroupBox.Text = "Enumarations";
@@ -150,7 +169,7 @@
             EnumsListBox.Items.AddRange(new object[] { "Color", "EducationForm", "Genre", "Season", "SmartphoneManufactures", "Weekday" });
             EnumsListBox.Location = new Point(11, 46);
             EnumsListBox.Name = "EnumsListBox";
-            EnumsListBox.Size = new Size(194, 344);
+            EnumsListBox.Size = new Size(194, 324);
             EnumsListBox.TabIndex = 0;
             EnumsListBox.SelectedIndexChanged += EnumsListBox_SelectedIndexChanged;
             // 
@@ -160,7 +179,7 @@
             ValuesListBox.ItemHeight = 20;
             ValuesListBox.Location = new Point(211, 46);
             ValuesListBox.Name = "ValuesListBox";
-            ValuesListBox.Size = new Size(186, 344);
+            ValuesListBox.Size = new Size(186, 324);
             ValuesListBox.TabIndex = 1;
             ValuesListBox.SelectedIndexChanged += ValuesListBox_SelectedIndexChanged;
             // 
@@ -186,9 +205,9 @@
             WeekdayParsingGroupBox.Controls.Add(ParsingInputingLabel);
             WeekdayParsingGroupBox.Controls.Add(ParsingWeekdayButton);
             WeekdayParsingGroupBox.Controls.Add(ParsingWeekdayTextbox);
-            WeekdayParsingGroupBox.Location = new Point(18, 438);
+            WeekdayParsingGroupBox.Location = new Point(18, 401);
             WeekdayParsingGroupBox.Name = "WeekdayParsingGroupBox";
-            WeekdayParsingGroupBox.Size = new Size(397, 178);
+            WeekdayParsingGroupBox.Size = new Size(397, 110);
             WeekdayParsingGroupBox.TabIndex = 12;
             WeekdayParsingGroupBox.TabStop = false;
             WeekdayParsingGroupBox.Text = "Weekday Parsing";
@@ -233,9 +252,9 @@
             SeasonHandleGroupBox.Controls.Add(GoButton);
             SeasonHandleGroupBox.Controls.Add(SeasonsComboBox);
             SeasonHandleGroupBox.Controls.Add(ChooseSeasonLabel);
-            SeasonHandleGroupBox.Location = new Point(421, 438);
+            SeasonHandleGroupBox.Location = new Point(421, 401);
             SeasonHandleGroupBox.Name = "SeasonHandleGroupBox";
-            SeasonHandleGroupBox.Size = new Size(402, 178);
+            SeasonHandleGroupBox.Size = new Size(402, 110);
             SeasonHandleGroupBox.TabIndex = 13;
             SeasonHandleGroupBox.TabStop = false;
             SeasonHandleGroupBox.Text = "Season Handle";
@@ -269,17 +288,17 @@
             ChooseSeasonLabel.TabIndex = 0;
             ChooseSeasonLabel.Text = "Choose season:";
             // 
-            // Classes
+            // ClassesTabPage
             // 
-            Classes.Controls.Add(FilmGroupBox);
-            Classes.Controls.Add(RectanglesGroupBox);
-            Classes.Location = new Point(4, 29);
-            Classes.Name = "Classes";
-            Classes.Padding = new Padding(3);
-            Classes.Size = new Size(831, 655);
-            Classes.TabIndex = 1;
-            Classes.Text = "Classes";
-            Classes.UseVisualStyleBackColor = true;
+            ClassesTabPage.Controls.Add(FilmGroupBox);
+            ClassesTabPage.Controls.Add(RectanglesGroupBox);
+            ClassesTabPage.Location = new Point(4, 29);
+            ClassesTabPage.Name = "ClassesTabPage";
+            ClassesTabPage.Padding = new Padding(3);
+            ClassesTabPage.Size = new Size(831, 519);
+            ClassesTabPage.TabIndex = 1;
+            ClassesTabPage.Text = "Classes";
+            ClassesTabPage.UseVisualStyleBackColor = true;
             // 
             // FilmGroupBox
             // 
@@ -295,7 +314,7 @@
             FilmGroupBox.Controls.Add(FilmNameTextBox);
             FilmGroupBox.Controls.Add(NameLabel);
             FilmGroupBox.Controls.Add(FilmsListBox);
-            FilmGroupBox.Location = new Point(440, 6);
+            FilmGroupBox.Location = new Point(461, 6);
             FilmGroupBox.Name = "FilmGroupBox";
             FilmGroupBox.Size = new Size(351, 362);
             FilmGroupBox.TabIndex = 1;
@@ -425,7 +444,7 @@
             RectanglesGroupBox.Controls.Add(LengthTextBox);
             RectanglesGroupBox.Controls.Add(LengthLabel);
             RectanglesGroupBox.Controls.Add(RectangleListBox);
-            RectanglesGroupBox.Location = new Point(43, 6);
+            RectanglesGroupBox.Location = new Point(19, 6);
             RectanglesGroupBox.Name = "RectanglesGroupBox";
             RectanglesGroupBox.Size = new Size(351, 362);
             RectanglesGroupBox.TabIndex = 0;
@@ -565,35 +584,200 @@
             RectangleListBox.TabIndex = 0;
             RectangleListBox.SelectedIndexChanged += RectangleListBox_SelectedIndexChanged;
             // 
+            // RectanglesTabPage
+            // 
+            RectanglesTabPage.Controls.Add(CanvaPanel);
+            RectanglesTabPage.Controls.Add(HeightTextBoxNew);
+            RectanglesTabPage.Controls.Add(WidthTextBoxNew);
+            RectanglesTabPage.Controls.Add(YTextBoxNew);
+            RectanglesTabPage.Controls.Add(XTextBoxNew);
+            RectanglesTabPage.Controls.Add(IDTextBoxNew);
+            RectanglesTabPage.Controls.Add(HeightLabelNew);
+            RectanglesTabPage.Controls.Add(WidthLabelNew);
+            RectanglesTabPage.Controls.Add(YLabelNew);
+            RectanglesTabPage.Controls.Add(XLabelNew);
+            RectanglesTabPage.Controls.Add(IdLabelNew);
+            RectanglesTabPage.Controls.Add(SelectedRectangleLabel);
+            RectanglesTabPage.Controls.Add(DeleteRectangleButton);
+            RectanglesTabPage.Controls.Add(AddRectangleButton);
+            RectanglesTabPage.Controls.Add(RectanglesViewlabel);
+            RectanglesTabPage.Controls.Add(RectanglesViewlistBox);
+            RectanglesTabPage.Location = new Point(4, 29);
+            RectanglesTabPage.Name = "RectanglesTabPage";
+            RectanglesTabPage.Padding = new Padding(3);
+            RectanglesTabPage.Size = new Size(831, 519);
+            RectanglesTabPage.TabIndex = 2;
+            RectanglesTabPage.Text = "Rectangles";
+            RectanglesTabPage.UseVisualStyleBackColor = true;
+            // 
+            // DeleteRectangleButton
+            // 
+            DeleteRectangleButton.BackgroundImage = Properties.Resources.remove_rectangle;
+            DeleteRectangleButton.BackgroundImageLayout = ImageLayout.Zoom;
+            DeleteRectangleButton.FlatStyle = FlatStyle.Flat;
+            DeleteRectangleButton.Location = new Point(196, 239);
+            DeleteRectangleButton.Name = "DeleteRectangleButton";
+            DeleteRectangleButton.Size = new Size(42, 40);
+            DeleteRectangleButton.TabIndex = 3;
+            DeleteRectangleButton.UseVisualStyleBackColor = true;
+            // 
+            // AddRectangleButton
+            // 
+            AddRectangleButton.BackgroundImage = Properties.Resources.add_rectangle;
+            AddRectangleButton.BackgroundImageLayout = ImageLayout.Zoom;
+            AddRectangleButton.FlatStyle = FlatStyle.Flat;
+            AddRectangleButton.Location = new Point(123, 239);
+            AddRectangleButton.Name = "AddRectangleButton";
+            AddRectangleButton.Size = new Size(42, 40);
+            AddRectangleButton.TabIndex = 2;
+            AddRectangleButton.UseVisualStyleBackColor = true;
+            // 
+            // RectanglesViewlabel
+            // 
+            RectanglesViewlabel.AutoSize = true;
+            RectanglesViewlabel.Location = new Point(8, 6);
+            RectanglesViewlabel.Name = "RectanglesViewlabel";
+            RectanglesViewlabel.Size = new Size(84, 20);
+            RectanglesViewlabel.TabIndex = 1;
+            RectanglesViewlabel.Text = "Rectangles:";
+            // 
+            // RectanglesViewlistBox
+            // 
+            RectanglesViewlistBox.FormattingEnabled = true;
+            RectanglesViewlistBox.ItemHeight = 20;
+            RectanglesViewlistBox.Location = new Point(8, 29);
+            RectanglesViewlistBox.Name = "RectanglesViewlistBox";
+            RectanglesViewlistBox.Size = new Size(335, 204);
+            RectanglesViewlistBox.TabIndex = 0;
+            // 
+            // SelectedRectangleLabel
+            // 
+            SelectedRectangleLabel.AutoSize = true;
+            SelectedRectangleLabel.Location = new Point(8, 297);
+            SelectedRectangleLabel.Name = "SelectedRectangleLabel";
+            SelectedRectangleLabel.Size = new Size(139, 20);
+            SelectedRectangleLabel.TabIndex = 4;
+            SelectedRectangleLabel.Text = "Selected Rectangle:";
+            // 
+            // IdLabelNew
+            // 
+            IdLabelNew.AutoSize = true;
+            IdLabelNew.Location = new Point(8, 332);
+            IdLabelNew.Name = "IdLabelNew";
+            IdLabelNew.Size = new Size(27, 20);
+            IdLabelNew.TabIndex = 5;
+            IdLabelNew.Text = "ID:";
+            // 
+            // XLabelNew
+            // 
+            XLabelNew.AutoSize = true;
+            XLabelNew.Location = new Point(8, 364);
+            XLabelNew.Name = "XLabelNew";
+            XLabelNew.Size = new Size(21, 20);
+            XLabelNew.TabIndex = 6;
+            XLabelNew.Text = "X:";
+            // 
+            // YLabelNew
+            // 
+            YLabelNew.AutoSize = true;
+            YLabelNew.Location = new Point(8, 397);
+            YLabelNew.Name = "YLabelNew";
+            YLabelNew.Size = new Size(20, 20);
+            YLabelNew.TabIndex = 7;
+            YLabelNew.Text = "Y:";
+            // 
+            // WidthLabelNew
+            // 
+            WidthLabelNew.AutoSize = true;
+            WidthLabelNew.Location = new Point(8, 430);
+            WidthLabelNew.Name = "WidthLabelNew";
+            WidthLabelNew.Size = new Size(52, 20);
+            WidthLabelNew.TabIndex = 8;
+            WidthLabelNew.Text = "Width:";
+            // 
+            // HeightLabelNew
+            // 
+            HeightLabelNew.AutoSize = true;
+            HeightLabelNew.Location = new Point(8, 463);
+            HeightLabelNew.Name = "HeightLabelNew";
+            HeightLabelNew.Size = new Size(57, 20);
+            HeightLabelNew.TabIndex = 9;
+            HeightLabelNew.Text = "Height:";
+            // 
+            // IDTextBoxNew
+            // 
+            IDTextBoxNew.Location = new Point(64, 329);
+            IDTextBoxNew.Name = "IDTextBoxNew";
+            IDTextBoxNew.Size = new Size(125, 27);
+            IDTextBoxNew.TabIndex = 10;
+            // 
+            // XTextBoxNew
+            // 
+            XTextBoxNew.Location = new Point(64, 361);
+            XTextBoxNew.Name = "XTextBoxNew";
+            XTextBoxNew.Size = new Size(125, 27);
+            XTextBoxNew.TabIndex = 11;
+            // 
+            // YTextBoxNew
+            // 
+            YTextBoxNew.Location = new Point(64, 394);
+            YTextBoxNew.Name = "YTextBoxNew";
+            YTextBoxNew.Size = new Size(125, 27);
+            YTextBoxNew.TabIndex = 12;
+            // 
+            // WidthTextBoxNew
+            // 
+            WidthTextBoxNew.Location = new Point(64, 427);
+            WidthTextBoxNew.Name = "WidthTextBoxNew";
+            WidthTextBoxNew.Size = new Size(125, 27);
+            WidthTextBoxNew.TabIndex = 13;
+            // 
+            // HeightTextBoxNew
+            // 
+            HeightTextBoxNew.Location = new Point(64, 460);
+            HeightTextBoxNew.Name = "HeightTextBoxNew";
+            HeightTextBoxNew.Size = new Size(125, 27);
+            HeightTextBoxNew.TabIndex = 14;
+            // 
+            // CanvaPanel
+            // 
+            CanvaPanel.BorderStyle = BorderStyle.FixedSingle;
+            CanvaPanel.Location = new Point(349, 6);
+            CanvaPanel.Name = "CanvaPanel";
+            CanvaPanel.Size = new Size(474, 507);
+            CanvaPanel.TabIndex = 15;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(839, 688);
+            ClientSize = new Size(839, 552);
             Controls.Add(TabControlOfItems);
             Name = "MainForm";
             Text = "MainForm";
             Load += MainForm_Load;
             TabControlOfItems.ResumeLayout(false);
-            Enums.ResumeLayout(false);
+            EnumsTabPage.ResumeLayout(false);
             EnumarationsGroupBox.ResumeLayout(false);
             EnumarationsGroupBox.PerformLayout();
             WeekdayParsingGroupBox.ResumeLayout(false);
             WeekdayParsingGroupBox.PerformLayout();
             SeasonHandleGroupBox.ResumeLayout(false);
             SeasonHandleGroupBox.PerformLayout();
-            Classes.ResumeLayout(false);
+            ClassesTabPage.ResumeLayout(false);
             FilmGroupBox.ResumeLayout(false);
             FilmGroupBox.PerformLayout();
             RectanglesGroupBox.ResumeLayout(false);
             RectanglesGroupBox.PerformLayout();
+            RectanglesTabPage.ResumeLayout(false);
+            RectanglesTabPage.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
         private TabControl TabControlOfItems;
-        private TabPage Enums;
+        private TabPage EnumsTabPage;
         private ListBox EnumsListBox;
         private Label IntingValueLabel;
         private Label ValueLabel;
@@ -610,7 +794,7 @@
         private Label ChooseSeasonLabel;
         private ComboBox SeasonsComboBox;
         private Button GoButton;
-        private TabPage Classes;
+        private TabPage ClassesTabPage;
         private GroupBox RectanglesGroupBox;
         private TextBox WidthTextBox;
         private Label WidthLabel;
@@ -640,5 +824,22 @@
         private Label CenterMainLabel;
         private TextBox IdTextBox;
         private Label idLabel;
+        private TabPage RectanglesTabPage;
+        private Button DeleteRectangleButton;
+        private Button AddRectangleButton;
+        private Label RectanglesViewlabel;
+        private ListBox RectanglesViewlistBox;
+        private TextBox HeightTextBoxNew;
+        private TextBox WidthTextBoxNew;
+        private TextBox YTextBoxNew;
+        private TextBox XTextBoxNew;
+        private TextBox IDTextBoxNew;
+        private Label HeightLabelNew;
+        private Label WidthLabelNew;
+        private Label YLabelNew;
+        private Label XLabelNew;
+        private Label IdLabelNew;
+        private Label SelectedRectangleLabel;
+        private Panel CanvaPanel;
     }
 }
