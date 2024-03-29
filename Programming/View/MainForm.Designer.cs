@@ -61,6 +61,8 @@
             NameLabel = new Label();
             FilmsListBox = new ListBox();
             RectanglesGroupBox = new GroupBox();
+            IdTextBox = new TextBox();
+            idLabel = new Label();
             YTextBox = new TextBox();
             XTextBox = new TextBox();
             CenterYLabel = new Label();
@@ -295,14 +297,14 @@
             FilmGroupBox.Controls.Add(FilmsListBox);
             FilmGroupBox.Location = new Point(440, 6);
             FilmGroupBox.Name = "FilmGroupBox";
-            FilmGroupBox.Size = new Size(351, 334);
+            FilmGroupBox.Size = new Size(351, 362);
             FilmGroupBox.TabIndex = 1;
             FilmGroupBox.TabStop = false;
             FilmGroupBox.Text = "Films";
             // 
             // FilmFindButton
             // 
-            FilmFindButton.Location = new Point(162, 295);
+            FilmFindButton.Location = new Point(162, 315);
             FilmFindButton.Name = "FilmFindButton";
             FilmFindButton.Size = new Size(94, 29);
             FilmFindButton.TabIndex = 11;
@@ -402,12 +404,14 @@
             FilmsListBox.Items.AddRange(new object[] { "Film 1", "Film 2", "Film 3", "Film 4", "Film 5" });
             FilmsListBox.Location = new Point(6, 20);
             FilmsListBox.Name = "FilmsListBox";
-            FilmsListBox.Size = new Size(150, 304);
+            FilmsListBox.Size = new Size(150, 324);
             FilmsListBox.TabIndex = 0;
             FilmsListBox.SelectedIndexChanged += FilmsListBox_SelectedIndexChanged;
             // 
             // RectanglesGroupBox
             // 
+            RectanglesGroupBox.Controls.Add(IdTextBox);
+            RectanglesGroupBox.Controls.Add(idLabel);
             RectanglesGroupBox.Controls.Add(YTextBox);
             RectanglesGroupBox.Controls.Add(XTextBox);
             RectanglesGroupBox.Controls.Add(CenterYLabel);
@@ -423,10 +427,27 @@
             RectanglesGroupBox.Controls.Add(RectangleListBox);
             RectanglesGroupBox.Location = new Point(43, 6);
             RectanglesGroupBox.Name = "RectanglesGroupBox";
-            RectanglesGroupBox.Size = new Size(351, 334);
+            RectanglesGroupBox.Size = new Size(351, 362);
             RectanglesGroupBox.TabIndex = 0;
             RectanglesGroupBox.TabStop = false;
             RectanglesGroupBox.Text = "Rectangles";
+            // 
+            // IdTextBox
+            // 
+            IdTextBox.Enabled = false;
+            IdTextBox.Location = new Point(162, 282);
+            IdTextBox.Name = "IdTextBox";
+            IdTextBox.Size = new Size(57, 27);
+            IdTextBox.TabIndex = 14;
+            // 
+            // idLabel
+            // 
+            idLabel.AutoSize = true;
+            idLabel.Location = new Point(162, 256);
+            idLabel.Name = "idLabel";
+            idLabel.Size = new Size(27, 20);
+            idLabel.TabIndex = 13;
+            idLabel.Text = "ID:";
             // 
             // YTextBox
             // 
@@ -474,7 +495,7 @@
             // FindRectangleButton
             // 
             FindRectangleButton.FlatStyle = FlatStyle.System;
-            FindRectangleButton.Location = new Point(162, 295);
+            FindRectangleButton.Location = new Point(162, 315);
             FindRectangleButton.Name = "FindRectangleButton";
             FindRectangleButton.Size = new Size(94, 29);
             FindRectangleButton.TabIndex = 7;
@@ -540,7 +561,7 @@
             RectangleListBox.Items.AddRange(new object[] { "Rectangle 1", "Rectangle 2", "Rectangle 3", "Rectangle 4", "Rectangle 5" });
             RectangleListBox.Location = new Point(6, 20);
             RectangleListBox.Name = "RectangleListBox";
-            RectangleListBox.Size = new Size(150, 304);
+            RectangleListBox.Size = new Size(150, 324);
             RectangleListBox.TabIndex = 0;
             RectangleListBox.SelectedIndexChanged += RectangleListBox_SelectedIndexChanged;
             // 
@@ -617,5 +638,7 @@
         private Label CenterYLabel;
         private Label CenterXLabel;
         private Label CenterMainLabel;
+        private TextBox IdTextBox;
+        private Label idLabel;
     }
 }

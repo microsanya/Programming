@@ -31,12 +31,37 @@
     public string Color { get; set; }
     public Point2D Center { get; set; }
 
-    public Rectangle(double length, double width, string color, Point2D center)
+    private static int _allRectanglesCount;
+    public static int AllRectanglesCount
+    {
+        get
+        {
+            return _allRectanglesCount;
+        }
+    }
+
+    private int _id;
+    public int Id
+    {
+        get
+        {
+            return _id;
+        }
+        private set
+        {
+            Validator.AssertOnPositiveValue(value);
+            _id = value;
+        }
+    }
+
+    public Rectangle(double length, double width, string color, Point2D center, int id)
     {
         Length = length;
         Width = width;
         Color = color;
         Center = center;
+        _allRectanglesCount += 1;
+        Id = _allRectanglesCount;
     }
 
     public Rectangle()
@@ -45,5 +70,6 @@
         Width = 0;
         Color = "";
         Center = new Point2D(0, 0);
+        Id = _allRectanglesCount;
     }
 }
