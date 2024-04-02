@@ -10,6 +10,7 @@ namespace Programming
         // ѕ–яћќ”√ќЋ№Ќ» »
         // закрытое поле, хран€щее массив пр€моугольников
         private Rectangle[] _rectangles = new Rectangle[5];
+        private List<Rectangle> _newRectangles = new List<Rectangle>();
         // ранее созданный пр€моугольник
         private Rectangle _currentRectangle = new Rectangle();
         //инициализаци€ массива пр€моугольников
@@ -311,6 +312,64 @@ namespace Programming
         {
             int indexMaxFilm = FindFilmWithMaxRating(_films);
             FilmsListBox.SelectedIndex = indexMaxFilm;
+        }
+
+        // работа с вкладкой Rectangles ---------------------------------------------------------------
+        // кнопка "добавить пр€моугольник"
+        private void AddRectangleButton_Click(object sender, EventArgs e)
+        {
+            Random rnd = new Random();
+
+            double recLength = rnd.Next(1, 100);
+            double recWidth = rnd.Next(1, 100);
+            string recColor = Convert.ToString((Color)rnd.Next(0, 6));
+            Point2D recCenter = new Point2D(recLength / 2, recWidth / 2);
+
+            Rectangle newRectangle = new Rectangle(recLength, recWidth, recColor, recCenter, 0);
+
+            _newRectangles.Add(newRectangle);
+
+            string addingString = $"{newRectangle.Id - 5}: (X= {newRectangle.Center.X}; Y= {newRectangle.Center.Y}; " +
+                $"W= {newRectangle.Width}; H= {newRectangle.Length})";
+            RectanglesViewlistBox.Items.Add(addingString);
+        }
+        // выбор элемента
+        private void RectanglesViewlistBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (RectanglesViewlistBox.SelectedItem != null)
+            {
+                int selectedRectNumber = RectanglesViewlistBox.SelectedIndex;
+                _currentRectangle = _newRectangles[selectedRectNumber];
+                // ID
+                IDTextBoxNew.Text = Convert.ToString(selectedRectNumber + 1);
+                // X
+                XTextBoxNew.Text = Convert.ToString(_newRectangles[selectedRectNumber].Center.X);
+                // Y
+                YTextBoxNew.Text = Convert.ToString(_newRectangles[selectedRectNumber].Center.Y);
+                // Width
+                WidthTextBoxNew.Text = Convert.ToString(_newRectangles[selectedRectNumber].Width);
+                // Height
+                HeightTextBoxNew.Text = Convert.ToString(_newRectangles[selectedRectNumber].Length);
+            }
+        }
+        // кнопка "удалить пр€моугольник"
+        private void DeleteRectangleButton_Click(object sender, EventArgs e)
+        {
+            if (RectanglesViewlistBox.SelectedItem != null)
+            {
+                _newRectangles.RemoveAt(RectanglesViewlistBox.SelectedIndex);
+                RectanglesViewlistBox.Items.RemoveAt(RectanglesViewlistBox.SelectedIndex);
+                // ID
+                IDTextBoxNew.Text = "";
+                // X
+                XTextBoxNew.Text = "";
+                // Y
+                YTextBoxNew.Text = "";
+                // Width
+                WidthTextBoxNew.Text = "";
+                // Height
+                HeightTextBoxNew.Text = "";
+            }
         }
     }
 }

@@ -77,22 +77,22 @@
             LengthLabel = new Label();
             RectangleListBox = new ListBox();
             RectanglesTabPage = new TabPage();
+            CanvaPanel = new Panel();
+            HeightTextBoxNew = new TextBox();
+            WidthTextBoxNew = new TextBox();
+            YTextBoxNew = new TextBox();
+            XTextBoxNew = new TextBox();
+            IDTextBoxNew = new TextBox();
+            HeightLabelNew = new Label();
+            WidthLabelNew = new Label();
+            YLabelNew = new Label();
+            XLabelNew = new Label();
+            IdLabelNew = new Label();
+            SelectedRectangleLabel = new Label();
             DeleteRectangleButton = new Button();
             AddRectangleButton = new Button();
-            RectanglesViewlabel = new Label();
+            RectanglesNewGroupBox = new GroupBox();
             RectanglesViewlistBox = new ListBox();
-            SelectedRectangleLabel = new Label();
-            IdLabelNew = new Label();
-            XLabelNew = new Label();
-            YLabelNew = new Label();
-            WidthLabelNew = new Label();
-            HeightLabelNew = new Label();
-            IDTextBoxNew = new TextBox();
-            XTextBoxNew = new TextBox();
-            YTextBoxNew = new TextBox();
-            WidthTextBoxNew = new TextBox();
-            HeightTextBoxNew = new TextBox();
-            CanvaPanel = new Panel();
             TabControlOfItems.SuspendLayout();
             EnumsTabPage.SuspendLayout();
             EnumarationsGroupBox.SuspendLayout();
@@ -102,6 +102,7 @@
             FilmGroupBox.SuspendLayout();
             RectanglesGroupBox.SuspendLayout();
             RectanglesTabPage.SuspendLayout();
+            RectanglesNewGroupBox.SuspendLayout();
             SuspendLayout();
             // 
             // TabControlOfItems
@@ -600,8 +601,7 @@
             RectanglesTabPage.Controls.Add(SelectedRectangleLabel);
             RectanglesTabPage.Controls.Add(DeleteRectangleButton);
             RectanglesTabPage.Controls.Add(AddRectangleButton);
-            RectanglesTabPage.Controls.Add(RectanglesViewlabel);
-            RectanglesTabPage.Controls.Add(RectanglesViewlistBox);
+            RectanglesTabPage.Controls.Add(RectanglesNewGroupBox);
             RectanglesTabPage.Location = new Point(4, 29);
             RectanglesTabPage.Name = "RectanglesTabPage";
             RectanglesTabPage.Padding = new Padding(3);
@@ -609,6 +609,104 @@
             RectanglesTabPage.TabIndex = 2;
             RectanglesTabPage.Text = "Rectangles";
             RectanglesTabPage.UseVisualStyleBackColor = true;
+            // 
+            // CanvaPanel
+            // 
+            CanvaPanel.BorderStyle = BorderStyle.FixedSingle;
+            CanvaPanel.Location = new Point(364, 6);
+            CanvaPanel.Name = "CanvaPanel";
+            CanvaPanel.Size = new Size(459, 507);
+            CanvaPanel.TabIndex = 15;
+            // 
+            // HeightTextBoxNew
+            // 
+            HeightTextBoxNew.Location = new Point(64, 460);
+            HeightTextBoxNew.Name = "HeightTextBoxNew";
+            HeightTextBoxNew.Size = new Size(125, 27);
+            HeightTextBoxNew.TabIndex = 14;
+            // 
+            // WidthTextBoxNew
+            // 
+            WidthTextBoxNew.Location = new Point(64, 427);
+            WidthTextBoxNew.Name = "WidthTextBoxNew";
+            WidthTextBoxNew.Size = new Size(125, 27);
+            WidthTextBoxNew.TabIndex = 13;
+            // 
+            // YTextBoxNew
+            // 
+            YTextBoxNew.Location = new Point(64, 394);
+            YTextBoxNew.Name = "YTextBoxNew";
+            YTextBoxNew.Size = new Size(125, 27);
+            YTextBoxNew.TabIndex = 12;
+            // 
+            // XTextBoxNew
+            // 
+            XTextBoxNew.Location = new Point(64, 361);
+            XTextBoxNew.Name = "XTextBoxNew";
+            XTextBoxNew.Size = new Size(125, 27);
+            XTextBoxNew.TabIndex = 11;
+            // 
+            // IDTextBoxNew
+            // 
+            IDTextBoxNew.Enabled = false;
+            IDTextBoxNew.Location = new Point(64, 329);
+            IDTextBoxNew.Name = "IDTextBoxNew";
+            IDTextBoxNew.Size = new Size(125, 27);
+            IDTextBoxNew.TabIndex = 10;
+            // 
+            // HeightLabelNew
+            // 
+            HeightLabelNew.AutoSize = true;
+            HeightLabelNew.Location = new Point(8, 463);
+            HeightLabelNew.Name = "HeightLabelNew";
+            HeightLabelNew.Size = new Size(57, 20);
+            HeightLabelNew.TabIndex = 9;
+            HeightLabelNew.Text = "Height:";
+            // 
+            // WidthLabelNew
+            // 
+            WidthLabelNew.AutoSize = true;
+            WidthLabelNew.Location = new Point(8, 430);
+            WidthLabelNew.Name = "WidthLabelNew";
+            WidthLabelNew.Size = new Size(52, 20);
+            WidthLabelNew.TabIndex = 8;
+            WidthLabelNew.Text = "Width:";
+            // 
+            // YLabelNew
+            // 
+            YLabelNew.AutoSize = true;
+            YLabelNew.Location = new Point(8, 397);
+            YLabelNew.Name = "YLabelNew";
+            YLabelNew.Size = new Size(20, 20);
+            YLabelNew.TabIndex = 7;
+            YLabelNew.Text = "Y:";
+            // 
+            // XLabelNew
+            // 
+            XLabelNew.AutoSize = true;
+            XLabelNew.Location = new Point(8, 364);
+            XLabelNew.Name = "XLabelNew";
+            XLabelNew.Size = new Size(21, 20);
+            XLabelNew.TabIndex = 6;
+            XLabelNew.Text = "X:";
+            // 
+            // IdLabelNew
+            // 
+            IdLabelNew.AutoSize = true;
+            IdLabelNew.Location = new Point(8, 332);
+            IdLabelNew.Name = "IdLabelNew";
+            IdLabelNew.Size = new Size(27, 20);
+            IdLabelNew.TabIndex = 5;
+            IdLabelNew.Text = "ID:";
+            // 
+            // SelectedRectangleLabel
+            // 
+            SelectedRectangleLabel.AutoSize = true;
+            SelectedRectangleLabel.Location = new Point(8, 297);
+            SelectedRectangleLabel.Name = "SelectedRectangleLabel";
+            SelectedRectangleLabel.Size = new Size(139, 20);
+            SelectedRectangleLabel.TabIndex = 4;
+            SelectedRectangleLabel.Text = "Selected Rectangle:";
             // 
             // DeleteRectangleButton
             // 
@@ -620,6 +718,7 @@
             DeleteRectangleButton.Size = new Size(42, 40);
             DeleteRectangleButton.TabIndex = 3;
             DeleteRectangleButton.UseVisualStyleBackColor = true;
+            DeleteRectangleButton.Click += DeleteRectangleButton_Click;
             // 
             // AddRectangleButton
             // 
@@ -631,121 +730,27 @@
             AddRectangleButton.Size = new Size(42, 40);
             AddRectangleButton.TabIndex = 2;
             AddRectangleButton.UseVisualStyleBackColor = true;
+            AddRectangleButton.Click += AddRectangleButton_Click;
             // 
-            // RectanglesViewlabel
+            // RectanglesNewGroupBox
             // 
-            RectanglesViewlabel.AutoSize = true;
-            RectanglesViewlabel.Location = new Point(8, 6);
-            RectanglesViewlabel.Name = "RectanglesViewlabel";
-            RectanglesViewlabel.Size = new Size(84, 20);
-            RectanglesViewlabel.TabIndex = 1;
-            RectanglesViewlabel.Text = "Rectangles:";
+            RectanglesNewGroupBox.Controls.Add(RectanglesViewlistBox);
+            RectanglesNewGroupBox.Location = new Point(8, 6);
+            RectanglesNewGroupBox.Name = "RectanglesNewGroupBox";
+            RectanglesNewGroupBox.Size = new Size(350, 288);
+            RectanglesNewGroupBox.TabIndex = 16;
+            RectanglesNewGroupBox.TabStop = false;
+            RectanglesNewGroupBox.Text = "Rectangles:";
             // 
             // RectanglesViewlistBox
             // 
             RectanglesViewlistBox.FormattingEnabled = true;
             RectanglesViewlistBox.ItemHeight = 20;
-            RectanglesViewlistBox.Location = new Point(8, 29);
+            RectanglesViewlistBox.Location = new Point(6, 23);
             RectanglesViewlistBox.Name = "RectanglesViewlistBox";
             RectanglesViewlistBox.Size = new Size(335, 204);
             RectanglesViewlistBox.TabIndex = 0;
-            // 
-            // SelectedRectangleLabel
-            // 
-            SelectedRectangleLabel.AutoSize = true;
-            SelectedRectangleLabel.Location = new Point(8, 297);
-            SelectedRectangleLabel.Name = "SelectedRectangleLabel";
-            SelectedRectangleLabel.Size = new Size(139, 20);
-            SelectedRectangleLabel.TabIndex = 4;
-            SelectedRectangleLabel.Text = "Selected Rectangle:";
-            // 
-            // IdLabelNew
-            // 
-            IdLabelNew.AutoSize = true;
-            IdLabelNew.Location = new Point(8, 332);
-            IdLabelNew.Name = "IdLabelNew";
-            IdLabelNew.Size = new Size(27, 20);
-            IdLabelNew.TabIndex = 5;
-            IdLabelNew.Text = "ID:";
-            // 
-            // XLabelNew
-            // 
-            XLabelNew.AutoSize = true;
-            XLabelNew.Location = new Point(8, 364);
-            XLabelNew.Name = "XLabelNew";
-            XLabelNew.Size = new Size(21, 20);
-            XLabelNew.TabIndex = 6;
-            XLabelNew.Text = "X:";
-            // 
-            // YLabelNew
-            // 
-            YLabelNew.AutoSize = true;
-            YLabelNew.Location = new Point(8, 397);
-            YLabelNew.Name = "YLabelNew";
-            YLabelNew.Size = new Size(20, 20);
-            YLabelNew.TabIndex = 7;
-            YLabelNew.Text = "Y:";
-            // 
-            // WidthLabelNew
-            // 
-            WidthLabelNew.AutoSize = true;
-            WidthLabelNew.Location = new Point(8, 430);
-            WidthLabelNew.Name = "WidthLabelNew";
-            WidthLabelNew.Size = new Size(52, 20);
-            WidthLabelNew.TabIndex = 8;
-            WidthLabelNew.Text = "Width:";
-            // 
-            // HeightLabelNew
-            // 
-            HeightLabelNew.AutoSize = true;
-            HeightLabelNew.Location = new Point(8, 463);
-            HeightLabelNew.Name = "HeightLabelNew";
-            HeightLabelNew.Size = new Size(57, 20);
-            HeightLabelNew.TabIndex = 9;
-            HeightLabelNew.Text = "Height:";
-            // 
-            // IDTextBoxNew
-            // 
-            IDTextBoxNew.Location = new Point(64, 329);
-            IDTextBoxNew.Name = "IDTextBoxNew";
-            IDTextBoxNew.Size = new Size(125, 27);
-            IDTextBoxNew.TabIndex = 10;
-            // 
-            // XTextBoxNew
-            // 
-            XTextBoxNew.Location = new Point(64, 361);
-            XTextBoxNew.Name = "XTextBoxNew";
-            XTextBoxNew.Size = new Size(125, 27);
-            XTextBoxNew.TabIndex = 11;
-            // 
-            // YTextBoxNew
-            // 
-            YTextBoxNew.Location = new Point(64, 394);
-            YTextBoxNew.Name = "YTextBoxNew";
-            YTextBoxNew.Size = new Size(125, 27);
-            YTextBoxNew.TabIndex = 12;
-            // 
-            // WidthTextBoxNew
-            // 
-            WidthTextBoxNew.Location = new Point(64, 427);
-            WidthTextBoxNew.Name = "WidthTextBoxNew";
-            WidthTextBoxNew.Size = new Size(125, 27);
-            WidthTextBoxNew.TabIndex = 13;
-            // 
-            // HeightTextBoxNew
-            // 
-            HeightTextBoxNew.Location = new Point(64, 460);
-            HeightTextBoxNew.Name = "HeightTextBoxNew";
-            HeightTextBoxNew.Size = new Size(125, 27);
-            HeightTextBoxNew.TabIndex = 14;
-            // 
-            // CanvaPanel
-            // 
-            CanvaPanel.BorderStyle = BorderStyle.FixedSingle;
-            CanvaPanel.Location = new Point(349, 6);
-            CanvaPanel.Name = "CanvaPanel";
-            CanvaPanel.Size = new Size(474, 507);
-            CanvaPanel.TabIndex = 15;
+            RectanglesViewlistBox.SelectedIndexChanged += RectanglesViewlistBox_SelectedIndexChanged;
             // 
             // MainForm
             // 
@@ -771,6 +776,7 @@
             RectanglesGroupBox.PerformLayout();
             RectanglesTabPage.ResumeLayout(false);
             RectanglesTabPage.PerformLayout();
+            RectanglesNewGroupBox.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -827,7 +833,6 @@
         private TabPage RectanglesTabPage;
         private Button DeleteRectangleButton;
         private Button AddRectangleButton;
-        private Label RectanglesViewlabel;
         private ListBox RectanglesViewlistBox;
         private TextBox HeightTextBoxNew;
         private TextBox WidthTextBoxNew;
@@ -841,5 +846,6 @@
         private Label IdLabelNew;
         private Label SelectedRectangleLabel;
         private Panel CanvaPanel;
+        private GroupBox RectanglesNewGroupBox;
     }
 }
