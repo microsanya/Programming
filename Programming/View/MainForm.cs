@@ -15,6 +15,7 @@ namespace Programming
         // ранее созданный пр€моугольник
         private Rectangle _currentRectangle = new Rectangle();
         // лист панелек пр€моугольников
+        private List<Panel> _rectanglePanels = new List<Panel>();
         //инициализаци€ массива пр€моугольников
         private void RectangleInitialize(Rectangle[] rectangles)
         {
@@ -43,6 +44,28 @@ namespace Programming
                 }
             }
             return indexMaxRectangle;
+        }
+        // пересечение пр€моугольников
+        private void FindCollision()
+        {
+            foreach (var panel in _rectanglePanels)
+            {
+                panel.BackColor = System.Drawing.Color.FromArgb(127,127,255,127);
+            }
+
+            for (int i = 0; i < _newRectangles.Count; i++)
+            {
+                for (int j = 0; j < _newRectangles.Count; j++)
+                {
+                    if (!(_newRectangles[i] == _newRectangles[j]) && CollisionManager.IsCollision(_newRectangles[i], _newRectangles[j]))
+                    {
+                        _rectanglePanels[i].BackColor = System.Drawing.Color.FromArgb(127, 255, 127, 127);
+
+                        _rectanglePanels[j].BackColor = System.Drawing.Color.FromArgb(127, 255, 127, 127);
+                    }
+
+                }
+            }
         }
 
         // ‘»Ћ№ћџ
@@ -322,10 +345,10 @@ namespace Programming
         {
             Random rnd = new Random();
 
-            double recLength = rnd.Next(1, 100);
-            double recWidth = rnd.Next(1, 100);
+            double recLength = rnd.Next(0, 200);
+            double recWidth = rnd.Next(0, 200);
             string recColor = Convert.ToString((Color)rnd.Next(0, 6));
-            Point2D recCenter = new Point2D(recLength / 2, recWidth / 2);
+            Point2D recCenter = new Point2D(rnd.Next(0, 500), rnd.Next(0, 500));
 
             Rectangle newRectangle = new Rectangle(recLength, recWidth, recColor, recCenter, 0);
 
@@ -333,7 +356,20 @@ namespace Programming
 
             string addingString = $"{newRectangle.Id - 5}: (X= {newRectangle.Center.X}; Y= {newRectangle.Center.Y}; " +
                 $"W= {newRectangle.Width}; H= {newRectangle.Length})";
+            // добавление в RectangleViewlistBox
             RectanglesViewlistBox.Items.Add(addingString);
+            // добавление на CanvaPanel
+            Panel newPanel = new Panel();
+            newPanel.Top = Convert.ToInt32(newRectangle.Center.Y);
+            newPanel.Left = Convert.ToInt32(newRectangle.Center.X);
+            newPanel.Height = Convert.ToInt32(newRectangle.Length);
+            newPanel.Width = Convert.ToInt32(newRectangle.Width);
+            newPanel.BackColor = System.Drawing.Color.FromArgb(127,127,255,127);
+            CanvaPanel.Controls.Add(newPanel);
+            // добавление в List<Panel>
+            _rectanglePanels.Add(newPanel);
+            // проверка на пересечение
+            FindCollision();
         }
         // выбор элемента
         private void RectanglesViewlistBox_SelectedIndexChanged(object sender, EventArgs e)
@@ -359,8 +395,13 @@ namespace Programming
         {
             if (RectanglesViewlistBox.SelectedItem != null)
             {
+                // удаление с Canva
+                _rectanglePanels.RemoveAt(RectanglesViewlistBox.SelectedIndex);
+                CanvaPanel.Controls.RemoveAt(RectanglesViewlistBox.SelectedIndex);
+                //удаление с RectanglesViewlistBox
                 _newRectangles.RemoveAt(RectanglesViewlistBox.SelectedIndex);
                 RectanglesViewlistBox.Items.RemoveAt(RectanglesViewlistBox.SelectedIndex);
+                // ќчистка textbox'ов
                 // ID
                 IDTextBoxNew.Text = "";
                 // X
@@ -371,6 +412,8 @@ namespace Programming
                 WidthTextBoxNew.Text = "";
                 // Height
                 HeightTextBoxNew.Text = "";
+                // проверка на пересечение
+                FindCollision();
             }
         }
         // редактирование полей
@@ -386,6 +429,8 @@ namespace Programming
                     WidthTextBoxNew.BackColor = System.Drawing.Color.White;
                     RectanglesViewlistBox.Items[RectanglesViewlistBox.SelectedIndex] = $"{rect.Id - 5}: (X= {rect.Center.X}; " +
                         $"Y= {rect.Center.Y}; W= {rect.Width}; H= {rect.Length})";
+                    _rectanglePanels[RectanglesViewlistBox.SelectedIndex].Width = (int)rect.Width;
+                    FindCollision();
                 }
             }
             catch
@@ -405,6 +450,8 @@ namespace Programming
                     HeightTextBoxNew.BackColor = System.Drawing.Color.White;
                     RectanglesViewlistBox.Items[RectanglesViewlistBox.SelectedIndex] = $"{rect.Id - 5}: (X= {rect.Center.X}; " +
                        $"Y= {rect.Center.Y}; W= {rect.Width}; H= {rect.Length})";
+                    _rectanglePanels[RectanglesViewlistBox.SelectedIndex].Height = (int)rect.Length;
+                    FindCollision();
                 }
             }
             catch
