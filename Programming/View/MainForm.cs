@@ -10,9 +10,11 @@ namespace Programming
         // ѕ–яћќ”√ќЋ№Ќ» »
         // закрытое поле, хран€щее массив пр€моугольников
         private Rectangle[] _rectangles = new Rectangle[5];
+        // такое же поле, но типа List дл€ вкладки Rectangles
         private List<Rectangle> _newRectangles = new List<Rectangle>();
         // ранее созданный пр€моугольник
         private Rectangle _currentRectangle = new Rectangle();
+        // лист панелек пр€моугольников
         //инициализаци€ массива пр€моугольников
         private void RectangleInitialize(Rectangle[] rectangles)
         {
@@ -343,13 +345,13 @@ namespace Programming
                 // ID
                 IDTextBoxNew.Text = Convert.ToString(selectedRectNumber + 1);
                 // X
-                XTextBoxNew.Text = Convert.ToString(_newRectangles[selectedRectNumber].Center.X);
+                XTextBoxNew.Text = Convert.ToString(_currentRectangle.Center.X);
                 // Y
-                YTextBoxNew.Text = Convert.ToString(_newRectangles[selectedRectNumber].Center.Y);
+                YTextBoxNew.Text = Convert.ToString(_currentRectangle.Center.Y);
                 // Width
-                WidthTextBoxNew.Text = Convert.ToString(_newRectangles[selectedRectNumber].Width);
+                WidthTextBoxNew.Text = Convert.ToString(_currentRectangle.Width);
                 // Height
-                HeightTextBoxNew.Text = Convert.ToString(_newRectangles[selectedRectNumber].Length);
+                HeightTextBoxNew.Text = Convert.ToString(_currentRectangle.Length);
             }
         }
         // кнопка "удалить пр€моугольник"
@@ -369,6 +371,45 @@ namespace Programming
                 WidthTextBoxNew.Text = "";
                 // Height
                 HeightTextBoxNew.Text = "";
+            }
+        }
+        // редактирование полей
+        // Width
+        private void WidthTextBoxNew_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Convert.ToDouble(WidthTextBoxNew.Text) > 0)
+                {
+                    _newRectangles[RectanglesViewlistBox.SelectedIndex].Width = Convert.ToDouble(WidthTextBoxNew.Text);
+                    Rectangle rect = _newRectangles[RectanglesViewlistBox.SelectedIndex];
+                    WidthTextBoxNew.BackColor = System.Drawing.Color.White;
+                    RectanglesViewlistBox.Items[RectanglesViewlistBox.SelectedIndex] = $"{rect.Id - 5}: (X= {rect.Center.X}; " +
+                        $"Y= {rect.Center.Y}; W= {rect.Width}; H= {rect.Length})";
+                }
+            }
+            catch
+            {
+                WidthTextBoxNew.BackColor = System.Drawing.Color.LightPink;
+            }
+        }
+        // Height
+        private void HeightTextBoxNew_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (Convert.ToDouble(HeightTextBoxNew.Text) > 0)
+                {
+                    _newRectangles[RectanglesViewlistBox.SelectedIndex].Length = Convert.ToDouble(HeightTextBoxNew.Text);
+                    Rectangle rect = _newRectangles[RectanglesViewlistBox.SelectedIndex];
+                    HeightTextBoxNew.BackColor = System.Drawing.Color.White;
+                    RectanglesViewlistBox.Items[RectanglesViewlistBox.SelectedIndex] = $"{rect.Id - 5}: (X= {rect.Center.X}; " +
+                       $"Y= {rect.Center.Y}; W= {rect.Width}; H= {rect.Length})";
+                }
+            }
+            catch
+            {
+                HeightTextBoxNew.BackColor = System.Drawing.Color.LightPink;
             }
         }
     }

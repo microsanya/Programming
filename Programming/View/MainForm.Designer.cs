@@ -624,6 +624,7 @@
             HeightTextBoxNew.Name = "HeightTextBoxNew";
             HeightTextBoxNew.Size = new Size(125, 27);
             HeightTextBoxNew.TabIndex = 14;
+            HeightTextBoxNew.TextChanged += HeightTextBoxNew_TextChanged;
             // 
             // WidthTextBoxNew
             // 
@@ -631,9 +632,11 @@
             WidthTextBoxNew.Name = "WidthTextBoxNew";
             WidthTextBoxNew.Size = new Size(125, 27);
             WidthTextBoxNew.TabIndex = 13;
+            WidthTextBoxNew.TextChanged += WidthTextBoxNew_TextChanged;
             // 
             // YTextBoxNew
             // 
+            YTextBoxNew.Enabled = false;
             YTextBoxNew.Location = new Point(64, 394);
             YTextBoxNew.Name = "YTextBoxNew";
             YTextBoxNew.Size = new Size(125, 27);
@@ -641,6 +644,7 @@
             // 
             // XTextBoxNew
             // 
+            XTextBoxNew.Enabled = false;
             XTextBoxNew.Location = new Point(64, 361);
             XTextBoxNew.Name = "XTextBoxNew";
             XTextBoxNew.Size = new Size(125, 27);
