@@ -50,7 +50,7 @@ namespace Programming
         {
             foreach (var panel in _rectanglePanels)
             {
-                panel.BackColor = System.Drawing.Color.FromArgb(127,127,255,127);
+                panel.BackColor = System.Drawing.Color.FromArgb(127, 127, 255, 127);
             }
 
             for (int i = 0; i < _newRectangles.Count; i++)
@@ -66,6 +66,34 @@ namespace Programming
 
                 }
             }
+        }
+        // ќбновление данных в текстовых пол€х по указанному пр€моугольнику
+        private void UpdateRectangleInfo (Rectangle rectangle)
+        {
+            // ID
+            IDTextBoxNew.Text = Convert.ToString(rectangle.Id - 1);
+            // X
+            XTextBoxNew.Text = Convert.ToString(rectangle.Center.X);
+            // Y
+            YTextBoxNew.Text = Convert.ToString(rectangle.Center.Y);
+            // Width
+            WidthTextBoxNew.Text = Convert.ToString(rectangle.Width);
+            // Height
+            HeightTextBoxNew.Text = Convert.ToString(rectangle.Length);
+        }
+        // очистка данных в текстовых пол€х
+        private void ClearRectangleInfo()
+        {
+            // ID
+            IDTextBoxNew.Text = "";
+            // X
+            XTextBoxNew.Text = "";
+            // Y
+            YTextBoxNew.Text = "";
+            // Width
+            WidthTextBoxNew.Text = "";
+            // Height
+            HeightTextBoxNew.Text = "";
         }
 
         // ‘»Ћ№ћџ
@@ -343,15 +371,7 @@ namespace Programming
         // кнопка "добавить пр€моугольник"
         private void AddRectangleButton_Click(object sender, EventArgs e)
         {
-            Random rnd = new Random();
-
-            double recLength = rnd.Next(0, 200);
-            double recWidth = rnd.Next(0, 200);
-            string recColor = Convert.ToString((Color)rnd.Next(0, 6));
-            Point2D recCenter = new Point2D(rnd.Next(0, 500), rnd.Next(0, 500));
-
-            Rectangle newRectangle = new Rectangle(recLength, recWidth, recColor, recCenter, 0);
-
+            Rectangle newRectangle = RectangleFactory.Randomize();
             _newRectangles.Add(newRectangle);
 
             string addingString = $"{newRectangle.Id - 5}: (X= {newRectangle.Center.X}; Y= {newRectangle.Center.Y}; " +
@@ -364,7 +384,7 @@ namespace Programming
             newPanel.Left = Convert.ToInt32(newRectangle.Center.X);
             newPanel.Height = Convert.ToInt32(newRectangle.Length);
             newPanel.Width = Convert.ToInt32(newRectangle.Width);
-            newPanel.BackColor = System.Drawing.Color.FromArgb(127,127,255,127);
+            newPanel.BackColor = System.Drawing.Color.FromArgb(127, 127, 255, 127);
             CanvaPanel.Controls.Add(newPanel);
             // добавление в List<Panel>
             _rectanglePanels.Add(newPanel);
@@ -378,16 +398,7 @@ namespace Programming
             {
                 int selectedRectNumber = RectanglesViewlistBox.SelectedIndex;
                 _currentRectangle = _newRectangles[selectedRectNumber];
-                // ID
-                IDTextBoxNew.Text = Convert.ToString(selectedRectNumber + 1);
-                // X
-                XTextBoxNew.Text = Convert.ToString(_currentRectangle.Center.X);
-                // Y
-                YTextBoxNew.Text = Convert.ToString(_currentRectangle.Center.Y);
-                // Width
-                WidthTextBoxNew.Text = Convert.ToString(_currentRectangle.Width);
-                // Height
-                HeightTextBoxNew.Text = Convert.ToString(_currentRectangle.Length);
+                UpdateRectangleInfo(_currentRectangle);
             }
         }
         // кнопка "удалить пр€моугольник"
@@ -402,16 +413,7 @@ namespace Programming
                 _newRectangles.RemoveAt(RectanglesViewlistBox.SelectedIndex);
                 RectanglesViewlistBox.Items.RemoveAt(RectanglesViewlistBox.SelectedIndex);
                 // ќчистка textbox'ов
-                // ID
-                IDTextBoxNew.Text = "";
-                // X
-                XTextBoxNew.Text = "";
-                // Y
-                YTextBoxNew.Text = "";
-                // Width
-                WidthTextBoxNew.Text = "";
-                // Height
-                HeightTextBoxNew.Text = "";
+                ClearRectangleInfo();
                 // проверка на пересечение
                 FindCollision();
             }
