@@ -729,6 +729,7 @@
             AddRectangleButton.BackgroundImage = Properties.Resources.add_rectangle;
             AddRectangleButton.BackgroundImageLayout = ImageLayout.Zoom;
             AddRectangleButton.FlatStyle = FlatStyle.Flat;
+            AddRectangleButton.ImageAlign = ContentAlignment.TopLeft;
             AddRectangleButton.Location = new Point(123, 239);
             AddRectangleButton.Name = "AddRectangleButton";
             AddRectangleButton.Size = new Size(42, 40);

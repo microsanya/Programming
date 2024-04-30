@@ -73,9 +73,29 @@ namespace Programming.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap add_rectangle_2 {
+            get {
+                object obj = ResourceManager.GetObject("add_rectangle_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap remove_rectangle {
             get {
                 object obj = ResourceManager.GetObject("remove_rectangle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap remove_rectangle_2 {
+            get {
+                object obj = ResourceManager.GetObject("remove_rectangle_2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

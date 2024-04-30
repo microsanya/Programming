@@ -68,7 +68,7 @@ namespace Programming
             }
         }
         // Обновление данных в текстовых полях по указанному прямоугольнику
-        private void UpdateRectangleInfo (Rectangle rectangle)
+        private void UpdateRectangleInfo(Rectangle rectangle)
         {
             // ID
             IDTextBoxNew.Text = Convert.ToString(rectangle.Id - 1);
@@ -148,7 +148,7 @@ namespace Programming
             ValuesListBox.Items.Clear();
 
             // определение необходимого наполнения списка ValuesListBox
-            System.Type[] listboxContent = new System.Type[] { typeof(Color), typeof(EducationForm), typeof(Genre),
+            System.Type[] listboxContent = new System.Type[] { typeof(Color), typeof(EducationForm), typeof(Genre), typeof(Season),
                                                      typeof(SmartphoneManufactures), typeof(Weekday) };
 
             // добавление значений в список ValuesListBox
@@ -461,5 +461,17 @@ namespace Programming
                 HeightTextBoxNew.BackColor = System.Drawing.Color.LightPink;
             }
         }
+        //// изменения стиля кнопок
+        //// наведение мыши
+        //private void AddRectangleButton_MouseEnter(object sender, EventArgs e)
+        //{
+        //    AddRectangleButton.Image = Properties.Resources.add_rectangle_2;
+        //    //AddRectangleButton.FlatAppearance.BorderSize = 0;
+        //}
+        //// убрали мышь
+        //private void AddRectangleButton_MouseLeave(object sender, EventArgs e)
+        //{
+        //    AddRectangleButton.Image = Properties.Resources.add_rectangle;
+        //}
     }
 }
