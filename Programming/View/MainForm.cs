@@ -87,25 +87,6 @@ namespace Programming
 
         }
 
-        // работа с Enums ----------------------------------------------------------------------
-        private void EnumsListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // очистка списка с предыдущими значениями списков
-            ValuesListBox.Items.Clear();
-
-            // определение необходимого наполнения списка ValuesListBox
-            System.Type[] listboxContent = new System.Type[] { typeof(Color), typeof(EducationForm), typeof(Genre), typeof(Season),
-                                                     typeof(SmartphoneManufactures), typeof(Weekday) };
-
-            // добавление значений в список ValuesListBox
-            ValuesListBox.Items.AddRange(Enum.GetValues(listboxContent[EnumsListBox.SelectedIndex]).Cast<object>().ToArray());
-        }
-        private void ValuesListBox_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // вывод индекса выбранного значения в ValuesListBox
-            IntingValueTextbox.Text = ValuesListBox.SelectedIndex.ToString();
-        }
-
         private void ParsingWeekdayButton_Click(object sender, EventArgs e)
         {
             // ввод пользовательского текста
