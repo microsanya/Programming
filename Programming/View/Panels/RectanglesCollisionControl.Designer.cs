@@ -50,7 +50,7 @@
             // CanvaPanel
             // 
             CanvaPanel.BorderStyle = BorderStyle.FixedSingle;
-            CanvaPanel.Location = new Point(371, 27);
+            CanvaPanel.Location = new Point(359, 13);
             CanvaPanel.Name = "CanvaPanel";
             CanvaPanel.Size = new Size(459, 507);
             CanvaPanel.TabIndex = 30;
@@ -179,7 +179,7 @@
             RectanglesNewGroupBox.Controls.Add(RectanglesViewlistBox);
             RectanglesNewGroupBox.Controls.Add(AddRectangleButton);
             RectanglesNewGroupBox.Controls.Add(DeleteRectangleButton);
-            RectanglesNewGroupBox.Location = new Point(15, 18);
+            RectanglesNewGroupBox.Location = new Point(3, 3);
             RectanglesNewGroupBox.Name = "RectanglesNewGroupBox";
             RectanglesNewGroupBox.Size = new Size(350, 288);
             RectanglesNewGroupBox.TabIndex = 31;
@@ -214,7 +214,7 @@
             Controls.Add(SelectedRectangleLabel);
             Controls.Add(RectanglesNewGroupBox);
             Name = "RectanglesCollisionControl";
-            Size = new Size(845, 560);
+            Size = new Size(822, 524);
             RectanglesNewGroupBox.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();

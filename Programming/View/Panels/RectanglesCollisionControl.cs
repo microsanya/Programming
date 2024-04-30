@@ -165,17 +165,5 @@ namespace Programming.View.Panels
                 HeightTextBoxNew.BackColor = System.Drawing.Color.LightPink;
             }
         }
-        //// изменения стиля кнопок
-        //// наведение мыши
-        //private void AddRectangleButton_MouseEnter(object sender, EventArgs e)
-        //{
-        //    AddRectangleButton.Image = Properties.Resources.add_rectangle;
-        //    AddRectangleButton.FlatAppearance.BorderSize = 0;
-        //}
-        //// убрали мышь
-        //private void AddRectangleButton_MouseLeave(object sender, EventArgs e)
-        //{
-        //    AddRectangleButton.Image = Properties.Resources.add_rectangle_2;
-        //}
     }
 }
