@@ -27,7 +27,7 @@ namespace Programming.View.Panels
         {
             foreach (var panel in _rectanglePanels)
             {
-                panel.BackColor = System.Drawing.Color.FromArgb(127, 127, 255, 127);
+                panel.BackColor = AppColors.NormalRectangle;
             }
 
             for (int i = 0; i < _newRectangles.Count; i++)
@@ -36,9 +36,9 @@ namespace Programming.View.Panels
                 {
                     if (!(_newRectangles[i] == _newRectangles[j]) && CollisionManager.IsCollision(_newRectangles[i], _newRectangles[j]))
                     {
-                        _rectanglePanels[i].BackColor = System.Drawing.Color.FromArgb(127, 255, 127, 127);
+                        _rectanglePanels[i].BackColor = AppColors.CollRectangle;
 
-                        _rectanglePanels[j].BackColor = System.Drawing.Color.FromArgb(127, 255, 127, 127);
+                        _rectanglePanels[j].BackColor = AppColors.CollRectangle;
                     }
 
                 }
@@ -88,7 +88,7 @@ namespace Programming.View.Panels
             newPanel.Left = Convert.ToInt32(newRectangle.Center.X);
             newPanel.Height = Convert.ToInt32(newRectangle.Length);
             newPanel.Width = Convert.ToInt32(newRectangle.Width);
-            newPanel.BackColor = System.Drawing.Color.FromArgb(127, 127, 255, 127);
+            newPanel.BackColor = AppColors.NormalRectangle;
             CanvaPanel.Controls.Add(newPanel);
             // добавление в List<Panel>
             _rectanglePanels.Add(newPanel);
@@ -132,7 +132,7 @@ namespace Programming.View.Panels
                 {
                     _newRectangles[RectanglesViewlistBox.SelectedIndex].Width = Convert.ToDouble(WidthTextBoxNew.Text);
                     Rectangle rect = _newRectangles[RectanglesViewlistBox.SelectedIndex];
-                    WidthTextBoxNew.BackColor = System.Drawing.Color.White;
+                    WidthTextBoxNew.BackColor = AppColors.Standart;
                     RectanglesViewlistBox.Items[RectanglesViewlistBox.SelectedIndex] = $"{rect.Id - 5}: (X= {rect.Center.X}; " +
                         $"Y= {rect.Center.Y}; W= {rect.Width}; H= {rect.Length})";
                     _rectanglePanels[RectanglesViewlistBox.SelectedIndex].Width = (int)rect.Width;
@@ -141,7 +141,7 @@ namespace Programming.View.Panels
             }
             catch
             {
-                WidthTextBoxNew.BackColor = System.Drawing.Color.LightPink;
+                WidthTextBoxNew.BackColor = AppColors.Error;
             }
         }
         // Height
@@ -153,7 +153,7 @@ namespace Programming.View.Panels
                 {
                     _newRectangles[RectanglesViewlistBox.SelectedIndex].Length = Convert.ToDouble(HeightTextBoxNew.Text);
                     Rectangle rect = _newRectangles[RectanglesViewlistBox.SelectedIndex];
-                    HeightTextBoxNew.BackColor = System.Drawing.Color.White;
+                    HeightTextBoxNew.BackColor = AppColors.Standart;
                     RectanglesViewlistBox.Items[RectanglesViewlistBox.SelectedIndex] = $"{rect.Id - 5}: (X= {rect.Center.X}; " +
                        $"Y= {rect.Center.Y}; W= {rect.Width}; H= {rect.Length})";
                     _rectanglePanels[RectanglesViewlistBox.SelectedIndex].Height = (int)rect.Length;
@@ -162,7 +162,7 @@ namespace Programming.View.Panels
             }
             catch
             {
-                HeightTextBoxNew.BackColor = System.Drawing.Color.LightPink;
+                HeightTextBoxNew.BackColor = AppColors.Error;
             }
         }
     }

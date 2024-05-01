@@ -5,7 +5,6 @@ namespace Programming
 {
     public partial class MainForm : Form
     {
-        // основная логика формы ---------------------------------------------------------------
         public MainForm()
         {
             InitializeComponent();

@@ -81,12 +81,12 @@ namespace Programming.View.Panels
                 if (Convert.ToDouble(LengthTextBox.Text) > 0)
                 {
                     _rectangles[RectangleListBox.SelectedIndex].Length = Convert.ToDouble(LengthTextBox.Text);
-                    LengthTextBox.BackColor = System.Drawing.Color.White;
+                    LengthTextBox.BackColor = AppColors.Standart;
                 }
             }
             catch
             {
-                LengthTextBox.BackColor = System.Drawing.Color.LightPink;
+                LengthTextBox.BackColor = AppColors.Error;
             }
         }
         // при изменении ширины, изменение её и в массиве
@@ -97,12 +97,12 @@ namespace Programming.View.Panels
                 if (Convert.ToDouble(WidthTextBox.Text) > 0)
                 {
                     _rectangles[RectangleListBox.SelectedIndex].Width = Convert.ToDouble(WidthTextBox.Text);
-                    WidthTextBox.BackColor = System.Drawing.Color.White;
+                    WidthTextBox.BackColor = AppColors.Standart;
                 }
             }
             catch
             {
-                WidthTextBox.BackColor = System.Drawing.Color.LightPink;
+                WidthTextBox.BackColor = AppColors.Error;
             }
         }
         // при изменении цвета, изменение её и в массиве
@@ -113,11 +113,11 @@ namespace Programming.View.Panels
             if (isNumber == false)
             {
                 _rectangles[RectangleListBox.SelectedIndex].Color = Convert.ToString(ColorTextBox.Text);
-                ColorTextBox.BackColor = System.Drawing.Color.White;
+                ColorTextBox.BackColor = AppColors.Standart;
             }
             else
             {
-                ColorTextBox.BackColor = System.Drawing.Color.LightPink;
+                ColorTextBox.BackColor = AppColors.Error;
             }
         }
     }

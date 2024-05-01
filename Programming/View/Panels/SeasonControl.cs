@@ -22,14 +22,14 @@ namespace Programming.View.Panels
             switch (SeasonsComboBox.SelectedIndex)
             {
                 case 0:
-                    SeasonHandleGroupBox.BackColor = System.Drawing.Color.White;
+                    SeasonHandleGroupBox.BackColor = AppColors.Standart;
                     MessageBox.Show("Брр, холодно!");
                     break;
                 case 1:
-                    SeasonHandleGroupBox.BackColor = System.Drawing.Color.Green;
+                    SeasonHandleGroupBox.BackColor = AppColors.SpringColor;
                     break;
                 case 2:
-                    SeasonHandleGroupBox.BackColor = System.Drawing.Color.White;
+                    SeasonHandleGroupBox.BackColor = AppColors.Standart;
                     MessageBox.Show("Ура! Солнце!");
                     break;
                 case 3:

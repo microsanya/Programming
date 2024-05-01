@@ -70,11 +70,11 @@ namespace Programming.View.Panels
             if (isNumber == false)
             {
                 _films[FilmsListBox.SelectedIndex].Name = Convert.ToString(FilmNameTextBox.Text);
-                FilmNameTextBox.BackColor = System.Drawing.Color.White;
+                FilmNameTextBox.BackColor = AppColors.Standart;
             }
             else
             {
-                FilmNameTextBox.BackColor = System.Drawing.Color.LightPink;
+                FilmNameTextBox.BackColor = AppColors.Error;
             }
         }
         // при изменении длительности, изменение её и в массиве
@@ -85,12 +85,12 @@ namespace Programming.View.Panels
                 if (Convert.ToInt32(DurationTextBox.Text) > 0)
                 {
                     _films[FilmsListBox.SelectedIndex].Duration = Convert.ToInt32(DurationTextBox.Text);
-                    DurationTextBox.BackColor = System.Drawing.Color.White;
+                    DurationTextBox.BackColor = AppColors.Standart;
                 }
             }
             catch
             {
-                DurationTextBox.BackColor = System.Drawing.Color.LightPink;
+                DurationTextBox.BackColor = AppColors.Error;
             }
         }
         // при изменении года, изменение его и в массиве
@@ -101,12 +101,12 @@ namespace Programming.View.Panels
                 if (Convert.ToInt32(YearTextBox.Text) >= 1900 && Convert.ToInt32(YearTextBox.Text) <= 2024)
                 {
                     _films[FilmsListBox.SelectedIndex].Year = Convert.ToInt32(YearTextBox.Text);
-                    YearTextBox.BackColor = System.Drawing.Color.White;
+                    YearTextBox.BackColor = AppColors.Standart;
                 }
             }
             catch
             {
-                YearTextBox.BackColor = System.Drawing.Color.LightPink;
+                YearTextBox.BackColor = AppColors.Error;
             }
         }
         // при изменении жанра, изменение его и в массиве
@@ -117,11 +117,11 @@ namespace Programming.View.Panels
             if (isNumber == false)
             {
                 _films[FilmsListBox.SelectedIndex].Genre = Convert.ToString(GenreTextBox.Text);
-                GenreTextBox.BackColor = System.Drawing.Color.White;
+                GenreTextBox.BackColor = AppColors.Standart;
             }
             else
             {
-                GenreTextBox.BackColor = System.Drawing.Color.LightPink;
+                GenreTextBox.BackColor = AppColors.Error;
             }
         }
         // при изменении рейтинга, изменение его и в массиве
@@ -132,12 +132,12 @@ namespace Programming.View.Panels
                 if (Convert.ToInt32(RatingTextBox.Text) >= 0 && Convert.ToInt32(RatingTextBox.Text) <= 10)
                 {
                     _films[FilmsListBox.SelectedIndex].Rating = Convert.ToInt32(RatingTextBox.Text);
-                    RatingTextBox.BackColor = System.Drawing.Color.White;
+                    RatingTextBox.BackColor = AppColors.Standart;
                 }
             }
             catch
             {
-                RatingTextBox.BackColor = System.Drawing.Color.LightPink;
+                RatingTextBox.BackColor = AppColors.Error;
             }
         }
         // функция кнопки поиска фильма с наибольшим рейтингом
