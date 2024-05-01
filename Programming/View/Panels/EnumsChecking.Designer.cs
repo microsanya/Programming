@@ -48,7 +48,7 @@
             EnumarationsGroupBox.Controls.Add(IntingValueTextbox);
             EnumarationsGroupBox.Location = new Point(3, 3);
             EnumarationsGroupBox.Name = "EnumarationsGroupBox";
-            EnumarationsGroupBox.Size = new Size(792, 389);
+            EnumarationsGroupBox.Size = new Size(811, 389);
             EnumarationsGroupBox.TabIndex = 12;
             EnumarationsGroupBox.TabStop = false;
             EnumarationsGroupBox.Text = "Enumarations";
@@ -114,7 +114,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(EnumarationsGroupBox);
             Name = "EnumsChecking";
-            Size = new Size(799, 396);
+            Size = new Size(819, 396);
             EnumarationsGroupBox.ResumeLayout(false);
             EnumarationsGroupBox.PerformLayout();
             ResumeLayout(false);
