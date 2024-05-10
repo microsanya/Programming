@@ -1,4 +1,7 @@
-﻿public enum SmartphoneManufactures
+﻿/// <summary>
+/// Хранит в себе перечисление марок смартфонов.
+/// </summary>
+public enum SmartphoneManufactures
 {
     Apple,
     Samsung,

@@ -1,8 +1,20 @@
-﻿class Ring
+﻿/// <summary>
+/// Хранит данные о кольце.
+/// </summary>
+class Ring
 {
+    /// <summary>
+    /// Возвращает и задаёт координаты центра кольца.
+    /// </summary>
     public Point2D Center { get; set; }
 
+    /// <summary>
+    /// Внутренний радиус.
+    /// </summary>
     private double _internalRadius;
+    /// <summary>
+    /// Возвращает и задает внутренний радиус. Должен быть больше нуля и меньше внешнего радиуса.
+    /// </summary>
     public double InternalRadius
     {
         get
@@ -16,7 +28,13 @@
         }
     }
 
+    /// <summary>
+    /// Внешний радиус.
+    /// </summary>
     private double _externalRadius;
+    /// <summary>
+    /// Возвращает и задает внешний радиус. Должен быть больше внутреннего и меньше максимального значения типа Double.
+    /// </summary>
     public double ExternalRadius
     {
         get
@@ -30,7 +48,13 @@
         }
     }
 
+    /// <summary>
+    /// Площадь.
+    /// </summary>
     private double _area;
+    /// <summary>
+    /// Возращает и задает (считает) площадь кольца.
+    /// </summary>
     public double Area
     {
         get
@@ -43,6 +67,13 @@
         }
     }
 
+    /// <summary>
+    /// Создает экземпляр класса <see cref="Ring"/>.
+    /// </summary>
+    /// <param name="center">Координаты центра.</param>
+    /// <param name="internalRadius">Внутренний радиус. Должен быть больше нуля и меньше внешнего радиуса.</param>
+    /// <param name="externalRadius">Внешний радиус. Должен быть больше внутреннего и меньше максимального значения типа Double.</param>
+    /// <param name="Area">Площадь кольца.</param>
     public Ring (Point2D center, double internalRadius, double externalRadius, double Area)
     {
         Center = center;
@@ -51,6 +82,9 @@
         Area = Area;
     }
 
+    /// <summary>
+    /// Конструктор по умолчанию. Создает экземпляр класса <see cref="Ring"/>.
+    /// </summary>
     public Ring ()
     {
         Center = new Point2D (0, 0);

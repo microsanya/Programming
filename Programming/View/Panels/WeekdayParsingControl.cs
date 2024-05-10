@@ -12,10 +12,18 @@ namespace Programming.View.Panels
 {
     public partial class WeekdayParsingControl : UserControl
     {
+        /// <summary>
+        /// Инициализация объекта формы.
+        /// </summary>
         public WeekdayParsingControl()
         {
             InitializeComponent();
         }
+        /// <summary>
+        /// Парсинг дня недели из текстового поля ParsingWeekdayTextbox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ParsingWeekdayButton_Click(object sender, EventArgs e)
         {
             // ввод пользовательского текста

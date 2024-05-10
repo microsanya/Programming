@@ -1,6 +1,15 @@
-﻿class Point2D
+﻿/// <summary>
+/// Хранит координаты точки на плоскости.
+/// </summary>
+class Point2D
 {
+    /// <summary>
+    /// Координата абсциссы точки.
+    /// </summary>
     private double _x;
+    /// <summary>
+    /// Возвращает и задает координату абсциссы точки. Должна быть только положительной.
+    /// </summary>
     public double X
     {
         get
@@ -14,7 +23,13 @@
         }
     }
 
+    /// <summary>
+    /// Координата ординаты точки.
+    /// </summary>
     private double _y;
+    /// <summary>
+    /// Возвращает и задает координату ординаты точки. Должна быть только положительной.
+    /// </summary>
     public double Y
     {
         get
@@ -28,6 +43,11 @@
         }
     }
 
+    /// <summary>
+    /// Создаёт экземпляр класса <see cref="Point2D"/>.
+    /// </summary>
+    /// <param name="x">Координата абсциссы. Должна быть положительной.</param>
+    /// <param name="y">Координата ординаты. Должна быть положительной.</param>
     public Point2D (double x, double y)
     {
         _x = x;

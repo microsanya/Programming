@@ -1,5 +1,12 @@
-﻿static class RectangleFactory
+﻿/// <summary>
+/// Хранит в себе алгоритм создания нового прямоугольника.
+/// </summary>
+static class RectangleFactory
 {
+    /// <summary>
+    /// Создает новый прямоугольник типа Rectangle
+    /// </summary>
+    /// <returns>Новый экземпляр класса Rectangle</returns>
     public static Rectangle Randomize()
     {
         Random rnd = new Random();

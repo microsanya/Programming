@@ -12,18 +12,28 @@ namespace Programming.View.Panels
 {
     public partial class FindRectangleControl : UserControl
     {
+        /// <summary>
+        /// Инициализация объекта формы и функции инициализации прямоугольников.
+        /// </summary>
         public FindRectangleControl()
         {
             InitializeComponent();
             RectangleInitialize(_rectangles);
         }
 
-        // ПРЯМОУГОЛЬНИКИ
-        // закрытое поле, хранящее массив прямоугольников
+        /// <summary>
+        /// Закрытое поле, хранящее массив прямоугольников.
+        /// </summary>
         private Rectangle[] _rectangles = new Rectangle[5];
-        // ранее созданный прямоугольник
+        /// <summary>
+        /// Ранее созданный прямоугольник.
+        /// </summary>
         private Rectangle _currentRectangle = new Rectangle();
-        //инициализация массива прямоугольников
+
+        /// <summary>
+        /// Инициализация массива прямоугольников.
+        /// </summary>
+        /// <param name="rectangles">Массив прямоугольников.</param>
         private void RectangleInitialize(Rectangle[] rectangles)
         {
             //Создание объекта для генерации чисел
@@ -37,7 +47,11 @@ namespace Programming.View.Panels
                 rectangles[i] = new Rectangle(recLength, recWidth, recColor, recCenter, i);
             }
         }
-        // поиск прямоугольника с наибольшей шириной
+        /// <summary>
+        /// Поиск прямоугольника с наибольшей шириной.
+        /// </summary>
+        /// <param name="rectangles">Массив прямоугольников.</param>
+        /// <returns>Индекс прямоугольника с наибольшей шириной.</returns>
         private int FindRectangleWithMaxWidth(Rectangle[] rectangles)
         {
             double maxWidth = 0;
@@ -52,7 +66,12 @@ namespace Programming.View.Panels
             }
             return indexMaxRectangle;
         }
-        // вывод значений выбранных прямоугольников при выборе их в RectangleListBox
+
+        /// <summary>
+        /// Вывод значений выбранных прямоугольников при выборе их в RectangleListBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RectangleListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (RectangleListBox.SelectedItem != null)
@@ -67,13 +86,22 @@ namespace Programming.View.Panels
             }
         }
 
-        // передача индекса прямоугольника с максимальной шириной
+        /// <summary>
+        /// Передача индекса прямоугольника с максимальной шириной.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FindRectangleButton_Click(object sender, EventArgs e)
         {
             int indexMaxRectangle = FindRectangleWithMaxWidth(_rectangles);
             RectangleListBox.SelectedIndex = indexMaxRectangle;
         }
-        // при изменении длины, изменение её и в массиве
+
+        /// <summary>
+        /// При изменении длины, изменение её и в массиве.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void LengthTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -89,7 +117,12 @@ namespace Programming.View.Panels
                 LengthTextBox.BackColor = AppColors.Error;
             }
         }
-        // при изменении ширины, изменение её и в массиве
+
+        /// <summary>
+        /// При изменении ширины, изменение её и в массиве.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void WidthTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -105,7 +138,12 @@ namespace Programming.View.Panels
                 WidthTextBox.BackColor = AppColors.Error;
             }
         }
-        // при изменении цвета, изменение её и в массиве
+
+        /// <summary>
+        /// При изменении цвета, изменение её и в массиве.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ColorTextBox_TextChanged(object sender, EventArgs e)
         {
             // проверка на то, не ввел ли пользователь вместо текста число

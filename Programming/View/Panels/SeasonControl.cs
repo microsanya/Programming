@@ -12,13 +12,20 @@ namespace Programming.View.Panels
 {
     public partial class SeasonControl : UserControl
     {
+        /// <summary>
+        /// Инициализация объекта формы.
+        /// </summary>
         public SeasonControl()
         {
             InitializeComponent();
         }
+        /// <summary>
+        /// Действия при нажатии кнопки в зависимости от выбранного времени года.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GoButton_Click(object sender, EventArgs e)
         {
-            // действия при нажатии кнопки в зависимости от выбранного времени года
             switch (SeasonsComboBox.SelectedIndex)
             {
                 case 0:

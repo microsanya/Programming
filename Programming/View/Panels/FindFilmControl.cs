@@ -12,18 +12,29 @@ namespace Programming.View.Panels
 {
     public partial class FindFilmControl : UserControl
     {
+        /// <summary>
+        /// Инициализация объекта формы и фильмов с помощью FilmInitialize().
+        /// </summary>
         public FindFilmControl()
         {
             InitializeComponent();
             FilmInitialize(_films);
         }
+
         // необходимые дополнительные переменные и методы ---------------------------------------
-        // ФИЛЬМЫ
-        // закрытое поле, хранящее массив фильмов
+        /// <summary>
+        /// Закрытое поле, хранящее массив фильмов.
+        /// </summary>
         private Film[] _films = new Film[5];
-        // ранее созданный фильм
+        /// <summary>
+        /// Ранее созданный фильм.
+        /// </summary>
         private Film _currentFilm = new Film();
-        //инициализация массива фильмов
+
+        /// <summary>
+        /// Инициализация массива фильмов.
+        /// </summary>
+        /// <param name="films">Массив фильмов.</param>
         private void FilmInitialize(Film[] films)
         {
             //Создание объекта для генерации чисел
@@ -34,7 +45,11 @@ namespace Programming.View.Panels
                     Convert.ToString((Genre)rnd.Next(0, 5)), rnd.Next(1, 10));
             }
         }
-        // поиск фильма с наибольшим рейтингом
+        /// <summary>
+        /// Поиск фильма с наибольшим рейтингом
+        /// </summary>
+        /// <param name="films">Массив фильмов.</param>
+        /// <returns>Индекс фильма с максимальным рейтингом.</returns>
         private int FindFilmWithMaxRating(Film[] films)
         {
             int maxRating = 0;
@@ -49,7 +64,11 @@ namespace Programming.View.Panels
             }
             return indexMaxFilm;
         }
-        // вывод значений выбранных фильмов при выборе их в FilmsListBox
+        /// <summary>
+        /// Вывод значений выбранных фильмов при выборе их в FilmsListBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FilmsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (FilmsListBox.SelectedItem != null)
@@ -62,7 +81,11 @@ namespace Programming.View.Panels
                 RatingTextBox.Text = Convert.ToString(_currentFilm.Rating);
             }
         }
-        // при изменении имени, изменение его и в массиве
+        /// <summary>
+        /// При изменении имени, изменение его и в массиве.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FilmNameTextBox_TextChanged(object sender, EventArgs e)
         {
             // проверка на то, не ввел ли пользователь вместо текста число
@@ -77,7 +100,11 @@ namespace Programming.View.Panels
                 FilmNameTextBox.BackColor = AppColors.Error;
             }
         }
-        // при изменении длительности, изменение её и в массиве
+        /// <summary>
+        /// При изменении длительности, изменение её и в массиве.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DurationTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -93,7 +120,11 @@ namespace Programming.View.Panels
                 DurationTextBox.BackColor = AppColors.Error;
             }
         }
-        // при изменении года, изменение его и в массиве
+        /// <summary>
+        /// При изменении года, изменение его и в массиве.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void YearTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -109,7 +140,11 @@ namespace Programming.View.Panels
                 YearTextBox.BackColor = AppColors.Error;
             }
         }
-        // при изменении жанра, изменение его и в массиве
+        /// <summary>
+        /// При изменении жанра, изменение его и в массиве.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void GenreTextBox_TextChanged(object sender, EventArgs e)
         {
             // проверка на то, не ввел ли пользователь вместо текста число
@@ -124,7 +159,11 @@ namespace Programming.View.Panels
                 GenreTextBox.BackColor = AppColors.Error;
             }
         }
-        // при изменении рейтинга, изменение его и в массиве
+        /// <summary>
+        /// При изменении рейтинга, изменение его и в массиве.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RatingTextBox_TextChanged(object sender, EventArgs e)
         {
             try
@@ -140,7 +179,11 @@ namespace Programming.View.Panels
                 RatingTextBox.BackColor = AppColors.Error;
             }
         }
-        // функция кнопки поиска фильма с наибольшим рейтингом
+        /// <summary>
+        /// Функция кнопки поиска фильма с наибольшим рейтингом.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void FilmFindButton_Click(object sender, EventArgs e)
         {
             int indexMaxFilm = FindFilmWithMaxRating(_films);

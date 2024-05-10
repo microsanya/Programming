@@ -12,17 +12,30 @@ namespace Programming.View.Panels
 {
     public partial class RectanglesCollisionControl : UserControl
     {
+        /// <summary>
+        /// Инициализация объекта формы.
+        /// </summary>
         public RectanglesCollisionControl()
         {
             InitializeComponent();
         }
-        // такое же поле, но типа List для вкладки Rectangles
+
+        /// <summary>
+        /// Лист прямоугольников.
+        /// </summary>
         private List<Rectangle> _newRectangles = new List<Rectangle>();
-        // ранее созданный прямоугольник
+        /// <summary>
+        /// Ранее созданный прямоугольник
+        /// </summary>
         private Rectangle _currentRectangle = new Rectangle();
-        // лист панелек прямоугольников
+        /// <summary>
+        /// Лист панелек прямоугольников.
+        /// </summary>
         private List<Panel> _rectanglePanels = new List<Panel>();
-        // пересечение прямоугольников
+
+        /// <summary>
+        /// Работа с пересечением прямоугольников.
+        /// </summary>
         private void FindCollision()
         {
             foreach (var panel in _rectanglePanels)
@@ -44,7 +57,11 @@ namespace Programming.View.Panels
                 }
             }
         }
-        // Обновление данных в текстовых полях по указанному прямоугольнику
+
+        /// <summary>
+        /// Обновление данных в текстовых полях по указанному прямоугольнику.
+        /// </summary>
+        /// <param name="rectangle"></param>
         private void UpdateRectangleInfo(Rectangle rectangle)
         {
             // ID
@@ -58,7 +75,10 @@ namespace Programming.View.Panels
             // Height
             HeightTextBoxNew.Text = Convert.ToString(rectangle.Length);
         }
-        // очистка данных в текстовых полях
+
+        /// <summary>
+        /// Очистка данных в текстовых полях.
+        /// </summary>
         private void ClearRectangleInfo()
         {
             // ID
@@ -72,7 +92,12 @@ namespace Programming.View.Panels
             // Height
             HeightTextBoxNew.Text = "";
         }
-        // кнопка "добавить прямоугольник"
+
+        /// <summary>
+        /// Добавление прямоугольника с помощью кнопки.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddRectangleButton_Click(object sender, EventArgs e)
         {
             Rectangle newRectangle = RectangleFactory.Randomize();
@@ -95,7 +120,12 @@ namespace Programming.View.Panels
             // проверка на пересечение
             FindCollision();
         }
-        // выбор элемента
+
+        /// <summary>
+        /// Выбор прямоугольника в RectanglesViewlistBox.
+        /// </summaЫry>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RectanglesViewlistBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (RectanglesViewlistBox.SelectedItem != null)
@@ -105,7 +135,12 @@ namespace Programming.View.Panels
                 UpdateRectangleInfo(_currentRectangle);
             }
         }
-        // кнопка "удалить прямоугольник"
+
+        /// <summary>
+        /// Удаление прямоугольника с помощью кнопки.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DeleteRectangleButton_Click(object sender, EventArgs e)
         {
             if (RectanglesViewlistBox.SelectedItem != null)
@@ -122,8 +157,12 @@ namespace Programming.View.Panels
                 FindCollision();
             }
         }
-        // редактирование полей
-        // Width
+
+        /// <summary>
+        /// Изменение поля WidthTextBoxNew.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void WidthTextBoxNew_TextChanged(object sender, EventArgs e)
         {
             try
@@ -144,7 +183,12 @@ namespace Programming.View.Panels
                 WidthTextBoxNew.BackColor = AppColors.Error;
             }
         }
-        // Height
+
+        /// <summary>
+        /// Изменение поля HeightTextBoxNew.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void HeightTextBoxNew_TextChanged(object sender, EventArgs e)
         {
             try
