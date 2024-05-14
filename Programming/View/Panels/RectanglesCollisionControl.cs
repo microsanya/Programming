@@ -123,7 +123,7 @@ namespace Programming.View.Panels
 
         /// <summary>
         /// Выбор прямоугольника в RectanglesViewlistBox.
-        /// </summaЫry>
+        /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void RectanglesViewlistBox_SelectedIndexChanged(object sender, EventArgs e)
