@@ -108,6 +108,7 @@
             DeleteButtonPB.Size = new Size(65, 65);
             DeleteButtonPB.TabIndex = 12;
             DeleteButtonPB.TabStop = false;
+            DeleteButtonPB.Click += DeleteButtonPB_Click;
             // 
             // AirlinePictureBox
             // 

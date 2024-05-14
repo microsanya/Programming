@@ -78,12 +78,32 @@ namespace AirTravel
             }
         }
 
+        /// <summary>
+        /// Добавление полёта в FlightsViewListBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void AddButtonPB_Click(object sender, EventArgs e)
         {
             Flight newFlight = new Flight();
             _newFlights.Add(newFlight);
             string addingFlight = $"Время вылета: {newFlight.DeparturePoint} - {newFlight.Destination}";
             FlightsViewListBox.Items.Add(addingFlight);
+        }
+
+        /// <summary>
+        /// Удаление полёта из FlightsViewListBox и листа полётов.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DeleteButtonPB_Click(object sender, EventArgs e)
+        {
+            if (FlightsViewListBox.SelectedItem != null)
+            {
+                _newFlights.RemoveAt(FlightsViewListBox.SelectedIndex);
+                FlightsViewListBox.Items.RemoveAt(FlightsViewListBox.SelectedIndex);
+                ClearFlightInfo();
+            }
         }
     }
 }
