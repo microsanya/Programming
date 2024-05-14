@@ -31,25 +31,29 @@
             FlightsViewListBox = new ListBox();
             FlightsViewGroupBox = new GroupBox();
             ExtendedFlightViewGroupBox = new GroupBox();
-            DPLabel = new Label();
-            DPTextBox = new TextBox();
-            DestinationLabel = new Label();
-            DestinationTextBox = new TextBox();
-            DTDataTimePicker = new DateTimePicker();
-            DTLabel = new Label();
-            FTLabel = new Label();
-            FTypeComboBox = new ComboBox();
-            textBox1 = new TextBox();
-            FTypeLabel = new Label();
+            AddButtonPB = new PictureBox();
+            AirlinePictureBox = new PictureBox();
             AirlineLabel = new Label();
-            AirlinePicture = new PictureBox();
+            FTypeLabel = new Label();
+            textBox1 = new TextBox();
+            FTypeComboBox = new ComboBox();
+            FTLabel = new Label();
+            DTLabel = new Label();
+            DTDataTimePicker = new DateTimePicker();
+            DestinationTextBox = new TextBox();
+            DestinationLabel = new Label();
+            DPTextBox = new TextBox();
+            DPLabel = new Label();
             SearchGroupBox = new GroupBox();
-            SearchTextBox = new TextBox();
             SearchButton = new Button();
+            SearchTextBox = new TextBox();
+            DeleteButtonPB = new PictureBox();
             FlightsViewGroupBox.SuspendLayout();
             ExtendedFlightViewGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)AirlinePicture).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)AddButtonPB).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)AirlinePictureBox).BeginInit();
             SearchGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)DeleteButtonPB).BeginInit();
             SuspendLayout();
             // 
             // FlightsViewListBox
@@ -73,8 +77,10 @@
             // 
             // ExtendedFlightViewGroupBox
             // 
-            ExtendedFlightViewGroupBox.Controls.Add(AirlinePicture);
+            ExtendedFlightViewGroupBox.Controls.Add(DeleteButtonPB);
+            ExtendedFlightViewGroupBox.Controls.Add(AirlinePictureBox);
             ExtendedFlightViewGroupBox.Controls.Add(AirlineLabel);
+            ExtendedFlightViewGroupBox.Controls.Add(AddButtonPB);
             ExtendedFlightViewGroupBox.Controls.Add(FTypeLabel);
             ExtendedFlightViewGroupBox.Controls.Add(textBox1);
             ExtendedFlightViewGroupBox.Controls.Add(FTypeComboBox);
@@ -92,86 +98,23 @@
             ExtendedFlightViewGroupBox.TabStop = false;
             ExtendedFlightViewGroupBox.Text = "Extended Flight View";
             // 
-            // DPLabel
+            // AddButtonPB
             // 
-            DPLabel.AutoSize = true;
-            DPLabel.Location = new Point(1, 26);
-            DPLabel.Name = "DPLabel";
-            DPLabel.Size = new Size(118, 20);
-            DPLabel.TabIndex = 0;
-            DPLabel.Text = "Departure point:";
+            AddButtonPB.BackgroundImage = Properties.Resources.add_flight;
+            AddButtonPB.BackgroundImageLayout = ImageLayout.Center;
+            AddButtonPB.Location = new Point(25, 505);
+            AddButtonPB.Name = "AddButtonPB";
+            AddButtonPB.Size = new Size(65, 65);
+            AddButtonPB.TabIndex = 11;
+            AddButtonPB.TabStop = false;
             // 
-            // DPTextBox
+            // AirlinePictureBox
             // 
-            DPTextBox.Location = new Point(7, 49);
-            DPTextBox.Name = "DPTextBox";
-            DPTextBox.Size = new Size(180, 27);
-            DPTextBox.TabIndex = 1;
-            // 
-            // DestinationLabel
-            // 
-            DestinationLabel.AutoSize = true;
-            DestinationLabel.Location = new Point(6, 79);
-            DestinationLabel.Name = "DestinationLabel";
-            DestinationLabel.Size = new Size(88, 20);
-            DestinationLabel.TabIndex = 2;
-            DestinationLabel.Text = "Destination:";
-            // 
-            // DestinationTextBox
-            // 
-            DestinationTextBox.Location = new Point(6, 102);
-            DestinationTextBox.Name = "DestinationTextBox";
-            DestinationTextBox.Size = new Size(180, 27);
-            DestinationTextBox.TabIndex = 3;
-            // 
-            // DTDataTimePicker
-            // 
-            DTDataTimePicker.Location = new Point(6, 155);
-            DTDataTimePicker.Name = "DTDataTimePicker";
-            DTDataTimePicker.Size = new Size(180, 27);
-            DTDataTimePicker.TabIndex = 4;
-            // 
-            // DTLabel
-            // 
-            DTLabel.AutoSize = true;
-            DTLabel.Location = new Point(6, 132);
-            DTLabel.Name = "DTLabel";
-            DTLabel.Size = new Size(113, 20);
-            DTLabel.TabIndex = 5;
-            DTLabel.Text = "Departure time:";
-            // 
-            // FTLabel
-            // 
-            FTLabel.AutoSize = true;
-            FTLabel.Location = new Point(7, 185);
-            FTLabel.Name = "FTLabel";
-            FTLabel.Size = new Size(83, 20);
-            FTLabel.TabIndex = 3;
-            FTLabel.Text = "Flight time:";
-            // 
-            // FTypeComboBox
-            // 
-            FTypeComboBox.FormattingEnabled = true;
-            FTypeComboBox.Location = new Point(6, 261);
-            FTypeComboBox.Name = "FTypeComboBox";
-            FTypeComboBox.Size = new Size(180, 28);
-            FTypeComboBox.TabIndex = 6;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(6, 208);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(180, 27);
-            textBox1.TabIndex = 7;
-            // 
-            // FTypeLabel
-            // 
-            FTypeLabel.AutoSize = true;
-            FTypeLabel.Location = new Point(6, 238);
-            FTypeLabel.Name = "FTypeLabel";
-            FTypeLabel.Size = new Size(84, 20);
-            FTypeLabel.TabIndex = 8;
-            FTypeLabel.Text = "Flight Type:";
+            AirlinePictureBox.Location = new Point(7, 315);
+            AirlinePictureBox.Name = "AirlinePictureBox";
+            AirlinePictureBox.Size = new Size(193, 184);
+            AirlinePictureBox.TabIndex = 10;
+            AirlinePictureBox.TabStop = false;
             // 
             // AirlineLabel
             // 
@@ -182,13 +125,86 @@
             AirlineLabel.TabIndex = 9;
             AirlineLabel.Text = "Airline:";
             // 
-            // AirlinePicture
+            // FTypeLabel
             // 
-            AirlinePicture.Location = new Point(7, 315);
-            AirlinePicture.Name = "AirlinePicture";
-            AirlinePicture.Size = new Size(193, 255);
-            AirlinePicture.TabIndex = 10;
-            AirlinePicture.TabStop = false;
+            FTypeLabel.AutoSize = true;
+            FTypeLabel.Location = new Point(6, 238);
+            FTypeLabel.Name = "FTypeLabel";
+            FTypeLabel.Size = new Size(84, 20);
+            FTypeLabel.TabIndex = 8;
+            FTypeLabel.Text = "Flight Type:";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(6, 208);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(180, 27);
+            textBox1.TabIndex = 7;
+            // 
+            // FTypeComboBox
+            // 
+            FTypeComboBox.FormattingEnabled = true;
+            FTypeComboBox.Location = new Point(6, 261);
+            FTypeComboBox.Name = "FTypeComboBox";
+            FTypeComboBox.Size = new Size(180, 28);
+            FTypeComboBox.TabIndex = 6;
+            // 
+            // FTLabel
+            // 
+            FTLabel.AutoSize = true;
+            FTLabel.Location = new Point(7, 185);
+            FTLabel.Name = "FTLabel";
+            FTLabel.Size = new Size(83, 20);
+            FTLabel.TabIndex = 3;
+            FTLabel.Text = "Flight time:";
+            // 
+            // DTLabel
+            // 
+            DTLabel.AutoSize = true;
+            DTLabel.Location = new Point(6, 132);
+            DTLabel.Name = "DTLabel";
+            DTLabel.Size = new Size(113, 20);
+            DTLabel.TabIndex = 5;
+            DTLabel.Text = "Departure time:";
+            // 
+            // DTDataTimePicker
+            // 
+            DTDataTimePicker.Location = new Point(6, 155);
+            DTDataTimePicker.Name = "DTDataTimePicker";
+            DTDataTimePicker.Size = new Size(180, 27);
+            DTDataTimePicker.TabIndex = 4;
+            // 
+            // DestinationTextBox
+            // 
+            DestinationTextBox.Location = new Point(6, 102);
+            DestinationTextBox.Name = "DestinationTextBox";
+            DestinationTextBox.Size = new Size(180, 27);
+            DestinationTextBox.TabIndex = 3;
+            // 
+            // DestinationLabel
+            // 
+            DestinationLabel.AutoSize = true;
+            DestinationLabel.Location = new Point(6, 79);
+            DestinationLabel.Name = "DestinationLabel";
+            DestinationLabel.Size = new Size(88, 20);
+            DestinationLabel.TabIndex = 2;
+            DestinationLabel.Text = "Destination:";
+            // 
+            // DPTextBox
+            // 
+            DPTextBox.Location = new Point(7, 49);
+            DPTextBox.Name = "DPTextBox";
+            DPTextBox.Size = new Size(180, 27);
+            DPTextBox.TabIndex = 1;
+            // 
+            // DPLabel
+            // 
+            DPLabel.AutoSize = true;
+            DPLabel.Location = new Point(1, 26);
+            DPLabel.Name = "DPLabel";
+            DPLabel.Size = new Size(118, 20);
+            DPLabel.TabIndex = 0;
+            DPLabel.Text = "Departure point:";
             // 
             // SearchGroupBox
             // 
@@ -201,13 +217,6 @@
             SearchGroupBox.TabStop = false;
             SearchGroupBox.Text = "Search Flight:";
             // 
-            // SearchTextBox
-            // 
-            SearchTextBox.Location = new Point(57, 157);
-            SearchTextBox.Name = "SearchTextBox";
-            SearchTextBox.Size = new Size(266, 27);
-            SearchTextBox.TabIndex = 0;
-            // 
             // SearchButton
             // 
             SearchButton.Location = new Point(139, 190);
@@ -216,6 +225,22 @@
             SearchButton.TabIndex = 1;
             SearchButton.Text = "Search!";
             SearchButton.UseVisualStyleBackColor = true;
+            // 
+            // SearchTextBox
+            // 
+            SearchTextBox.Location = new Point(57, 157);
+            SearchTextBox.Name = "SearchTextBox";
+            SearchTextBox.Size = new Size(266, 27);
+            SearchTextBox.TabIndex = 0;
+            // 
+            // DeleteButtonPB
+            // 
+            DeleteButtonPB.BackgroundImage = Properties.Resources.delete_flight;
+            DeleteButtonPB.Location = new Point(111, 505);
+            DeleteButtonPB.Name = "DeleteButtonPB";
+            DeleteButtonPB.Size = new Size(65, 65);
+            DeleteButtonPB.TabIndex = 12;
+            DeleteButtonPB.TabStop = false;
             // 
             // AirTravelForm
             // 
@@ -230,9 +255,11 @@
             FlightsViewGroupBox.ResumeLayout(false);
             ExtendedFlightViewGroupBox.ResumeLayout(false);
             ExtendedFlightViewGroupBox.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)AirlinePicture).EndInit();
+            ((System.ComponentModel.ISupportInitialize)AddButtonPB).EndInit();
+            ((System.ComponentModel.ISupportInitialize)AirlinePictureBox).EndInit();
             SearchGroupBox.ResumeLayout(false);
             SearchGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)DeleteButtonPB).EndInit();
             ResumeLayout(false);
         }
 
@@ -251,10 +278,12 @@
         private Label FTLabel;
         private Label FTypeLabel;
         private TextBox textBox1;
-        private PictureBox AirlinePicture;
+        private PictureBox AirlinePictureBox;
         private Label AirlineLabel;
         private GroupBox SearchGroupBox;
         private TextBox SearchTextBox;
         private Button SearchButton;
+        private PictureBox AddButtonPB;
+        private PictureBox DeleteButtonPB;
     }
 }
