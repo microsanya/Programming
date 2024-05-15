@@ -50,7 +50,7 @@ class Flight
         }
         set
         {
-            if (value < DateTime.Now)
+            if (value >= DateTime.Now)
             {
                 _departureTime = value;
             }
@@ -98,7 +98,12 @@ class Flight
         DeparturePoint = "";
         Destination = "";
         _timeFlight = 0;
-        DepartureTime = DateTime.Now;
+
+        DateTime currentDate = DateTime.Now;
+        DateTime nextDay = currentDate.AddDays(1);
+        DepartureTime = nextDay;
+
+
         FlightType = FlightType.None;
         Airline = Resources.plane;
     }

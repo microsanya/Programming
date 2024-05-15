@@ -109,6 +109,9 @@
             DeleteButtonPB.TabIndex = 12;
             DeleteButtonPB.TabStop = false;
             DeleteButtonPB.Click += DeleteButtonPB_Click;
+            DeleteButtonPB.MouseClick += DeleteButtonPB_MouseClick;
+            DeleteButtonPB.MouseEnter += DeleteButtonPB_MouseEnter;
+            DeleteButtonPB.MouseLeave += DeleteButtonPB_MouseLeave;
             // 
             // AirlinePictureBox
             // 
@@ -116,9 +119,10 @@
             AirlinePictureBox.Location = new Point(7, 315);
             AirlinePictureBox.Name = "AirlinePictureBox";
             AirlinePictureBox.Size = new Size(193, 184);
-            AirlinePictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
+            AirlinePictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             AirlinePictureBox.TabIndex = 10;
             AirlinePictureBox.TabStop = false;
+            AirlinePictureBox.Click += AirlinePictureBox_Click;
             // 
             // AirlineLabel
             // 
@@ -131,6 +135,7 @@
             // 
             // AddButtonPB
             // 
+            AddButtonPB.BackColor = SystemColors.Control;
             AddButtonPB.BackgroundImage = Properties.Resources.add_flight;
             AddButtonPB.BackgroundImageLayout = ImageLayout.Center;
             AddButtonPB.Location = new Point(25, 505);
@@ -139,6 +144,9 @@
             AddButtonPB.TabIndex = 11;
             AddButtonPB.TabStop = false;
             AddButtonPB.Click += AddButtonPB_Click;
+            AddButtonPB.MouseClick += AddButtonPB_MouseClick;
+            AddButtonPB.MouseEnter += AddButtonPB_MouseEnter;
+            AddButtonPB.MouseLeave += AddButtonPB_MouseLeave;
             // 
             // FTypeLabel
             // 
@@ -155,6 +163,7 @@
             FlightTimeTextBox.Name = "FlightTimeTextBox";
             FlightTimeTextBox.Size = new Size(180, 27);
             FlightTimeTextBox.TabIndex = 7;
+            FlightTimeTextBox.TextChanged += FlightTimeTextBox_TextChanged;
             // 
             // FTypeComboBox
             // 
@@ -164,15 +173,16 @@
             FTypeComboBox.Name = "FTypeComboBox";
             FTypeComboBox.Size = new Size(180, 28);
             FTypeComboBox.TabIndex = 6;
+            FTypeComboBox.SelectedIndexChanged += FTypeComboBox_SelectedIndexChanged;
             // 
             // FTLabel
             // 
             FTLabel.AutoSize = true;
             FTLabel.Location = new Point(7, 185);
             FTLabel.Name = "FTLabel";
-            FTLabel.Size = new Size(83, 20);
+            FTLabel.Size = new Size(128, 20);
             FTLabel.TabIndex = 3;
-            FTLabel.Text = "Flight time:";
+            FTLabel.Text = "Flight time (mins):";
             // 
             // DTLabel
             // 
@@ -185,10 +195,11 @@
             // 
             // DTDataTimePicker
             // 
-            DTDataTimePicker.Location = new Point(6, 155);
+            DTDataTimePicker.Location = new Point(6, 157);
             DTDataTimePicker.Name = "DTDataTimePicker";
             DTDataTimePicker.Size = new Size(180, 27);
             DTDataTimePicker.TabIndex = 4;
+            DTDataTimePicker.ValueChanged += DTDataTimePicker_ValueChanged;
             // 
             // DestinationTextBox
             // 
@@ -196,6 +207,7 @@
             DestinationTextBox.Name = "DestinationTextBox";
             DestinationTextBox.Size = new Size(180, 27);
             DestinationTextBox.TabIndex = 3;
+            DestinationTextBox.TextChanged += DestinationTextBox_TextChanged;
             // 
             // DestinationLabel
             // 
@@ -212,6 +224,7 @@
             DPTextBox.Name = "DPTextBox";
             DPTextBox.Size = new Size(180, 27);
             DPTextBox.TabIndex = 1;
+            DPTextBox.TextChanged += DPTextBox_TextChanged;
             // 
             // DPLabel
             // 
