@@ -254,6 +254,7 @@
             SearchButton.TabIndex = 1;
             SearchButton.Text = "Search!";
             SearchButton.UseVisualStyleBackColor = true;
+            SearchButton.Click += SearchButton_Click;
             // 
             // SearchTextBox
             // 

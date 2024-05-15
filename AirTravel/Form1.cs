@@ -29,28 +29,42 @@ namespace AirTravel
         /// Сортировка перелётов по времени вылета.
         /// </summary>
         /// <param name="flights">Лист полётов.</param>
-        private void FlightsViewListBoxSort (List<Flight> flights)
+        private void FlightsViewListBoxSort(List<Flight> flights)
         {
             int n = flights.Count;
             for (int i = 0; i < n - 1; i++)
             {
-                for (int j = 0; j < n - 1; j++)
+                for (int j = 0; j < n - i - 1; j++)
                 {
                     if (flights[j].DepartureTime > flights[j + 1].DepartureTime)
                     {
-                        Flight flight = flights[j];
-                        string strFlight = FlightsViewListBox.Items[j].ToString();
-
+                        Flight tempFlight = flights[j];
                         flights[j] = flights[j + 1];
-                        FlightsViewListBox.Items[j] = FlightsViewListBox.Items[j + 1].ToString();
+                        flights[j + 1] = tempFlight;
 
-                        flights[j + 1] = flight;
-                        FlightsViewListBox.Items[j + 1] = strFlight;
+                        object tempItem = FlightsViewListBox.Items[j];
+                        FlightsViewListBox.Items[j] = FlightsViewListBox.Items[j + 1];
+                        FlightsViewListBox.Items[j + 1] = tempItem;
                     }
                 }
             }
         }
 
+        /// <summary>
+        /// Показ всех полётов после поиска.
+        /// </summary>
+        private void DisplayAllFlights()
+        {
+            // Очистка предыдущих результатов поиска
+            FlightsViewListBox.Items.Clear();
+
+            // Отображение всех доступных полётов
+            foreach (var flight in _newFlights)
+            {
+                string displayFlight = $"Время вылета: {flight.DeparturePoint} - {flight.Destination}";
+                FlightsViewListBox.Items.Add(displayFlight);
+            }
+        }
 
         /// <summary>
         /// Обновление данных в текстовых полях по указанному полёту.
@@ -118,10 +132,15 @@ namespace AirTravel
         {
             Flight newFlight = new Flight();
             _newFlights.Add(newFlight);
-            string addingFlight = $"Время вылета: {newFlight.DeparturePoint} - {newFlight.Destination}";
-            FlightsViewListBox.Items.Add(addingFlight);
 
-            // Сортировка
+            FlightsViewListBox.Items.Clear();
+
+            foreach (var flight in _newFlights)
+            {
+                string addingFlight = $"Время вылета: {flight.DeparturePoint} - {flight.Destination}";
+                FlightsViewListBox.Items.Add(addingFlight);
+            }
+
             FlightsViewListBoxSort(_newFlights);
         }
 
@@ -164,15 +183,25 @@ namespace AirTravel
         {
             if (FlightsViewListBox.SelectedItem != null)
             {
-                _newFlights.RemoveAt(FlightsViewListBox.SelectedIndex);
-                FlightsViewListBox.Items.RemoveAt(FlightsViewListBox.SelectedIndex);
-                ClearFlightInfo();
+                int selectedIndex = FlightsViewListBox.SelectedIndex;
+                _newFlights.RemoveAt(selectedIndex);
 
-                // Сортировка
+                FlightsViewListBox.Items.Clear();
+
+                foreach (var flight in _newFlights)
+                {
+                    string addingFlight = $"Время вылета: {flight.DeparturePoint} - {flight.Destination}";
+                    FlightsViewListBox.Items.Add(addingFlight);
+                }
+
+                if (selectedIndex < FlightsViewListBox.Items.Count)
+                {
+                    FlightsViewListBox.SelectedIndex = selectedIndex;
+                }
+
                 FlightsViewListBoxSort(_newFlights);
             }
         }
-
         /// <summary>
         /// Наведение мыши на кнопку удаления (анимация).
         /// </summary>
@@ -325,16 +354,37 @@ namespace AirTravel
         /// <param name="e"></param>
         private void AirlinePictureBox_Click(object sender, EventArgs e)
         {
-            // Открыть диалоговое окно выбора файла
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Файлы изображений|*.png;*.jpg;*.jpeg;*.gif;*.bmp|Все файлы|*.*";
             openFileDialog.Title = "Выберите изображение";
 
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                // Загрузить выбранный файл в PictureBox
                 AirlinePictureBox.Image = new System.Drawing.Bitmap(openFileDialog.FileName);
                 _newFlights[FlightsViewListBox.SelectedIndex].Airline = new System.Drawing.Bitmap(openFileDialog.FileName);
+            }
+        }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            string searchTerm = SearchTextBox.Text.Trim();
+
+            if (!string.IsNullOrEmpty(searchTerm))
+            {
+                FlightsViewListBox.Items.Clear();
+
+                foreach (var flight in _newFlights)
+                {
+                    if (flight.DeparturePoint.Contains(searchTerm) || flight.Destination.Contains(searchTerm))
+                    {
+                        string displayFlight = $"Время вылета: {flight.DeparturePoint} - {flight.Destination}";
+                        FlightsViewListBox.Items.Add(displayFlight);
+                    }
+                }
+            }
+            else
+            {
+                DisplayAllFlights();
             }
         }
     }
