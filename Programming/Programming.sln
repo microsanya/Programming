@@ -5,7 +5,9 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Programming", "Programming.csproj", "{23D62563-8244-4B64-9DDD-508C987398B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTravel", "..\AirTravel\AirTravel.csproj", "{3AA7A6BA-0774-4AB4-8D5C-32297687E827}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirTravel", "..\AirTravel\AirTravel.csproj", "{3AA7A6BA-0774-4AB4-8D5C-32297687E827}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AirTravelSetup", "..\AirTravelSetup\AirTravelSetup.vdproj", "{9BFCAF25-3EFF-4F59-834B-F1D5E23B743F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,8 @@ Global
 		{3AA7A6BA-0774-4AB4-8D5C-32297687E827}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3AA7A6BA-0774-4AB4-8D5C-32297687E827}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3AA7A6BA-0774-4AB4-8D5C-32297687E827}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9BFCAF25-3EFF-4F59-834B-F1D5E23B743F}.Debug|Any CPU.ActiveCfg = Debug
+		{9BFCAF25-3EFF-4F59-834B-F1D5E23B743F}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
