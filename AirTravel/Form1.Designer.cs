@@ -46,6 +46,7 @@
             DPTextBox = new TextBox();
             DPLabel = new Label();
             SearchGroupBox = new GroupBox();
+            CancelSearchButton = new Button();
             SearchButton = new Button();
             SearchTextBox = new TextBox();
             FlightsViewGroupBox.SuspendLayout();
@@ -237,6 +238,7 @@
             // 
             // SearchGroupBox
             // 
+            SearchGroupBox.Controls.Add(CancelSearchButton);
             SearchGroupBox.Controls.Add(SearchButton);
             SearchGroupBox.Controls.Add(SearchTextBox);
             SearchGroupBox.Location = new Point(583, 12);
@@ -246,9 +248,19 @@
             SearchGroupBox.TabStop = false;
             SearchGroupBox.Text = "Search Flight:";
             // 
+            // CancelSearchButton
+            // 
+            CancelSearchButton.Location = new Point(130, 260);
+            CancelSearchButton.Name = "CancelSearchButton";
+            CancelSearchButton.Size = new Size(117, 29);
+            CancelSearchButton.TabIndex = 2;
+            CancelSearchButton.Text = "Cancel Search";
+            CancelSearchButton.UseVisualStyleBackColor = true;
+            CancelSearchButton.Click += CancelSearchButton_Click;
+            // 
             // SearchButton
             // 
-            SearchButton.Location = new Point(139, 190);
+            SearchButton.Location = new Point(139, 158);
             SearchButton.Name = "SearchButton";
             SearchButton.Size = new Size(94, 29);
             SearchButton.TabIndex = 1;
@@ -258,7 +270,7 @@
             // 
             // SearchTextBox
             // 
-            SearchTextBox.Location = new Point(57, 157);
+            SearchTextBox.Location = new Point(54, 208);
             SearchTextBox.Name = "SearchTextBox";
             SearchTextBox.Size = new Size(266, 27);
             SearchTextBox.TabIndex = 0;
@@ -273,6 +285,7 @@
             Controls.Add(FlightsViewGroupBox);
             Name = "AirTravelForm";
             Text = "Air Travel";
+            Load += AirTravelForm_Load;
             FlightsViewGroupBox.ResumeLayout(false);
             ExtendedFlightViewGroupBox.ResumeLayout(false);
             ExtendedFlightViewGroupBox.PerformLayout();
@@ -306,5 +319,6 @@
         private Button SearchButton;
         private PictureBox AddButtonPB;
         private PictureBox DeleteButtonPB;
+        private Button CancelSearchButton;
     }
 }

@@ -64,7 +64,7 @@ class Flight
     /// <summary>
     /// Возвращает и задаёт тип перелёта.
     /// </summary>
-    public FlightType FlightType { get; set; }
+    public FlightType TypeOfFlight { get; set; }
 
     /// <summary>
     /// Возвращает и задаёт логотип авиакомпании.
@@ -86,7 +86,7 @@ class Flight
         Destination = destination;
         _timeFlight = timeFlight;
         DepartureTime = departureTime;
-        FlightType = flightType;
+        TypeOfFlight = flightType;
         Airline = airlane;
     }
 
@@ -104,7 +104,7 @@ class Flight
         DepartureTime = nextDay;
 
 
-        FlightType = FlightType.None;
+        TypeOfFlight = FlightType.None;
         Airline = Resources.plane;
     }
 }

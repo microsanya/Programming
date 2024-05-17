@@ -1,5 +1,12 @@
 using AirTravel.Properties;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace AirTravel
 {
@@ -11,6 +18,23 @@ namespace AirTravel
         public AirTravelForm()
         {
             InitializeComponent();
+            this.Load += new System.EventHandler(this.AirTravelForm_Load);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AirTravelForm_FormClosing);
+        }        
+        
+        /// <summary>
+        /// Загрузка формы + информации с файла.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AirTravelForm_Load(object sender, EventArgs e)
+        {
+            string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AirTravel");
+            Directory.CreateDirectory(folderPath); 
+            string filePath = Path.Combine(folderPath, "flights_data.json");
+
+
+            LoadDataFromFile(filePath);
         }
         // -------------------------------------- Необходимые доп. переменные и контейнеры ----------------------------------------------------
         /// <summary>
@@ -26,27 +50,84 @@ namespace AirTravel
         //------------------------------------------------------ Методы ------------------------------------------------------------------------
 
         /// <summary>
+        /// Сохранение информации в файл.
+        /// </summary>
+        /// <param name="filePath">Путь к файлу.</param>
+        private void SaveDataToFile(string filePath)
+        {
+            var flightDataList = _newFlights.Select(flight => new FlightData
+            {
+                DeparturePoint = flight.DeparturePoint,
+                Destination = flight.Destination,
+                DepartureTime = flight.DepartureTime,
+                TimeFlight = flight.TimeFlight,
+                TypeOfFlight = flight.TypeOfFlight,
+                AirlineBase64 = flight.Airline != null ? Convert.ToBase64String((byte[])(new ImageConverter()).ConvertTo(flight.Airline, typeof(byte[]))) : null
+            }).ToList();
+
+            string jsonData = JsonConvert.SerializeObject(flightDataList, Formatting.Indented);
+            File.WriteAllText(filePath, jsonData);
+        }
+
+        /// <summary>
+        /// Загрузка информации из файла.
+        /// </summary>
+        /// <param name="filePath">Путь к файлу.</param>
+        private void LoadDataFromFile(string filePath)
+        {
+            if (!File.Exists(filePath))
+                return;
+
+            string jsonData = File.ReadAllText(filePath);
+            var flightDataList = JsonConvert.DeserializeObject<List<FlightData>>(jsonData);
+
+            _newFlights.Clear();
+            FlightsViewListBox.Items.Clear();
+
+            foreach (var flightData in flightDataList)
+            {
+                Flight flight = new Flight
+                {
+                    DeparturePoint = flightData.DeparturePoint,
+                    Destination = flightData.Destination,
+                    DepartureTime = flightData.DepartureTime,
+                    TimeFlight = flightData.TimeFlight,
+                    TypeOfFlight = flightData.TypeOfFlight,
+                    Airline = !string.IsNullOrEmpty(flightData.AirlineBase64) ? new Bitmap(new MemoryStream(Convert.FromBase64String(flightData.AirlineBase64))) : null
+                };
+
+                _newFlights.Add(flight);
+                FlightsViewListBox.Items.Add($"Время вылета: {flight.DeparturePoint} - {flight.Destination}");
+            }
+        }
+
+        /// <summary>
+        /// Метод, сохраняющий данные в файл при закрытии формы.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AirTravelForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AirTravel");
+            Directory.CreateDirectory(folderPath); 
+            string filePath = Path.Combine(folderPath, "flights_data.json");
+            SaveDataToFile(filePath);
+        }
+
+        /// <summary>
         /// Сортировка перелётов по времени вылета.
         /// </summary>
         /// <param name="flights">Лист полётов.</param>
         private void FlightsViewListBoxSort(List<Flight> flights)
         {
-            int n = flights.Count;
-            for (int i = 0; i < n - 1; i++)
-            {
-                for (int j = 0; j < n - i - 1; j++)
-                {
-                    if (flights[j].DepartureTime > flights[j + 1].DepartureTime)
-                    {
-                        Flight tempFlight = flights[j];
-                        flights[j] = flights[j + 1];
-                        flights[j + 1] = tempFlight;
+            flights.Sort((flight1, flight2) => flight1.DepartureTime.CompareTo(flight2.DepartureTime));
 
-                        object tempItem = FlightsViewListBox.Items[j];
-                        FlightsViewListBox.Items[j] = FlightsViewListBox.Items[j + 1];
-                        FlightsViewListBox.Items[j + 1] = tempItem;
-                    }
-                }
+            FlightsViewListBox.Items.Clear();
+
+            foreach (var flight in flights)
+            {
+                string displayFlight = $"Время вылета: {flight.DeparturePoint} - {flight.Destination}";
+                FlightsViewListBox.Items.Add(displayFlight);
             }
         }
 
@@ -81,28 +162,9 @@ namespace AirTravel
             // FLight Time
             FlightTimeTextBox.Text = Convert.ToString(flight.TimeFlight);
             // Flight Type
-            FTypeComboBox.SelectedIndex = FTypeComboBox.FindString(flight.FlightType.ToString());
+            FTypeComboBox.SelectedIndex = FTypeComboBox.FindString(flight.TypeOfFlight.ToString());
             // Airline
             AirlinePictureBox.Image = flight.Airline;
-        }
-
-        /// <summary>
-        /// Очистка данных в полях по полёту.
-        /// </summary>
-        private void ClearFlightInfo()
-        {
-            // Departure Point
-            DPTextBox.Text = "";
-            // Destination
-            DestinationTextBox.Text = "";
-            // Departure Time
-            DTDataTimePicker.Value = DateTime.Now;
-            // FLight Time
-            FlightTimeTextBox.Text = "";
-            // Flight Type
-            FTypeComboBox.SelectedIndex = 2;
-            // Airline
-            AirlinePictureBox.Image = Resources.plane;
         }
 
         /// <summary>
@@ -118,9 +180,6 @@ namespace AirTravel
                 _currentFlight = _newFlights[index];
                 UpdateFlightInfo(_currentFlight);
             }
-
-            // Сортировка
-            FlightsViewListBoxSort(_newFlights);
         }
 
         /// <summary>
@@ -198,7 +257,6 @@ namespace AirTravel
                 {
                     FlightsViewListBox.SelectedIndex = selectedIndex;
                 }
-
                 FlightsViewListBoxSort(_newFlights);
             }
         }
@@ -308,6 +366,8 @@ namespace AirTravel
             {
                 MessageBox.Show("Дата не может быть раньше сегодняшней!");
             }
+
+            FlightsViewListBoxSort(_newFlights);
         }
 
         /// <summary>
@@ -317,22 +377,15 @@ namespace AirTravel
         /// <param name="e"></param>
         private void FlightTimeTextBox_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                if (Convert.ToInt32(FlightTimeTextBox.Text) >= 0 && Convert.ToInt32(FlightTimeTextBox.Text) <= 1000)
-                {
-                    _newFlights[FlightsViewListBox.SelectedIndex].TimeFlight = Convert.ToInt32(FlightTimeTextBox.Text);
-                    FlightTimeTextBox.BackColor = System.Drawing.Color.White;
-                }
-                else
-                {
-                    FlightTimeTextBox.BackColor = System.Drawing.Color.LightPink;
-                }
-            }
-            catch
-            {
+           if (Convert.ToInt32(FlightTimeTextBox.Text) >= 0 && Convert.ToInt32(FlightTimeTextBox.Text) <= 1000)
+           {
+                _newFlights[FlightsViewListBox.SelectedIndex].TimeFlight = Convert.ToInt32(FlightTimeTextBox.Text);
+                FlightTimeTextBox.BackColor = System.Drawing.Color.White;
+           }
+           else
+           {
                 FlightTimeTextBox.BackColor = System.Drawing.Color.LightPink;
-            }
+           }
         }
 
         /// <summary>
@@ -342,10 +395,14 @@ namespace AirTravel
         /// <param name="e"></param>
         private void FTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            _newFlights[FlightsViewListBox.SelectedIndex].FlightType = (FlightType)Enum.GetValues(typeof(FlightType)).GetValue
+            if (FlightsViewListBox.SelectedItem != null)
+            {
+                _newFlights[FlightsViewListBox.SelectedIndex].TypeOfFlight = (FlightType)Enum.GetValues(typeof(FlightType)).GetValue
                 (FTypeComboBox.SelectedIndex);
-            FTypeComboBox.SelectedIndex = (int)_newFlights[FlightsViewListBox.SelectedIndex].FlightType;
+                FTypeComboBox.SelectedIndex = (int)_newFlights[FlightsViewListBox.SelectedIndex].TypeOfFlight;
+            }
         }
+
 
         /// <summary>
         /// Изменение иконки авиакомпании.
@@ -361,10 +418,19 @@ namespace AirTravel
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 AirlinePictureBox.Image = new System.Drawing.Bitmap(openFileDialog.FileName);
-                _newFlights[FlightsViewListBox.SelectedIndex].Airline = new System.Drawing.Bitmap(openFileDialog.FileName);
+                if (FlightsViewListBox.SelectedItem != null) 
+                { 
+                    _newFlights[FlightsViewListBox.SelectedIndex].Airline = new System.Drawing.Bitmap(openFileDialog.FileName);
+                }
+                
             }
         }
 
+        /// <summary>
+        /// Поиск по городам с помощью кнопки.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SearchButton_Click(object sender, EventArgs e)
         {
             string searchTerm = SearchTextBox.Text.Trim();
@@ -386,6 +452,11 @@ namespace AirTravel
             {
                 DisplayAllFlights();
             }
+        }
+
+        private void CancelSearchButton_Click(object sender, EventArgs e)
+        {
+            DisplayAllFlights();
         }
     }
 }

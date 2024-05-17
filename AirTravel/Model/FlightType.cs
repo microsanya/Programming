@@ -1,4 +1,4 @@
-﻿enum FlightType
+﻿public enum FlightType
 {
     Внутренний,
     Международный,
