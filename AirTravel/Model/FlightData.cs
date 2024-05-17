@@ -7,6 +7,6 @@ public class FlightData
     public string Destination { get; set; }
     public DateTime DepartureTime { get; set; }
     public int TimeFlight { get; set; }
-    public FlightType TypeOfFlight { get; set; }
+    public FlightType FlightType { get; set; }
     public string AirlineBase64 { get; set; }
 }

@@ -20,8 +20,8 @@ namespace AirTravel
             InitializeComponent();
             this.Load += new System.EventHandler(this.AirTravelForm_Load);
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AirTravelForm_FormClosing);
-        }        
-        
+        }
+
         /// <summary>
         /// Загрузка формы + информации с файла.
         /// </summary>
@@ -30,7 +30,7 @@ namespace AirTravel
         private void AirTravelForm_Load(object sender, EventArgs e)
         {
             string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AirTravel");
-            Directory.CreateDirectory(folderPath); 
+            Directory.CreateDirectory(folderPath);
             string filePath = Path.Combine(folderPath, "flights_data.json");
 
 
@@ -61,7 +61,7 @@ namespace AirTravel
                 Destination = flight.Destination,
                 DepartureTime = flight.DepartureTime,
                 TimeFlight = flight.TimeFlight,
-                TypeOfFlight = flight.TypeOfFlight,
+                FlightType = flight.FlightType,
                 AirlineBase64 = flight.Airline != null ? Convert.ToBase64String((byte[])(new ImageConverter()).ConvertTo(flight.Airline, typeof(byte[]))) : null
             }).ToList();
 
@@ -92,12 +92,12 @@ namespace AirTravel
                     Destination = flightData.Destination,
                     DepartureTime = flightData.DepartureTime,
                     TimeFlight = flightData.TimeFlight,
-                    TypeOfFlight = flightData.TypeOfFlight,
+                    FlightType = flightData.FlightType,
                     Airline = !string.IsNullOrEmpty(flightData.AirlineBase64) ? new Bitmap(new MemoryStream(Convert.FromBase64String(flightData.AirlineBase64))) : null
                 };
 
                 _newFlights.Add(flight);
-                FlightsViewListBox.Items.Add($"Время вылета: {flight.DeparturePoint} - {flight.Destination}");
+                FlightsViewListBox.Items.Add($"{flight.DepartureTime.ToString()}: {flight.DeparturePoint} - {flight.Destination}");
             }
         }
 
@@ -109,7 +109,7 @@ namespace AirTravel
         private void AirTravelForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             string folderPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "AirTravel");
-            Directory.CreateDirectory(folderPath); 
+            Directory.CreateDirectory(folderPath);
             string filePath = Path.Combine(folderPath, "flights_data.json");
             SaveDataToFile(filePath);
         }
@@ -126,7 +126,7 @@ namespace AirTravel
 
             foreach (var flight in flights)
             {
-                string displayFlight = $"Время вылета: {flight.DeparturePoint} - {flight.Destination}";
+                string displayFlight = $"{flight.DepartureTime.ToString()} : {flight.DeparturePoint} - {flight.Destination}";
                 FlightsViewListBox.Items.Add(displayFlight);
             }
         }
@@ -142,7 +142,7 @@ namespace AirTravel
             // Отображение всех доступных полётов
             foreach (var flight in _newFlights)
             {
-                string displayFlight = $"Время вылета: {flight.DeparturePoint} - {flight.Destination}";
+                string displayFlight = $"{flight.DepartureTime.ToString()} : {flight.DeparturePoint} - {flight.Destination}";
                 FlightsViewListBox.Items.Add(displayFlight);
             }
         }
@@ -150,7 +150,7 @@ namespace AirTravel
         /// <summary>
         /// Обновление данных в текстовых полях по указанному полёту.
         /// </summary>
-        /// <param name="flight"></param>
+        /// <param name="flight">Лист полётов.</param>
         private void UpdateFlightInfo(Flight flight)
         {
             // Departure Point
@@ -162,7 +162,7 @@ namespace AirTravel
             // FLight Time
             FlightTimeTextBox.Text = Convert.ToString(flight.TimeFlight);
             // Flight Type
-            FTypeComboBox.SelectedIndex = FTypeComboBox.FindString(flight.TypeOfFlight.ToString());
+            FTypeComboBox.SelectedIndex = FTypeComboBox.FindString(flight.FlightType.ToString());
             // Airline
             AirlinePictureBox.Image = flight.Airline;
         }
@@ -196,7 +196,7 @@ namespace AirTravel
 
             foreach (var flight in _newFlights)
             {
-                string addingFlight = $"Время вылета: {flight.DeparturePoint} - {flight.Destination}";
+                string addingFlight = $"{flight.DepartureTime.ToString()} : {flight.DeparturePoint} - {flight.Destination}";
                 FlightsViewListBox.Items.Add(addingFlight);
             }
 
@@ -249,7 +249,7 @@ namespace AirTravel
 
                 foreach (var flight in _newFlights)
                 {
-                    string addingFlight = $"Время вылета: {flight.DeparturePoint} - {flight.Destination}";
+                    string addingFlight = $"{flight.DepartureTime.ToString()}  : {flight.DeparturePoint} - {flight.Destination}";
                     FlightsViewListBox.Items.Add(addingFlight);
                 }
 
@@ -304,7 +304,7 @@ namespace AirTravel
                     _newFlights[FlightsViewListBox.SelectedIndex].DeparturePoint = DPTextBox.Text;
                     Flight flight = _newFlights[FlightsViewListBox.SelectedIndex];
                     DPTextBox.BackColor = System.Drawing.Color.White;
-                    FlightsViewListBox.Items[FlightsViewListBox.SelectedIndex] = $"Время вылета: {flight.DeparturePoint} - {flight.Destination}";
+                    FlightsViewListBox.Items[FlightsViewListBox.SelectedIndex] = $"{flight.DepartureTime.ToString()} : {flight.DeparturePoint} - {flight.Destination}";
                 }
                 else
                 {
@@ -313,7 +313,7 @@ namespace AirTravel
             }
             catch
             {
-                DPTextBox.BackColor = System.Drawing.Color.LightPink;
+
             }
         }
 
@@ -331,7 +331,7 @@ namespace AirTravel
                     _newFlights[FlightsViewListBox.SelectedIndex].Destination = DestinationTextBox.Text;
                     Flight flight = _newFlights[FlightsViewListBox.SelectedIndex];
                     DestinationTextBox.BackColor = System.Drawing.Color.White;
-                    FlightsViewListBox.Items[FlightsViewListBox.SelectedIndex] = $"Время вылета: {flight.DeparturePoint} - {flight.Destination}";
+                    FlightsViewListBox.Items[FlightsViewListBox.SelectedIndex] = $"{flight.DepartureTime.ToString()}: {flight.DeparturePoint} - {flight.Destination}";
                 }
                 else
                 {
@@ -340,8 +340,9 @@ namespace AirTravel
             }
             catch
             {
-                DestinationTextBox.BackColor = System.Drawing.Color.LightPink;
+
             }
+
         }
 
         /// <summary>
@@ -377,15 +378,22 @@ namespace AirTravel
         /// <param name="e"></param>
         private void FlightTimeTextBox_TextChanged(object sender, EventArgs e)
         {
-           if (Convert.ToInt32(FlightTimeTextBox.Text) >= 0 && Convert.ToInt32(FlightTimeTextBox.Text) <= 1000)
-           {
-                _newFlights[FlightsViewListBox.SelectedIndex].TimeFlight = Convert.ToInt32(FlightTimeTextBox.Text);
-                FlightTimeTextBox.BackColor = System.Drawing.Color.White;
-           }
-           else
-           {
-                FlightTimeTextBox.BackColor = System.Drawing.Color.LightPink;
-           }
+            try
+            {
+                if (Convert.ToInt32(FlightTimeTextBox.Text) >= 0 && Convert.ToInt32(FlightTimeTextBox.Text) <= 1000)
+                {
+                    _newFlights[FlightsViewListBox.SelectedIndex].TimeFlight = Convert.ToInt32(FlightTimeTextBox.Text);
+                    FlightTimeTextBox.BackColor = System.Drawing.Color.White;
+                }
+                else
+                {
+                    FlightTimeTextBox.BackColor = System.Drawing.Color.LightPink;
+                }
+            }
+            catch
+            {
+                //FlightTimeTextBox.BackColor = System.Drawing.Color.LightPink;
+            }
         }
 
         /// <summary>
@@ -397,9 +405,9 @@ namespace AirTravel
         {
             if (FlightsViewListBox.SelectedItem != null)
             {
-                _newFlights[FlightsViewListBox.SelectedIndex].TypeOfFlight = (FlightType)Enum.GetValues(typeof(FlightType)).GetValue
+                _newFlights[FlightsViewListBox.SelectedIndex].FlightType = (FlightType)Enum.GetValues(typeof(FlightType)).GetValue
                 (FTypeComboBox.SelectedIndex);
-                FTypeComboBox.SelectedIndex = (int)_newFlights[FlightsViewListBox.SelectedIndex].TypeOfFlight;
+                FTypeComboBox.SelectedIndex = (int)_newFlights[FlightsViewListBox.SelectedIndex].FlightType;
             }
         }
 
@@ -418,11 +426,11 @@ namespace AirTravel
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 AirlinePictureBox.Image = new System.Drawing.Bitmap(openFileDialog.FileName);
-                if (FlightsViewListBox.SelectedItem != null) 
-                { 
+                if (FlightsViewListBox.SelectedItem != null)
+                {
                     _newFlights[FlightsViewListBox.SelectedIndex].Airline = new System.Drawing.Bitmap(openFileDialog.FileName);
                 }
-                
+
             }
         }
 
@@ -443,7 +451,7 @@ namespace AirTravel
                 {
                     if (flight.DeparturePoint.Contains(searchTerm) || flight.Destination.Contains(searchTerm))
                     {
-                        string displayFlight = $"Время вылета: {flight.DeparturePoint} - {flight.Destination}";
+                        string displayFlight = $"{flight.DepartureTime.ToString()}: {flight.DeparturePoint} - {flight.Destination}";
                         FlightsViewListBox.Items.Add(displayFlight);
                     }
                 }

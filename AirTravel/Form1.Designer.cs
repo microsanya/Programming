@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AirTravelForm));
             FlightsViewListBox = new ListBox();
             FlightsViewGroupBox = new GroupBox();
             ExtendedFlightViewGroupBox = new GroupBox();
@@ -283,6 +284,7 @@
             Controls.Add(SearchGroupBox);
             Controls.Add(ExtendedFlightViewGroupBox);
             Controls.Add(FlightsViewGroupBox);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "AirTravelForm";
             Text = "Air Travel";
             Load += AirTravelForm_Load;
