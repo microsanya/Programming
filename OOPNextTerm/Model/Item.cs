@@ -12,7 +12,7 @@ class Item
 	/// <summary>
 	/// ID товара.
 	/// </summary>
-	private readonly int _id;
+	private int _id;
 
 	/// <summary>
 	/// Возвращает ID товара.
@@ -22,6 +22,10 @@ class Item
 		get
 		{
 			return _id;
+		}
+		private set
+		{
+			_id = value;
 		}
 	}
 

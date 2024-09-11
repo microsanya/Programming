@@ -12,7 +12,7 @@ class Customer
     /// <summary>
     /// ID покупателя.
     /// </summary>
-    private readonly int _id;
+    private int _id;
 
     /// <summary>
     /// Возвращает ID покупателя.
@@ -22,6 +22,10 @@ class Customer
         get
         {
             return _id;
+        }
+        private set
+        {
+            _id = value;
         }
     }
 
@@ -101,7 +105,7 @@ class Customer
     /// </summary>
     public Customer()
     {
-        Id = _allItemsCount;
+        Id = _allCustomersCount;
         FullName = " ";
         Address = " ";
     }
