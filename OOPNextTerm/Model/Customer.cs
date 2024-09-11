@@ -57,6 +57,7 @@ class Item
         }
         set
         {
+            ValueValidator.AssertOnNeedSize(value, 200, FullName);
             _fullName = value;
         }
     }
@@ -77,6 +78,7 @@ class Item
         }
         set
         {
+            ValueValidator.AssertOnNeedSize(value, 500, Address);
             _address = value;
         }
     }

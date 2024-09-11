@@ -57,6 +57,7 @@ class Item
 		}
 		set
 		{
+			ValueValidator.AssertOnNeedSize(value, 200, Name);
 			_name = value;
 		}
 	}
@@ -77,6 +78,7 @@ class Item
 		}
 		set
 		{
+			ValueValidator.AssertOnNeedSize(value, 1000, Info);
 			_info = value;
 		}
 	}
@@ -97,6 +99,7 @@ class Item
 		}
 		set
 		{
+			ValueValidator.AssertValueInRange(value, 0, 100000);
 			_cost = value;
 		}
 	}

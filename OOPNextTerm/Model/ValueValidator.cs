@@ -10,13 +10,45 @@ static class ValueValidator
     /// <summary>
     /// Проверяет, что принимаемое целочисленное значение положительно.
     /// </summary>
-    /// <param name="value">Проверяемое число.</param>
-    /// <exception cref="ArgumentException">Неправильное значение в методе, оно должно быть положительным.</exception>
-    public static void AssertOnNeedSize(string value, int min, int max)
+    /// <param name="value">Проверяемая строка.</param>
+    /// <param name="maxLength">Максимальная длина.</param>
+    /// <param name="propertyName">Свойство.</param>
+    /// <exception cref="ArgumentException">Значение свойства должно быть меньше заданного числа.</exception>
+    public static void AssertOnNeedSize(string value, int maxLength, string propertyName)
     {
-        //if ( )
-        //{
-        //    throw new ArgumentException($"Wrong value in {new StackTrace().GetFrame(1).GetMethod().Name}, it needs to be positive");
-        //}
+        if (value.Length > maxLength)
+        {
+            throw new ArgumentException($"{propertyName} needs to be less than {maxLength}");
+        }
+    }
+
+    /// <summary>
+    /// Проверяет, что проверяемое целочисленное значение принадлежит определённому диапазону
+    /// </summary>
+    /// <param name="value">Проверяемое значение</param>
+    /// <param name="min">Нижняя граница диапазона</param>
+    /// <param name="max">Верхняя граница диапазона</param>
+    /// <exception cref="ArgumentException">Неправильное значение в методе, оно должно быть внутри диапазона</exception>
+    public static void AssertValueInRange(int value, int min, int max)
+    {
+        if ((value < min) || (value > max))
+        {
+            throw new ArgumentException($"Wrong value in {new StackTrace().GetFrame(1).GetMethod().Name}, it needs to be in range: {min} - {max}");
+        }
+    }
+
+    /// <summary>
+    /// Проверяет, что проверяемое вещественное значение принадлежит определённому диапазону
+    /// </summary>
+    /// <param name="value">Проверяемое значение</param>
+    /// <param name="min">Нижняя граница диапазона</param>
+    /// <param name="max">Верхняя граница диапазона</param>
+    /// <exception cref="ArgumentException">Неправильное значение в методе, оно должно быть внутри диапазона</exception>
+    public static void AssertValueInRange(double value, double min, double max)
+    {
+        if ((value < min) || (value > max))
+        {
+            throw new ArgumentException($"Wrong value in {new StackTrace().GetFrame(1).GetMethod().Name}, it needs to be in range: {min} - {max}");
+        }
     }
 }
