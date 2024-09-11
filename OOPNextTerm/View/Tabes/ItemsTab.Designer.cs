@@ -1,0 +1,210 @@
+﻿namespace OOPNextTerm.View.Tabes
+{
+    partial class ItemsTab
+    {
+        /// <summary> 
+        /// Обязательная переменная конструктора.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary> 
+        /// Освободить все используемые ресурсы.
+        /// </summary>
+        /// <param name="disposing">истинно, если управляемый ресурс должен быть удален; иначе ложно.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Код, автоматически созданный конструктором компонентов
+
+        /// <summary> 
+        /// Требуемый метод для поддержки конструктора — не изменяйте 
+        /// содержимое этого метода с помощью редактора кода.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            ItemsListBox = new ListBox();
+            AddItemButton = new Button();
+            RemoveItemButton = new Button();
+            ItemsListGroupBox = new GroupBox();
+            SelectedItemGroupBox = new GroupBox();
+            IdTextBox = new TextBox();
+            IDLabel = new Label();
+            CostLabel = new Label();
+            CostTextBox = new TextBox();
+            NameLabel = new Label();
+            NameTextBox = new TextBox();
+            DecriptionLabel = new Label();
+            DescriptionTextBox = new TextBox();
+            ItemsListGroupBox.SuspendLayout();
+            SelectedItemGroupBox.SuspendLayout();
+            SuspendLayout();
+            // 
+            // ItemsListBox
+            // 
+            ItemsListBox.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            ItemsListBox.FormattingEnabled = true;
+            ItemsListBox.ItemHeight = 20;
+            ItemsListBox.Location = new Point(6, 26);
+            ItemsListBox.Name = "ItemsListBox";
+            ItemsListBox.Size = new Size(378, 524);
+            ItemsListBox.TabIndex = 1;
+            // 
+            // AddItemButton
+            // 
+            AddItemButton.FlatStyle = FlatStyle.Popup;
+            AddItemButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            AddItemButton.Location = new Point(6, 560);
+            AddItemButton.Name = "AddItemButton";
+            AddItemButton.Size = new Size(157, 53);
+            AddItemButton.TabIndex = 2;
+            AddItemButton.Text = "Add";
+            AddItemButton.UseVisualStyleBackColor = true;
+            // 
+            // RemoveItemButton
+            // 
+            RemoveItemButton.FlatStyle = FlatStyle.Popup;
+            RemoveItemButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            RemoveItemButton.Location = new Point(227, 560);
+            RemoveItemButton.Name = "RemoveItemButton";
+            RemoveItemButton.Size = new Size(157, 53);
+            RemoveItemButton.TabIndex = 3;
+            RemoveItemButton.Text = "Remove";
+            RemoveItemButton.UseVisualStyleBackColor = true;
+            // 
+            // ItemsListGroupBox
+            // 
+            ItemsListGroupBox.Controls.Add(AddItemButton);
+            ItemsListGroupBox.Controls.Add(ItemsListBox);
+            ItemsListGroupBox.Controls.Add(RemoveItemButton);
+            ItemsListGroupBox.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            ItemsListGroupBox.Location = new Point(3, 3);
+            ItemsListGroupBox.Name = "ItemsListGroupBox";
+            ItemsListGroupBox.Size = new Size(391, 619);
+            ItemsListGroupBox.TabIndex = 4;
+            ItemsListGroupBox.TabStop = false;
+            ItemsListGroupBox.Text = "Items";
+            // 
+            // SelectedItemGroupBox
+            // 
+            SelectedItemGroupBox.Controls.Add(DescriptionTextBox);
+            SelectedItemGroupBox.Controls.Add(DecriptionLabel);
+            SelectedItemGroupBox.Controls.Add(NameTextBox);
+            SelectedItemGroupBox.Controls.Add(NameLabel);
+            SelectedItemGroupBox.Controls.Add(CostTextBox);
+            SelectedItemGroupBox.Controls.Add(CostLabel);
+            SelectedItemGroupBox.Controls.Add(IDLabel);
+            SelectedItemGroupBox.Controls.Add(IdTextBox);
+            SelectedItemGroupBox.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            SelectedItemGroupBox.Location = new Point(400, 3);
+            SelectedItemGroupBox.Name = "SelectedItemGroupBox";
+            SelectedItemGroupBox.Size = new Size(560, 619);
+            SelectedItemGroupBox.TabIndex = 5;
+            SelectedItemGroupBox.TabStop = false;
+            SelectedItemGroupBox.Text = "Selected Item";
+            // 
+            // IdTextBox
+            // 
+            IdTextBox.Location = new Point(65, 36);
+            IdTextBox.Name = "IdTextBox";
+            IdTextBox.Size = new Size(125, 27);
+            IdTextBox.TabIndex = 0;
+            // 
+            // IDLabel
+            // 
+            IDLabel.AutoSize = true;
+            IDLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            IDLabel.Location = new Point(6, 43);
+            IDLabel.Name = "IDLabel";
+            IDLabel.Size = new Size(27, 20);
+            IDLabel.TabIndex = 1;
+            IDLabel.Text = "ID:";
+            // 
+            // CostLabel
+            // 
+            CostLabel.AutoSize = true;
+            CostLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            CostLabel.Location = new Point(6, 86);
+            CostLabel.Name = "CostLabel";
+            CostLabel.Size = new Size(41, 20);
+            CostLabel.TabIndex = 2;
+            CostLabel.Text = "Cost:";
+            // 
+            // CostTextBox
+            // 
+            CostTextBox.Location = new Point(65, 79);
+            CostTextBox.Name = "CostTextBox";
+            CostTextBox.Size = new Size(125, 27);
+            CostTextBox.TabIndex = 3;
+            // 
+            // NameLabel
+            // 
+            NameLabel.AutoSize = true;
+            NameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            NameLabel.Location = new Point(6, 130);
+            NameLabel.Name = "NameLabel";
+            NameLabel.Size = new Size(52, 20);
+            NameLabel.TabIndex = 4;
+            NameLabel.Text = "Name:";
+            // 
+            // NameTextBox
+            // 
+            NameTextBox.Location = new Point(6, 153);
+            NameTextBox.Multiline = true;
+            NameTextBox.Name = "NameTextBox";
+            NameTextBox.Size = new Size(548, 105);
+            NameTextBox.TabIndex = 5;
+            // 
+            // DecriptionLabel
+            // 
+            DecriptionLabel.AutoSize = true;
+            DecriptionLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            DecriptionLabel.Location = new Point(6, 287);
+            DecriptionLabel.Name = "DecriptionLabel";
+            DecriptionLabel.Size = new Size(88, 20);
+            DecriptionLabel.TabIndex = 6;
+            DecriptionLabel.Text = "Descriprion:";
+            // 
+            // DescriptionTextBox
+            // 
+            DescriptionTextBox.Location = new Point(6, 310);
+            DescriptionTextBox.Multiline = true;
+            DescriptionTextBox.Name = "DescriptionTextBox";
+            DescriptionTextBox.Size = new Size(548, 303);
+            DescriptionTextBox.TabIndex = 7;
+            // 
+            // ItemsTab
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(SelectedItemGroupBox);
+            Controls.Add(ItemsListGroupBox);
+            Name = "ItemsTab";
+            Size = new Size(963, 625);
+            ItemsListGroupBox.ResumeLayout(false);
+            SelectedItemGroupBox.ResumeLayout(false);
+            SelectedItemGroupBox.PerformLayout();
+            ResumeLayout(false);
+        }
+
+        #endregion
+        private ListBox ItemsListBox;
+        private Button RemoveItemButton;
+        private Button AddItemButton;
+        private GroupBox ItemsListGroupBox;
+        private GroupBox SelectedItemGroupBox;
+        private Label IDLabel;
+        private TextBox IdTextBox;
+        private TextBox CostTextBox;
+        private Label CostLabel;
+        private TextBox NameTextBox;
+        private Label NameLabel;
+        private TextBox DescriptionTextBox;
+        private Label DecriptionLabel;
+    }
+}
