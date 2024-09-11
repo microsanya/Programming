@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <Folder Include="Services\" />
-    <Folder Include="View\Новая папка\" />
+    <Folder Include="View\Tabes\" />
   </ItemGroup>
 
 </Project>
