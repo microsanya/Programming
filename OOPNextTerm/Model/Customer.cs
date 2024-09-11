@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 /// <summary>
 /// Хранит данные о покупателе.
 /// </summary>
-class Item
+class Customer
 {
     /// <summary>
     /// ID покупателя.
