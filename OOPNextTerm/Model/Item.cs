@@ -4,11 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-/*
-- _name – строковое поле с названием товара, до 200 символов.
-- _info – строковое поле с описанием товара, до 1 000 символов.
-- _cost – вещественное поле со стоимостью товара, от 0 до 100 0
-*/
 /// <summary>
 /// Хранит данные о товаре.
 /// </summary>
@@ -27,6 +22,22 @@ class Item
         get 
         { 
             return _id; 
+        }
+    }
+
+    /// <summary>
+    /// Кол-во товаров.
+    /// </summary>
+    private static int _allItemsCount;
+
+    /// <summary>
+    /// Возвращает и задаёт кол-во товаров.
+    /// </summary>
+    public static int AllItemsCount
+    {
+        get
+        {
+            return _allItemsCount;
         }
     }
     /// <summary>
@@ -67,5 +78,49 @@ class Item
         {
             _info = value;
         }
+    }
+
+    /// <summary>
+    /// Стоимость товара.
+    /// </summary>
+    private double _cost;
+
+    /// <summary>
+    /// Возвращает и задаёт вещественное число от 0 до 100000 - стоимость товара.
+    /// </summary>
+    public double Cost
+    {
+        get
+        {
+            return _cost;
+        }
+        set
+        {
+            _cost = value;
+        }
+    }
+
+    /// <summary>
+    /// Создаёт экземпляр класса <see cref="Item"/>
+    /// </summary>
+    /// <param name="length">Длина. Должна быть только положительной.</param>
+    public Item(string name, string info, double cost)
+    {
+        _allItemsCount += 1;
+        Id = _allItemsCount;
+        Name = name;
+        Info = info;
+        Cost = cost;
+    }
+
+    /// <summary>
+    /// Конструктор по умолчанию. Создаёт экземпляр класса <see cref="Item"/>
+    /// </summary>
+    public Rectangle()
+    {
+        Id = _allItemsCount;
+        Name = " ";
+        Info = " ";
+        Cost = 0;
     }
 }
