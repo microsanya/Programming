@@ -1,0 +1,106 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+/// <summary>
+/// Хранит данные о покупателе.
+/// </summary>
+class Item
+{
+    /// <summary>
+    /// ID покупателя.
+    /// </summary>
+    private readonly int _id;
+
+    /// <summary>
+    /// Возвращает ID покупателя.
+    /// </summary>
+    public int Id
+    {
+        get
+        {
+            return _id;
+        }
+    }
+
+    /// <summary>
+    /// Кол-во покупателей.
+    /// </summary>
+    private static int _allCustomersCount;
+
+    /// <summary>
+    /// Возвращает и задаёт кол-во покупателей.
+    /// </summary>
+    public static int AllCustomersCount
+    {
+        get
+        {
+            return _allCustomersCount;
+        }
+    }
+
+    /// <summary>
+    /// Полное имя покупателя.
+    /// </summary>
+    private string _fullName;
+
+    /// <summary>
+    /// Возвращает и задаёт имя покупателя. Должно быть до 200 символов.
+    /// </summary>
+    public string FullName
+    {
+        get
+        {
+            return _fullName;
+        }
+        set
+        {
+            _fullName = value;
+        }
+    }
+
+    /// <summary>
+    /// Адрес доставки покупателя.
+    /// </summary>
+    private string _address;
+
+    /// <summary>
+    /// Возвращает и задаёт адрес доставки покупателя, должен быть до 500 символов.
+    /// </summary>
+    public string Address
+    {
+        get
+        {
+            return _address;
+        }
+        set
+        {
+            _address = value;
+        }
+    }
+
+    /// <summary>
+    /// Создаёт экземпляр класса <see cref="Customer"/>
+    /// </summary>
+    /// <param name="fullName">Полное имя. До 200 символов.</param>
+    /// <param name="address">Адрес доставки. До 500 символов.</param>
+    public Customer(string fullName, string address)
+    {
+        _allCustomersCount += 1;
+        Id = _allCustomersCount;
+        FullName = fullName;
+        Address = address;
+    }
+
+    /// <summary>
+    /// Конструктор по умолчанию. Создаёт экземпляр класса <see cref="Customer"/>
+    /// </summary>
+    public Customer()
+    {
+        Id = _allItemsCount;
+        FullName = " ";
+        Address = " ";
+    }
+}

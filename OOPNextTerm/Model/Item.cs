@@ -1,126 +1,129 @@
-п»їusing System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 /// <summary>
-/// РҐСЂР°РЅРёС‚ РґР°РЅРЅС‹Рµ Рѕ С‚РѕРІР°СЂРµ.
+/// Хранит данные о товаре.
 /// </summary>
 class Item
 {
-    /// <summary>
-    /// ID С‚РѕРІР°СЂР°.
-    /// </summary>
-    private readonly int _id;
+	/// <summary>
+	/// ID товара.
+	/// </summary>
+	private readonly int _id;
 
-    /// <summary>
-    /// Р’РѕР·РІСЂР°С‰Р°РµС‚ ID С‚РѕРІР°СЂР°.
-    /// </summary>
-    public int Id
-    {
-        get 
-        { 
-            return _id; 
-        }
-    }
+	/// <summary>
+	/// Возвращает ID товара.
+	/// </summary>
+	public int Id
+	{
+		get
+		{
+			return _id;
+		}
+	}
 
-    /// <summary>
-    /// РљРѕР»-РІРѕ С‚РѕРІР°СЂРѕРІ.
-    /// </summary>
-    private static int _allItemsCount;
+	/// <summary>
+	/// Кол-во товаров.
+	/// </summary>
+	private static int _allItemsCount;
 
-    /// <summary>
-    /// Р’РѕР·РІСЂР°С‰Р°РµС‚ Рё Р·Р°РґР°С‘С‚ РєРѕР»-РІРѕ С‚РѕРІР°СЂРѕРІ.
-    /// </summary>
-    public static int AllItemsCount
-    {
-        get
-        {
-            return _allItemsCount;
-        }
-    }
-    /// <summary>
-    /// РќР°Р·РІР°РЅРёРµ С‚РѕРІР°СЂР°.
-    /// </summary>
-    private string _name;
+	/// <summary>
+	/// Возвращает и задаёт кол-во товаров.
+	/// </summary>
+	public static int AllItemsCount
+	{
+		get
+		{
+			return _allItemsCount;
+		}
+	}
 
-    /// <summary>
-    /// Р’РѕР·РІСЂР°С‰Р°РµС‚ Рё Р·Р°РґР°С‘С‚ РЅР°Р·РІР°РЅРёРµ С‚РѕРІР°СЂР°, РѕРіСЂР°РЅРёС‡РµРЅРёРµ РІ 200 СЃРёРјРІРѕР»РѕРІ.
-    /// </summary>
-    public string Name
-    {
-        get
-        {
-            return _name;
-        }
-        set
-        {
-            _name = value;
-        }
-    }
+	/// <summary>
+	/// Название товара.
+	/// </summary>
+	private string _name;
 
-    /// <summary>
-    /// РРЅС„РѕСЂРјР°С†РёСЏ Рѕ С‚РѕРІР°СЂРµ.
-    /// </summary>
-    private string _info;
+	/// <summary>
+	/// Возвращает и задаёт название товара, ограничение в 200 символов.
+	/// </summary>
+	public string Name
+	{
+		get
+		{
+			return _name;
+		}
+		set
+		{
+			_name = value;
+		}
+	}
 
-    /// <summary>
-    /// Р’РѕР·РІСЂР°С‰Р°РµС‚ Рё Р·Р°РґР°С‘С‚ РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ С‚РѕРІР°СЂРµ, РѕРіСЂР°РЅРёС‡РµРЅРёРµ РІ 1000 СЃРёРјРІРѕР»РѕРІ.
-    /// </summary>
-    public string Info
-    {
-        get
-        {
-            return _info;
-        }
-        set
-        {
-            _info = value;
-        }
-    }
+	/// <summary>
+	/// Информация о товаре.
+	/// </summary>
+	private string _info;
 
-    /// <summary>
-    /// РЎС‚РѕРёРјРѕСЃС‚СЊ С‚РѕРІР°СЂР°.
-    /// </summary>
-    private double _cost;
+	/// <summary>
+	/// Возвращает и задаёт информацию о товаре, ограничение в 1000 символов.
+	/// </summary>
+	public string Info
+	{
+		get
+		{
+			return _info;
+		}
+		set
+		{
+			_info = value;
+		}
+	}
 
-    /// <summary>
-    /// Р’РѕР·РІСЂР°С‰Р°РµС‚ Рё Р·Р°РґР°С‘С‚ РІРµС‰РµСЃС‚РІРµРЅРЅРѕРµ С‡РёСЃР»Рѕ РѕС‚ 0 РґРѕ 100000 - СЃС‚РѕРёРјРѕСЃС‚СЊ С‚РѕРІР°СЂР°.
-    /// </summary>
-    public double Cost
-    {
-        get
-        {
-            return _cost;
-        }
-        set
-        {
-            _cost = value;
-        }
-    }
+	/// <summary>
+	/// Стоимость товара.
+	/// </summary>
+	private double _cost;
 
-    /// <summary>
-    /// РЎРѕР·РґР°С‘С‚ СЌРєР·РµРјРїР»СЏСЂ РєР»Р°СЃСЃР° <see cref="Item"/>
-    /// </summary>
-    /// <param name="length">Р”Р»РёРЅР°. Р”РѕР»Р¶РЅР° Р±С‹С‚СЊ С‚РѕР»СЊРєРѕ РїРѕР»РѕР¶РёС‚РµР»СЊРЅРѕР№.</param>
-    public Item(string name, string info, double cost)
-    {
-        _allItemsCount += 1;
-        Id = _allItemsCount;
-        Name = name;
-        Info = info;
-        Cost = cost;
-    }
+	/// <summary>
+	/// Возвращает и задаёт вещественное число от 0 до 100000 - стоимость товара.
+	/// </summary>
+	public double Cost
+	{
+		get
+		{
+			return _cost;
+		}
+		set
+		{
+			_cost = value;
+		}
+	}
 
-    /// <summary>
-    /// РљРѕРЅСЃС‚СЂСѓРєС‚РѕСЂ РїРѕ СѓРјРѕР»С‡Р°РЅРёСЋ. РЎРѕР·РґР°С‘С‚ СЌРєР·РµРјРїР»СЏСЂ РєР»Р°СЃСЃР° <see cref="Item"/>
-    /// </summary>
-    public Rectangle()
-    {
-        Id = _allItemsCount;
-        Name = " ";
-        Info = " ";
-        Cost = 0;
-    }
+	/// <summary>
+	/// Создаёт экземпляр класса <see cref="Item"/>
+	/// </summary>
+	/// <param name="name">Название. До 200 символов.</param>
+	/// <param name="info">Описание. До 1000 символов.</param>
+	/// <param name="cost">Цена. От 0 до 100000.</param>
+	public Item(string name, string info, double cost)
+	{
+		_allItemsCount += 1;
+		Id = _allItemsCount;
+		Name = name;
+		Info = info;
+		Cost = cost;
+	}
+
+	/// <summary>
+	/// Конструктор по умолчанию. Создаёт экземпляр класса <see cref="Item"/>
+	/// </summary>
+	public Item()
+	{
+		Id = _allItemsCount;
+		Name = " ";
+		Info = " ";
+		Cost = 0;
+	}
 }
