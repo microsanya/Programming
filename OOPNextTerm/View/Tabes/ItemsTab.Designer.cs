@@ -1,4 +1,4 @@
-﻿namespace OOPNextTerm.View.Tabes
+﻿namespace OOPNextTerm.View.Tabs
 {
     partial class ItemsTab
     {
@@ -33,14 +33,14 @@
             RemoveItemButton = new Button();
             ItemsListGroupBox = new GroupBox();
             SelectedItemGroupBox = new GroupBox();
-            IdTextBox = new TextBox();
-            IDLabel = new Label();
-            CostLabel = new Label();
-            CostTextBox = new TextBox();
-            NameLabel = new Label();
-            NameTextBox = new TextBox();
-            DecriptionLabel = new Label();
             DescriptionTextBox = new TextBox();
+            DecriptionLabel = new Label();
+            NameTextBox = new TextBox();
+            NameLabel = new Label();
+            CostTextBox = new TextBox();
+            CostLabel = new Label();
+            IDLabel = new Label();
+            IdTextBox = new TextBox();
             ItemsListGroupBox.SuspendLayout();
             SelectedItemGroupBox.SuspendLayout();
             SuspendLayout();
@@ -54,6 +54,7 @@
             ItemsListBox.Name = "ItemsListBox";
             ItemsListBox.Size = new Size(378, 524);
             ItemsListBox.TabIndex = 1;
+            ItemsListBox.SelectedIndexChanged += ItemsListBox_SelectedIndexChanged;
             // 
             // AddItemButton
             // 
@@ -65,6 +66,7 @@
             AddItemButton.TabIndex = 2;
             AddItemButton.Text = "Add";
             AddItemButton.UseVisualStyleBackColor = true;
+            AddItemButton.Click += AddItemButton_Click;
             // 
             // RemoveItemButton
             // 
@@ -76,6 +78,7 @@
             RemoveItemButton.TabIndex = 3;
             RemoveItemButton.Text = "Remove";
             RemoveItemButton.UseVisualStyleBackColor = true;
+            RemoveItemButton.Click += RemoveItemButton_Click;
             // 
             // ItemsListGroupBox
             // 
@@ -108,57 +111,13 @@
             SelectedItemGroupBox.TabStop = false;
             SelectedItemGroupBox.Text = "Selected Item";
             // 
-            // IdTextBox
+            // DescriptionTextBox
             // 
-            IdTextBox.Location = new Point(65, 36);
-            IdTextBox.Name = "IdTextBox";
-            IdTextBox.Size = new Size(125, 27);
-            IdTextBox.TabIndex = 0;
-            // 
-            // IDLabel
-            // 
-            IDLabel.AutoSize = true;
-            IDLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            IDLabel.Location = new Point(6, 43);
-            IDLabel.Name = "IDLabel";
-            IDLabel.Size = new Size(27, 20);
-            IDLabel.TabIndex = 1;
-            IDLabel.Text = "ID:";
-            // 
-            // CostLabel
-            // 
-            CostLabel.AutoSize = true;
-            CostLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            CostLabel.Location = new Point(6, 86);
-            CostLabel.Name = "CostLabel";
-            CostLabel.Size = new Size(41, 20);
-            CostLabel.TabIndex = 2;
-            CostLabel.Text = "Cost:";
-            // 
-            // CostTextBox
-            // 
-            CostTextBox.Location = new Point(65, 79);
-            CostTextBox.Name = "CostTextBox";
-            CostTextBox.Size = new Size(125, 27);
-            CostTextBox.TabIndex = 3;
-            // 
-            // NameLabel
-            // 
-            NameLabel.AutoSize = true;
-            NameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            NameLabel.Location = new Point(6, 130);
-            NameLabel.Name = "NameLabel";
-            NameLabel.Size = new Size(52, 20);
-            NameLabel.TabIndex = 4;
-            NameLabel.Text = "Name:";
-            // 
-            // NameTextBox
-            // 
-            NameTextBox.Location = new Point(6, 153);
-            NameTextBox.Multiline = true;
-            NameTextBox.Name = "NameTextBox";
-            NameTextBox.Size = new Size(548, 105);
-            NameTextBox.TabIndex = 5;
+            DescriptionTextBox.Location = new Point(6, 310);
+            DescriptionTextBox.Multiline = true;
+            DescriptionTextBox.Name = "DescriptionTextBox";
+            DescriptionTextBox.Size = new Size(548, 303);
+            DescriptionTextBox.TabIndex = 7;
             // 
             // DecriptionLabel
             // 
@@ -170,13 +129,60 @@
             DecriptionLabel.TabIndex = 6;
             DecriptionLabel.Text = "Descriprion:";
             // 
-            // DescriptionTextBox
+            // NameTextBox
             // 
-            DescriptionTextBox.Location = new Point(6, 310);
-            DescriptionTextBox.Multiline = true;
-            DescriptionTextBox.Name = "DescriptionTextBox";
-            DescriptionTextBox.Size = new Size(548, 303);
-            DescriptionTextBox.TabIndex = 7;
+            NameTextBox.Location = new Point(6, 153);
+            NameTextBox.Multiline = true;
+            NameTextBox.Name = "NameTextBox";
+            NameTextBox.Size = new Size(548, 105);
+            NameTextBox.TabIndex = 5;
+            // 
+            // NameLabel
+            // 
+            NameLabel.AutoSize = true;
+            NameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            NameLabel.Location = new Point(6, 130);
+            NameLabel.Name = "NameLabel";
+            NameLabel.Size = new Size(52, 20);
+            NameLabel.TabIndex = 4;
+            NameLabel.Text = "Name:";
+            // 
+            // CostTextBox
+            // 
+            CostTextBox.Location = new Point(65, 79);
+            CostTextBox.Name = "CostTextBox";
+            CostTextBox.Size = new Size(125, 27);
+            CostTextBox.TabIndex = 3;
+            CostTextBox.TextChanged += CostTextBox_TextChanged;
+            // 
+            // CostLabel
+            // 
+            CostLabel.AutoSize = true;
+            CostLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            CostLabel.Location = new Point(6, 86);
+            CostLabel.Name = "CostLabel";
+            CostLabel.Size = new Size(41, 20);
+            CostLabel.TabIndex = 2;
+            CostLabel.Text = "Cost:";
+            // 
+            // IDLabel
+            // 
+            IDLabel.AutoSize = true;
+            IDLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            IDLabel.Location = new Point(6, 43);
+            IDLabel.Name = "IDLabel";
+            IDLabel.Size = new Size(27, 20);
+            IDLabel.TabIndex = 1;
+            IDLabel.Text = "ID:";
+            // 
+            // IdTextBox
+            // 
+            IdTextBox.Enabled = false;
+            IdTextBox.Location = new Point(65, 36);
+            IdTextBox.Name = "IdTextBox";
+            IdTextBox.ReadOnly = true;
+            IdTextBox.Size = new Size(125, 27);
+            IdTextBox.TabIndex = 0;
             // 
             // ItemsTab
             // 

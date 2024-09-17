@@ -9,10 +9,27 @@ using System.Threading.Tasks;
 /// </summary>
 class Item
 {
-	/// <summary>
-	/// ID товара.
-	/// </summary>
-	private int _id;
+
+    /// <summary>
+    /// Кол-во товаров.
+    /// </summary>
+    private static int _allItemsCount;
+
+    /// <summary>
+    /// Возвращает и задаёт кол-во товаров.
+    /// </summary>
+    public static int AllItemsCount
+    {
+        get
+        {
+            return _allItemsCount;
+        }
+    }
+
+    /// <summary>
+    /// ID товара.
+    /// </summary>
+    private int _id;
 
 	/// <summary>
 	/// Возвращает ID товара.
@@ -26,22 +43,6 @@ class Item
 		private set
 		{
 			_id = value;
-		}
-	}
-
-	/// <summary>
-	/// Кол-во товаров.
-	/// </summary>
-	private static int _allItemsCount;
-
-	/// <summary>
-	/// Возвращает и задаёт кол-во товаров.
-	/// </summary>
-	public static int AllItemsCount
-	{
-		get
-		{
-			return _allItemsCount;
 		}
 	}
 
@@ -116,8 +117,8 @@ class Item
 	/// <param name="cost">Цена. От 0 до 100000.</param>
 	public Item(string name, string info, double cost)
 	{
-		_allItemsCount += 1;
-		Id = _allItemsCount;
+        Id = _allItemsCount;
+        _allItemsCount ++;
 		Name = name;
 		Info = info;
 		Cost = cost;
@@ -129,7 +130,8 @@ class Item
 	public Item()
 	{
 		Id = _allItemsCount;
-		Name = " ";
+        _allItemsCount++;
+        Name = " ";
 		Info = " ";
 		Cost = 0;
 	}
