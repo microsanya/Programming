@@ -51,7 +51,7 @@ namespace OOPNextTerm.View.Tabes
         /// <param name="e"></param>
         private void AddCustomerButton_Click(object sender, EventArgs e)
         {
-            Customer newCustomer = new Customer();
+            Customer newCustomer = CustomerFactory.Randomize();
             _customers.Add(newCustomer);
 
             CustomersListBox.Items.Clear();

@@ -53,7 +53,7 @@
             ItemsListBox.ItemHeight = 20;
             ItemsListBox.Location = new Point(6, 26);
             ItemsListBox.Name = "ItemsListBox";
-            ItemsListBox.Size = new Size(378, 524);
+            ItemsListBox.Size = new Size(466, 524);
             ItemsListBox.TabIndex = 1;
             ItemsListBox.SelectedIndexChanged += ItemsListBox_SelectedIndexChanged;
             // 
@@ -75,7 +75,7 @@
             RemoveItemButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             RemoveItemButton.FlatStyle = FlatStyle.Popup;
             RemoveItemButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            RemoveItemButton.Location = new Point(227, 560);
+            RemoveItemButton.Location = new Point(315, 560);
             RemoveItemButton.Name = "RemoveItemButton";
             RemoveItemButton.Size = new Size(157, 53);
             RemoveItemButton.TabIndex = 3;
@@ -92,7 +92,7 @@
             ItemsListGroupBox.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             ItemsListGroupBox.Location = new Point(0, 0);
             ItemsListGroupBox.Name = "ItemsListGroupBox";
-            ItemsListGroupBox.Size = new Size(391, 625);
+            ItemsListGroupBox.Size = new Size(478, 625);
             ItemsListGroupBox.TabIndex = 4;
             ItemsListGroupBox.TabStop = false;
             ItemsListGroupBox.Text = "Items";
@@ -109,9 +109,9 @@
             SelectedItemGroupBox.Controls.Add(IDLabel);
             SelectedItemGroupBox.Controls.Add(IdTextBox);
             SelectedItemGroupBox.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            SelectedItemGroupBox.Location = new Point(403, 0);
+            SelectedItemGroupBox.Location = new Point(484, 0);
             SelectedItemGroupBox.Name = "SelectedItemGroupBox";
-            SelectedItemGroupBox.Size = new Size(560, 625);
+            SelectedItemGroupBox.Size = new Size(479, 625);
             SelectedItemGroupBox.TabIndex = 5;
             SelectedItemGroupBox.TabStop = false;
             SelectedItemGroupBox.Text = "Selected Item";
@@ -122,7 +122,7 @@
             DescriptionTextBox.Location = new Point(6, 310);
             DescriptionTextBox.Multiline = true;
             DescriptionTextBox.Name = "DescriptionTextBox";
-            DescriptionTextBox.Size = new Size(548, 303);
+            DescriptionTextBox.Size = new Size(467, 303);
             DescriptionTextBox.TabIndex = 7;
             DescriptionTextBox.TextChanged += DescriptionTextBox_TextChanged;
             // 
@@ -142,7 +142,7 @@
             NameTextBox.Location = new Point(6, 153);
             NameTextBox.Multiline = true;
             NameTextBox.Name = "NameTextBox";
-            NameTextBox.Size = new Size(548, 105);
+            NameTextBox.Size = new Size(467, 105);
             NameTextBox.TabIndex = 5;
             NameTextBox.TextChanged += NameTextBox_TextChanged;
             // 

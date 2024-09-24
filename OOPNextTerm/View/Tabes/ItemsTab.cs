@@ -53,7 +53,7 @@ namespace OOPNextTerm.View.Tabs
         /// <param name="e"></param>
         private void AddItemButton_Click(object sender, EventArgs e)
         {
-            Item newItem = new Item();
+            Item newItem = ItemFactory.Randomize();
             _items.Add(newItem);
 
             ItemsListBox.Items.Clear();
