@@ -97,7 +97,6 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "MainForm";
             Text = "Object Oriented Practics";
-            Load += Form1_Load;
             MainControl.ResumeLayout(false);
             tabPage1.ResumeLayout(false);
             CustomersPage.ResumeLayout(false);

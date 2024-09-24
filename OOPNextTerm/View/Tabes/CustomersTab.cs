@@ -13,6 +13,7 @@ namespace OOPNextTerm.View.Tabes
 {
     public partial class CustomersTab : UserControl
     {
+
         /// <summary>
         /// Инициализация пользовательского элемента.
         /// </summary>

@@ -13,6 +13,7 @@ namespace OOPNextTerm.View.Tabs
 {
     public partial class ItemsTab : UserControl
     {
+        
         /// <summary>
         /// Инициализация формы.
         /// </summary>
@@ -106,7 +107,6 @@ namespace OOPNextTerm.View.Tabs
                 }
             }
         }
-
 
         /// <summary>
         /// Проверка на ввод цифр в CostTextBox.

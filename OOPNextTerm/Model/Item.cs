@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 /// <summary>
 /// Хранит данные о товаре.
 /// </summary>
-class Item
+public class Item
 {
 
     /// <summary>

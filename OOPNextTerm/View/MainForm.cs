@@ -1,3 +1,6 @@
+using OOPNextTerm.View.Tabes;
+using System.Windows.Forms;
+
 namespace OOPNextTerm
 {
     public partial class MainForm : Form
@@ -5,11 +8,9 @@ namespace OOPNextTerm
         public MainForm()
         {
             InitializeComponent();
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
 
         }
+
     }
+
 }
