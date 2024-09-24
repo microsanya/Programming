@@ -118,6 +118,7 @@
             DescriptionTextBox.Name = "DescriptionTextBox";
             DescriptionTextBox.Size = new Size(548, 303);
             DescriptionTextBox.TabIndex = 7;
+            DescriptionTextBox.TextChanged += DescriptionTextBox_TextChanged;
             // 
             // DecriptionLabel
             // 
@@ -136,6 +137,7 @@
             NameTextBox.Name = "NameTextBox";
             NameTextBox.Size = new Size(548, 105);
             NameTextBox.TabIndex = 5;
+            NameTextBox.TextChanged += NameTextBox_TextChanged;
             // 
             // NameLabel
             // 
@@ -153,7 +155,7 @@
             CostTextBox.Name = "CostTextBox";
             CostTextBox.Size = new Size(125, 27);
             CostTextBox.TabIndex = 3;
-            CostTextBox.TextChanged += CostTextBox_TextChanged;
+            CostTextBox.KeyPress += CostTextBox_KeyPress;
             // 
             // CostLabel
             // 

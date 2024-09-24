@@ -72,7 +72,7 @@ namespace OOPNextTerm.View.Tabs
         /// <param name="e"></param>
         private void ItemsListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (ItemsListBox.SelectedIndex != null)
+            if (ItemsListBox.SelectedIndex >= 0 && ItemsListBox.SelectedIndex <= _items.Count)
             {
                 int selectedItemNumber = ItemsListBox.SelectedIndex;
                 _currentItem = _items[selectedItemNumber];
@@ -107,26 +107,67 @@ namespace OOPNextTerm.View.Tabs
             }
         }
 
+
         /// <summary>
-        /// Изменение поля CostTextBox.
+        /// Проверка на ввод цифр в CostTextBox.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void CostTextBox_TextChanged(object sender, EventArgs e)
+        private void CostTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
-            try
+            if ((e.KeyChar >= '0' && e.KeyChar <= '9') || e.KeyChar == ',')
             {
-                if (Convert.ToDouble(CostTextBox.Text) > 0)
+                CostTextBox.BackColor = System.Drawing.Color.White;
+                return;
+            }
+            if (Char.IsControl(e.KeyChar))
+            {
+                if (e.KeyChar == '\r')
                 {
-                    CostTextBox.BackColor = System.Drawing.Color.White;
                     _items[ItemsListBox.SelectedIndex].Cost = Convert.ToDouble(CostTextBox.Text);
                     Item item = _items[ItemsListBox.SelectedIndex];
                     ItemsListBox.Items[ItemsListBox.SelectedIndex] = $"ID: {item.Id}; Cost: {item.Cost}; Name: {item.Name}";
                 }
+                return;
             }
-            catch
+            else
             {
-                CostTextBox.BackColor = System.Drawing.Color.Red;
+                e.Handled = true;
+            }
+        }
+
+        /// <summary>
+        /// При изменении текста в NameTextBox, соответствующие значения меняются в нужном item и отображаются  ItemsListBox.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void NameTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (NameTextBox.Text.Length < 200)
+            {
+                NameTextBox.BackColor = System.Drawing.Color.White;
+                _items[ItemsListBox.SelectedIndex].Name = NameTextBox.Text;
+                Item item = _items[ItemsListBox.SelectedIndex];
+                ItemsListBox.Items[ItemsListBox.SelectedIndex] = $"ID: {item.Id}; Cost: {item.Cost}; Name: {item.Name}";
+            }
+            else
+            {
+                NameTextBox.BackColor = System.Drawing.Color.LightPink;
+            }
+        }
+
+        private void DescriptionTextBox_TextChanged(object sender, EventArgs e)
+        {
+            if (DescriptionTextBox.Text.Length < 1000)
+            {
+                DescriptionTextBox.BackColor = System.Drawing.Color.White;
+                _items[ItemsListBox.SelectedIndex].Info = DescriptionTextBox.Text;
+                Item item = _items[ItemsListBox.SelectedIndex];
+                ItemsListBox.Items[ItemsListBox.SelectedIndex] = $"ID: {item.Id}; Cost: {item.Cost}; Name: {item.Name}";
+            }
+            else
+            {
+                DescriptionTextBox.BackColor = System.Drawing.Color.LightPink;
             }
         }
     }
