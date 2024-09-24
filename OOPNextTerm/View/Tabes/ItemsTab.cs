@@ -96,8 +96,8 @@ namespace OOPNextTerm.View.Tabs
 
                 foreach (var item in _items)
                 {
-                    string addingFlight = $"ID: {item.Id}; Cost: {item.Cost}; Name: {item.Name}";
-                    ItemsListBox.Items.Add(addingFlight);
+                    string addingItem = $"ID: {item.Id}; Cost: {item.Cost}; Name: {item.Name}";
+                    ItemsListBox.Items.Add(addingItem);
                 }
 
                 if (selectedIndex < ItemsListBox.Items.Count)
@@ -156,6 +156,11 @@ namespace OOPNextTerm.View.Tabs
             }
         }
 
+        /// <summary>
+        /// Изменение описания товара.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void DescriptionTextBox_TextChanged(object sender, EventArgs e)
         {
             if (DescriptionTextBox.Text.Length < 1000)

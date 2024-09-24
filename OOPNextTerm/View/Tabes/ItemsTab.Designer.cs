@@ -47,6 +47,7 @@
             // 
             // ItemsListBox
             // 
+            ItemsListBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             ItemsListBox.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             ItemsListBox.FormattingEnabled = true;
             ItemsListBox.ItemHeight = 20;
@@ -58,6 +59,7 @@
             // 
             // AddItemButton
             // 
+            AddItemButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             AddItemButton.FlatStyle = FlatStyle.Popup;
             AddItemButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             AddItemButton.Location = new Point(6, 560);
@@ -70,6 +72,7 @@
             // 
             // RemoveItemButton
             // 
+            RemoveItemButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             RemoveItemButton.FlatStyle = FlatStyle.Popup;
             RemoveItemButton.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             RemoveItemButton.Location = new Point(227, 560);
@@ -82,19 +85,21 @@
             // 
             // ItemsListGroupBox
             // 
+            ItemsListGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ItemsListGroupBox.Controls.Add(AddItemButton);
             ItemsListGroupBox.Controls.Add(ItemsListBox);
             ItemsListGroupBox.Controls.Add(RemoveItemButton);
             ItemsListGroupBox.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            ItemsListGroupBox.Location = new Point(3, 3);
+            ItemsListGroupBox.Location = new Point(0, 0);
             ItemsListGroupBox.Name = "ItemsListGroupBox";
-            ItemsListGroupBox.Size = new Size(391, 619);
+            ItemsListGroupBox.Size = new Size(391, 625);
             ItemsListGroupBox.TabIndex = 4;
             ItemsListGroupBox.TabStop = false;
             ItemsListGroupBox.Text = "Items";
             // 
             // SelectedItemGroupBox
             // 
+            SelectedItemGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             SelectedItemGroupBox.Controls.Add(DescriptionTextBox);
             SelectedItemGroupBox.Controls.Add(DecriptionLabel);
             SelectedItemGroupBox.Controls.Add(NameTextBox);
@@ -104,15 +109,16 @@
             SelectedItemGroupBox.Controls.Add(IDLabel);
             SelectedItemGroupBox.Controls.Add(IdTextBox);
             SelectedItemGroupBox.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            SelectedItemGroupBox.Location = new Point(400, 3);
+            SelectedItemGroupBox.Location = new Point(403, 0);
             SelectedItemGroupBox.Name = "SelectedItemGroupBox";
-            SelectedItemGroupBox.Size = new Size(560, 619);
+            SelectedItemGroupBox.Size = new Size(560, 625);
             SelectedItemGroupBox.TabIndex = 5;
             SelectedItemGroupBox.TabStop = false;
             SelectedItemGroupBox.Text = "Selected Item";
             // 
             // DescriptionTextBox
             // 
+            DescriptionTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             DescriptionTextBox.Location = new Point(6, 310);
             DescriptionTextBox.Multiline = true;
             DescriptionTextBox.Name = "DescriptionTextBox";
@@ -132,6 +138,7 @@
             // 
             // NameTextBox
             // 
+            NameTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             NameTextBox.Location = new Point(6, 153);
             NameTextBox.Multiline = true;
             NameTextBox.Name = "NameTextBox";

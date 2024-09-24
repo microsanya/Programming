@@ -10,6 +10,22 @@ using System.Threading.Tasks;
 class Customer
 {
     /// <summary>
+    /// Кол-во покупателей.
+    /// </summary>
+    private static int _allCustomersCount;
+
+    /// <summary>
+    /// Возвращает и задаёт кол-во покупателей.
+    /// </summary>
+    public static int AllCustomersCount
+    {
+        get
+        {
+            return _allCustomersCount;
+        }
+    }
+
+    /// <summary>
     /// ID покупателя.
     /// </summary>
     private int _id;
@@ -26,22 +42,6 @@ class Customer
         private set
         {
             _id = value;
-        }
-    }
-
-    /// <summary>
-    /// Кол-во покупателей.
-    /// </summary>
-    private static int _allCustomersCount;
-
-    /// <summary>
-    /// Возвращает и задаёт кол-во покупателей.
-    /// </summary>
-    public static int AllCustomersCount
-    {
-        get
-        {
-            return _allCustomersCount;
         }
     }
 
@@ -94,8 +94,8 @@ class Customer
     /// <param name="address">Адрес доставки. До 500 символов.</param>
     public Customer(string fullName, string address)
     {
-        _allCustomersCount += 1;
         Id = _allCustomersCount;
+        _allCustomersCount++;
         FullName = fullName;
         Address = address;
     }
@@ -106,6 +106,7 @@ class Customer
     public Customer()
     {
         Id = _allCustomersCount;
+        _allCustomersCount++;
         FullName = " ";
         Address = " ";
     }

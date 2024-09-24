@@ -118,7 +118,7 @@ class Item
 	public Item(string name, string info, double cost)
 	{
         Id = _allItemsCount;
-        _allItemsCount ++;
+        _allItemsCount++;
 		Name = name;
 		Info = info;
 		Cost = cost;
