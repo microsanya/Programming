@@ -145,5 +145,15 @@ namespace OOPNextTerm.View.Tabes
                 AddressTextBox.BackColor = System.Drawing.Color.LightPink;
             }
         }
+
+        private void CustomersPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

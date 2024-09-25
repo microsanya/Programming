@@ -13,7 +13,7 @@ namespace OOPNextTerm.View.Tabs
 {
     public partial class ItemsTab : UserControl
     {
-        
+
         /// <summary>
         /// Инициализация формы.
         /// </summary>
