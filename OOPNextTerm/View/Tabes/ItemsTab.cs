@@ -41,6 +41,8 @@ namespace OOPNextTerm.View.Tabs
             IdTextBox.Text = Convert.ToString(item.Id);
             // Cost
             CostTextBox.Text = Convert.ToString(item.Cost);
+            // Category
+            CategoryComboBox.SelectedIndex = Convert.ToInt32(item.ItemCategory);
             // Name
             NameTextBox.Text = item.Name;
             // Description
@@ -174,6 +176,16 @@ namespace OOPNextTerm.View.Tabs
             {
                 DescriptionTextBox.BackColor = System.Drawing.Color.LightPink;
             }
+        }
+
+        /// <summary>
+        /// Изменение категории товара.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _items[ItemsListBox.SelectedIndex].ItemCategory = (Category)CategoryComboBox.SelectedIndex;
         }
     }
 }

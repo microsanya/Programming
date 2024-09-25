@@ -76,7 +76,6 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.Size = new Size(467, 75);
             tableLayoutPanel1.TabIndex = 1;
-            tableLayoutPanel1.Paint += tableLayoutPanel1_Paint;
             // 
             // RemoveCustomerButton
             // 
@@ -159,7 +158,6 @@
             CustomersPanel.Name = "CustomersPanel";
             CustomersPanel.Size = new Size(468, 347);
             CustomersPanel.TabIndex = 2;
-            CustomersPanel.Paint += CustomersPanel_Paint;
             // 
             // FullNameTextBox
             // 

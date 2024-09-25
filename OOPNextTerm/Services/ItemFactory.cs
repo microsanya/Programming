@@ -15,8 +15,9 @@ static class ItemFactory
         string itemName = RandomItemData.Names[indexItemInfo];
         string itemInfo = RandomItemData.Info[indexItemInfo];
         double itemCost = RandomItemData.Costs[rnd.Next(RandomItemData.Costs.Length)];
+        Category category = (Category)indexItemInfo;
 
-        Item newItem = new Item(itemName, itemInfo, itemCost);
+        Item newItem = new Item(itemName, itemInfo, itemCost, category);
 
         return newItem;
     }

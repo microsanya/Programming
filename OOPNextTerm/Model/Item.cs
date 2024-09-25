@@ -110,18 +110,25 @@ public class Item
 	}
 
 	/// <summary>
-	/// Создаёт экземпляр класса <see cref="Item"/>
+	/// Возвращает и задаёт категорию товара.
 	/// </summary>
-	/// <param name="name">Название. До 200 символов.</param>
-	/// <param name="info">Описание. До 1000 символов.</param>
-	/// <param name="cost">Цена. От 0 до 100000.</param>
-	public Item(string name, string info, double cost)
+	public Category ItemCategory { get; set; }
+
+    /// <summary>
+    /// Создаёт экземпляр класса <see cref="Item"/>
+    /// </summary>
+    /// <param name="name">Название. До 200 символов.</param>
+    /// <param name="info">Описание. До 1000 символов.</param>
+    /// <param name="cost">Цена. От 0 до 100000.</param>
+    /// <param name="category">Категория товара.</param>
+    public Item(string name, string info, double cost, Category category)
 	{
         Id = _allItemsCount;
         _allItemsCount++;
 		Name = name;
 		Info = info;
 		Cost = cost;
+		ItemCategory = category;
 	}
 
 	/// <summary>
@@ -134,5 +141,7 @@ public class Item
         Name = " ";
 		Info = " ";
 		Cost = 0;
-	}
+		ItemCategory = Category.Electronics;
+
+    }
 }
