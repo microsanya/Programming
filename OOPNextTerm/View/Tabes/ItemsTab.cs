@@ -26,6 +26,21 @@ namespace OOPNextTerm.View.Tabs
         /// Закрытое поле, хранящее массив товаров.
         /// </summary>
         private List<Item> _items = new List<Item>();
+
+        /// <summary>
+        /// Возвращает и задаёт массив товаров.
+        /// </summary>
+        public List<Item> Items
+        {
+            get
+            {
+                return _items;
+            }
+            set
+            {
+                _items = value;
+            }
+        }
         /// <summary>
         /// Ранее созданный товар.
         /// </summary>

@@ -142,6 +142,5 @@ public class Item
 		Info = " ";
 		Cost = 0;
 		ItemCategory = Category.Electronics;
-
     }
 }
