@@ -30,15 +30,15 @@ public static class RandomCustomerData
     /// </summary>
     public static readonly string[] Addresses =
     {
-        "1458 Maple Street, Springfield, IL 62701",
-        "3427 Oak Lane, Denver, CO 80202",
-        "2219 Elm Avenue, Austin, TX 7330",
-        "5683 Pine Boulevard, Phoenix, AZ 85001",
-        "9014 Birch Drive, Seattle, WA 98101",
-        "7789 Willow Road, Orlando, FL 32801",
-        "2307 Cedar Street, Portland, OR 97201",
-        "5149 Aspen Lane, Boston, MA 02108",
-        "3890 Sycamore Circle, Miami, FL 33101",
-        "6721 Redwood Avenue, San Diego, CA 92101",
+        "627001,US,Springfield,Maple Street,1458/1,12",
+        "802002,US,Denver,Oak Lane,3427/2,5",
+        "733001,US,Austin,Elm Avenue,2219/1,8",
+        "850001,US,Phoenix,Pine Boulevard,5683/3,15",
+        "981001,US,Seattle,Birch Drive,9014/2,20",
+        "328001,US,Orlando,Willow Road,7789/1,3",
+        "972001,US,Portland,Cedar Street,2307/4,7",
+        "021081,US,Boston,Aspen Lane,5149/1,11",
+        "331001,US,Miami,Sycamore Circle,3890/5,9",
+        "921001,US,San Diego, Redwood Avenue,6721/2,14",
     };
 }

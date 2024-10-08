@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OOPNextTerm.View.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +14,6 @@ namespace OOPNextTerm.View.Tabes
 {
     public partial class CustomersTab : UserControl
     {
-
         /// <summary>
         /// Инициализация пользовательского элемента.
         /// </summary>
@@ -26,23 +26,37 @@ namespace OOPNextTerm.View.Tabes
         /// Закрытое поле, хранящее массив покупателей.
         /// </summary>
         private List<Customer> _customers = new List<Customer>();
+
+        /// <summary>
+        /// Возвращает и задает массив покупателей.
+        /// </summary>
+        public List<Customer> Customers
+        {
+            get
+            {
+                return _customers;
+            }
+            set
+            {
+                _customers = value;
+            }
+        }
+
         /// <summary>
         /// Ранее созданный покупатель.
         /// </summary>
         private Customer _currentCustomer = new Customer();
 
         /// <summary>
-        /// Обновление данных в текстовых полях по указанному товару.
+        /// Обновление данных в текстовых полях по указанному покупателю.
         /// </summary>
-        /// <param name="item">Сам товар.</param>
+        /// <param name="customer">Сам покупатель.</param>
         private void UpdateCustomerInfo(Customer customer)
         {
             // ID
             CustomerIDTextBox.Text = Convert.ToString(customer.Id);
             // Full Name
             FullNameTextBox.Text = customer.FullName;
-            // Address
-            AddressTextBox.Text = customer.Address;
         }
 
         /// <summary>
@@ -62,6 +76,7 @@ namespace OOPNextTerm.View.Tabes
                 string addingString = $"ID: {customer.Id}; Full Name: {customer.FullName}";
                 CustomersListBox.Items.Add(addingString);
             }
+            addressControl1.ClearForm();
         }
 
         /// <summary>
@@ -73,9 +88,16 @@ namespace OOPNextTerm.View.Tabes
         {
             if (CustomersListBox.SelectedIndex >= 0 && CustomersListBox.SelectedIndex < _customers.Count)
             {
+                addressControl1.ListBoxIsNull = false;
                 int selectedCustomerNumber = CustomersListBox.SelectedIndex;
                 _currentCustomer = _customers[selectedCustomerNumber];
                 UpdateCustomerInfo(_currentCustomer);
+                addressControl1.UpdateData(_currentCustomer.Address);
+            }
+            else
+            {
+                addressControl1.ListBoxIsNull = true;
+                addressControl1.ClearForm();
             }
         }
 
@@ -127,23 +149,13 @@ namespace OOPNextTerm.View.Tabes
         }
 
         /// <summary>
-        /// Редактирование адреса покупателя.
+        /// Прогрузка формы.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void AddressTextBox_TextChanged(object sender, EventArgs e)
+        private void addressControl1_Load(object sender, EventArgs e)
         {
-            if (AddressTextBox.Text.Length < 500)
-            {
-                AddressTextBox.BackColor = System.Drawing.Color.White;
-                _customers[CustomersListBox.SelectedIndex].Address = AddressTextBox.Text;
-                Customer customer = _customers[CustomersListBox.SelectedIndex];
-                CustomersListBox.Items[CustomersListBox.SelectedIndex] = $"ID: {customer.Id}; Full Name: {customer.FullName}";
-            }
-            else
-            {
-                AddressTextBox.BackColor = System.Drawing.Color.LightPink;
-            }
+
         }
     }
 }

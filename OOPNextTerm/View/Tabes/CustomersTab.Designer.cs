@@ -28,21 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Address address1 = new Address();
             CustomersGroupBox = new GroupBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             RemoveCustomerButton = new Button();
             AddCustomerButton = new Button();
             CustomersListBox = new ListBox();
             SelectedCustomerGroupBox = new GroupBox();
-            AddressTextBox = new TextBox();
             CustomersPanel2 = new Panel();
             CustomersPanel = new Panel();
             FullNameTextBox = new TextBox();
             CustomerIDTextBox = new TextBox();
-            AddressLabel = new Label();
             FullNameLabel = new Label();
             CustomerIDLabel = new Label();
             CustomerLayoutPanel = new TableLayoutPanel();
+            addressControl1 = new Controls.AddressControl();
             CustomersGroupBox.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             SelectedCustomerGroupBox.SuspendLayout();
@@ -117,39 +117,27 @@
             // 
             // SelectedCustomerGroupBox
             // 
-            SelectedCustomerGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            SelectedCustomerGroupBox.Controls.Add(AddressTextBox);
+            SelectedCustomerGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             SelectedCustomerGroupBox.Controls.Add(CustomersPanel2);
             SelectedCustomerGroupBox.Controls.Add(CustomersPanel);
             SelectedCustomerGroupBox.Controls.Add(FullNameTextBox);
             SelectedCustomerGroupBox.Controls.Add(CustomerIDTextBox);
-            SelectedCustomerGroupBox.Controls.Add(AddressLabel);
             SelectedCustomerGroupBox.Controls.Add(FullNameLabel);
             SelectedCustomerGroupBox.Controls.Add(CustomerIDLabel);
             SelectedCustomerGroupBox.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             SelectedCustomerGroupBox.Location = new Point(485, 3);
             SelectedCustomerGroupBox.Name = "SelectedCustomerGroupBox";
-            SelectedCustomerGroupBox.Size = new Size(474, 267);
+            SelectedCustomerGroupBox.Size = new Size(474, 117);
             SelectedCustomerGroupBox.TabIndex = 1;
             SelectedCustomerGroupBox.TabStop = false;
             SelectedCustomerGroupBox.Text = "Selected Customer";
-            // 
-            // AddressTextBox
-            // 
-            AddressTextBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            AddressTextBox.Location = new Point(91, 119);
-            AddressTextBox.Multiline = true;
-            AddressTextBox.Name = "AddressTextBox";
-            AddressTextBox.Size = new Size(376, 142);
-            AddressTextBox.TabIndex = 5;
-            AddressTextBox.TextChanged += AddressTextBox_TextChanged;
             // 
             // CustomersPanel2
             // 
             CustomersPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             CustomersPanel2.Location = new Point(0, 267);
             CustomersPanel2.Name = "CustomersPanel2";
-            CustomersPanel2.Size = new Size(474, 350);
+            CustomersPanel2.Size = new Size(474, 200);
             CustomersPanel2.TabIndex = 1;
             // 
             // CustomersPanel
@@ -177,16 +165,6 @@
             CustomerIDTextBox.Size = new Size(125, 27);
             CustomerIDTextBox.TabIndex = 3;
             // 
-            // AddressLabel
-            // 
-            AddressLabel.AutoSize = true;
-            AddressLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            AddressLabel.Location = new Point(6, 122);
-            AddressLabel.Name = "AddressLabel";
-            AddressLabel.Size = new Size(65, 20);
-            AddressLabel.TabIndex = 2;
-            AddressLabel.Text = "Address:";
-            // 
             // FullNameLabel
             // 
             FullNameLabel.AutoSize = true;
@@ -213,12 +191,29 @@
             CustomerLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             CustomerLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             CustomerLayoutPanel.Controls.Add(CustomersGroupBox, 0, 0);
+            CustomerLayoutPanel.Controls.Add(addressControl1, 1, 0);
             CustomerLayoutPanel.Location = new Point(3, 3);
             CustomerLayoutPanel.Name = "CustomerLayoutPanel";
             CustomerLayoutPanel.RowCount = 1;
             CustomerLayoutPanel.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             CustomerLayoutPanel.Size = new Size(959, 620);
             CustomerLayoutPanel.TabIndex = 3;
+            // 
+            // addressControl1
+            // 
+            address1.Apartment = 0;
+            address1.Building = " ";
+            address1.City = " ";
+            address1.Country = " ";
+            address1.Index = 0;
+            address1.Street = " ";
+            addressControl1.CustomerAddress = address1;
+            addressControl1.Dock = DockStyle.Bottom;
+            addressControl1.Location = new Point(482, 123);
+            addressControl1.Name = "addressControl1";
+            addressControl1.Size = new Size(474, 494);
+            addressControl1.TabIndex = 1;
+            addressControl1.Load += addressControl1_Load;
             // 
             // CustomersTab
             // 
@@ -245,13 +240,12 @@
         private GroupBox SelectedCustomerGroupBox;
         private Panel CustomersPanel;
         private Label CustomerIDLabel;
-        private TextBox AddressTextBox;
         private TextBox FullNameTextBox;
         private TextBox CustomerIDTextBox;
-        private Label AddressLabel;
         private Label FullNameLabel;
         private TableLayoutPanel CustomerLayoutPanel;
         private Panel CustomersPanel2;
         private TableLayoutPanel tableLayoutPanel1;
+        private Controls.AddressControl addressControl1;
     }
 }

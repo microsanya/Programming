@@ -69,12 +69,12 @@ public class Customer
     /// <summary>
     /// Адрес доставки покупателя.
     /// </summary>
-    private string _address;
+    private Address _address;
 
     /// <summary>
     /// Возвращает и задаёт адрес доставки покупателя, должен быть до 500 символов.
     /// </summary>
-    public string Address
+    public Address Address
     {
         get
         {
@@ -82,7 +82,6 @@ public class Customer
         }
         set
         {
-            ValueValidator.AssertOnNeedSize(value, 500, Address);
             _address = value;
         }
     }
@@ -92,7 +91,7 @@ public class Customer
     /// </summary>
     /// <param name="fullName">Полное имя. До 200 символов.</param>
     /// <param name="address">Адрес доставки. До 500 символов.</param>
-    public Customer(string fullName, string address)
+    public Customer(string fullName, Address address)
     {
         Id = _allCustomersCount;
         _allCustomersCount++;
@@ -108,6 +107,6 @@ public class Customer
         Id = _allCustomersCount;
         _allCustomersCount++;
         FullName = " ";
-        Address = " ";
+        Address = new Address();
     }
 }
