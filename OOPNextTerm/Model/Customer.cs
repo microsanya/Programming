@@ -87,16 +87,38 @@ public class Customer
     }
 
     /// <summary>
+    /// Корзина товаров покупателя.
+    /// </summary>
+    private Cart _cart;
+
+    /// <summary>
+    /// Возвращает и задаёт корзину покупателя.
+    /// </summary>
+    public Cart Cart
+    {
+        get
+        {
+            return _cart;
+        }
+        set
+        {
+            _cart = value;
+        }
+    }
+
+    /// <summary>
     /// Создаёт экземпляр класса <see cref="Customer"/>
     /// </summary>
     /// <param name="fullName">Полное имя. До 200 символов.</param>
     /// <param name="address">Адрес доставки. До 500 символов.</param>
     public Customer(string fullName, Address address)
+    public Customer(string fullName, string address, Cart cart)
     {
         Id = _allCustomersCount;
         _allCustomersCount++;
         FullName = fullName;
         Address = address;
+        Cart = cart;
     }
 
     /// <summary>
@@ -108,5 +130,6 @@ public class Customer
         _allCustomersCount++;
         FullName = " ";
         Address = new Address();
+        Cart = new Cart();
     }
 }
