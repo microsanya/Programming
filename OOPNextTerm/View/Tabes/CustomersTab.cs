@@ -76,7 +76,7 @@ namespace OOPNextTerm.View.Tabes
                 string addingString = $"ID: {customer.Id}; Full Name: {customer.FullName}";
                 CustomersListBox.Items.Add(addingString);
             }
-            addressControl1.ClearForm();
+            CustomerDeliveryAddress.ClearForm();
         }
 
         /// <summary>
@@ -88,16 +88,16 @@ namespace OOPNextTerm.View.Tabes
         {
             if (CustomersListBox.SelectedIndex >= 0 && CustomersListBox.SelectedIndex < _customers.Count)
             {
-                addressControl1.ListBoxIsNull = false;
+                CustomerDeliveryAddress.ListBoxIsNull = false;
                 int selectedCustomerNumber = CustomersListBox.SelectedIndex;
                 _currentCustomer = _customers[selectedCustomerNumber];
                 UpdateCustomerInfo(_currentCustomer);
-                addressControl1.UpdateData(_currentCustomer.Address);
+                CustomerDeliveryAddress.UpdateData(_currentCustomer.Address);
             }
             else
             {
-                addressControl1.ListBoxIsNull = true;
-                addressControl1.ClearForm();
+                CustomerDeliveryAddress.ListBoxIsNull = true;
+                CustomerDeliveryAddress.ClearForm();
             }
         }
 

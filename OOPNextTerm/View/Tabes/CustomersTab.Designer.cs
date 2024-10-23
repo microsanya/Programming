@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Address address1 = new Address();
+            Address address2 = new Address();
             CustomersGroupBox = new GroupBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             RemoveCustomerButton = new Button();
@@ -42,7 +42,7 @@
             FullNameLabel = new Label();
             CustomerIDLabel = new Label();
             CustomerLayoutPanel = new TableLayoutPanel();
-            addressControl1 = new Controls.AddressControl();
+            CustomerDeliveryAddress = new Controls.AddressControl();
             CustomersGroupBox.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             SelectedCustomerGroupBox.SuspendLayout();
@@ -191,7 +191,7 @@
             CustomerLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             CustomerLayoutPanel.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             CustomerLayoutPanel.Controls.Add(CustomersGroupBox, 0, 0);
-            CustomerLayoutPanel.Controls.Add(addressControl1, 1, 0);
+            CustomerLayoutPanel.Controls.Add(CustomerDeliveryAddress, 1, 0);
             CustomerLayoutPanel.Location = new Point(3, 3);
             CustomerLayoutPanel.Name = "CustomerLayoutPanel";
             CustomerLayoutPanel.RowCount = 1;
@@ -199,21 +199,21 @@
             CustomerLayoutPanel.Size = new Size(959, 620);
             CustomerLayoutPanel.TabIndex = 3;
             // 
-            // addressControl1
+            // CustomerDeliveryAddress
             // 
-            address1.Apartment = 0;
-            address1.Building = " ";
-            address1.City = " ";
-            address1.Country = " ";
-            address1.Index = 0;
-            address1.Street = " ";
-            addressControl1.CustomerAddress = address1;
-            addressControl1.Dock = DockStyle.Bottom;
-            addressControl1.Location = new Point(482, 123);
-            addressControl1.Name = "addressControl1";
-            addressControl1.Size = new Size(474, 494);
-            addressControl1.TabIndex = 1;
-            addressControl1.Load += addressControl1_Load;
+            address2.Apartment = 0;
+            address2.Building = " ";
+            address2.City = " ";
+            address2.Country = " ";
+            address2.Index = 0;
+            address2.Street = " ";
+            CustomerDeliveryAddress.CustomerAddress = address2;
+            CustomerDeliveryAddress.Dock = DockStyle.Bottom;
+            CustomerDeliveryAddress.Location = new Point(482, 123);
+            CustomerDeliveryAddress.Name = "CustomerDeliveryAddress";
+            CustomerDeliveryAddress.Size = new Size(474, 494);
+            CustomerDeliveryAddress.TabIndex = 1;
+            CustomerDeliveryAddress.Load += addressControl1_Load;
             // 
             // CustomersTab
             // 
@@ -246,6 +246,6 @@
         private TableLayoutPanel CustomerLayoutPanel;
         private Panel CustomersPanel2;
         private TableLayoutPanel tableLayoutPanel1;
-        private Controls.AddressControl addressControl1;
+        private Controls.AddressControl CustomerDeliveryAddress;
     }
 }

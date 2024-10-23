@@ -143,4 +143,13 @@ public class Item
 		Cost = 0;
 		ItemCategory = Category.Electronics;
     }
+
+	/// <summary>
+	/// Переопределение отображения названия.
+	/// </summary>
+	/// <returns>Название товара.</returns>
+    public override string ToString()
+    {
+        return Name;
+    }
 }

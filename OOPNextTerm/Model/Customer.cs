@@ -107,18 +107,35 @@ public class Customer
     }
 
     /// <summary>
+    /// Список заказов.
+    /// </summary>
+    private List<Order> _orders;
+
+    public List<Order> Orders
+    {
+        get
+        {
+            return _orders;
+        }
+        set
+        {
+            _orders = value;
+        }
+    }
+
+    /// <summary>
     /// Создаёт экземпляр класса <see cref="Customer"/>
     /// </summary>
     /// <param name="fullName">Полное имя. До 200 символов.</param>
     /// <param name="address">Адрес доставки. До 500 символов.</param>
-    public Customer(string fullName, Address address)
-    public Customer(string fullName, string address, Cart cart)
+    public Customer(string fullName, Address address, Cart cart, List<Order> orders)
     {
         Id = _allCustomersCount;
         _allCustomersCount++;
         FullName = fullName;
         Address = address;
         Cart = cart;
+        Orders = orders;
     }
 
     /// <summary>
@@ -131,5 +148,15 @@ public class Customer
         FullName = " ";
         Address = new Address();
         Cart = new Cart();
+        Orders = new List<Order>();
+    }
+
+    /// <summary>
+    /// Переопределения отображения имени.
+    /// </summary>
+    /// <returns>Полное имя покупателя.</returns>
+    public override string ToString()
+    {
+        return FullName;
     }
 }
