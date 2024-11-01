@@ -41,4 +41,17 @@ public static class RandomCustomerData
         "331001,US,Miami,Sycamore Circle,3890/5,9",
         "921001,US,San Diego, Redwood Avenue,6721/2,14",
     };
+
+    /// <summary>
+    /// Желаемое время доставки.
+    /// </summary>
+    public static readonly string[] OrderTimes =
+    {
+        "9:00 – 11:00",
+        "11:00 – 13:00",
+        "13:00 – 15:00",
+        "15:00 – 17:00",
+        "17:00 – 19:00",
+        "19:00 – 21:00",
+    };
 }
