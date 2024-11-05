@@ -23,7 +23,7 @@ static class CustomerFactory
         int apartment = Convert.ToInt32(words[5]);
         Address customerAddress = new Address(index, country, city, street, building, apartment);
 
-        Customer newCustomer = new Customer(customerFullName, customerAddress, new Cart(), new List<Order>());
+        Customer newCustomer = new Customer(customerFullName, customerAddress, new Cart(), new List<Order>(), false);
 
         return newCustomer;
     }

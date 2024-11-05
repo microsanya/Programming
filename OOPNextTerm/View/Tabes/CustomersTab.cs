@@ -57,6 +57,15 @@ namespace OOPNextTerm.View.Tabes
             CustomerIDTextBox.Text = Convert.ToString(customer.Id);
             // Full Name
             FullNameTextBox.Text = customer.FullName;
+            //Priority
+            if (customer.IsPriority == true)
+            {
+                PriorityCheck.Checked = true;
+            }
+            else
+            {
+                PriorityCheck.Checked = false;
+            }
         }
 
         /// <summary>
@@ -156,6 +165,21 @@ namespace OOPNextTerm.View.Tabes
         private void addressControl1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        /// <summary>
+        /// Обрабатывает изменение приоритета клиента.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PriorityCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            if (_currentCustomer == null)
+            {
+                return;
+            }
+
+            _currentCustomer.IsPriority = PriorityCheck.Checked;
         }
     }
 }

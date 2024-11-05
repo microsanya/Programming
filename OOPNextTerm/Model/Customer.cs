@@ -124,11 +124,16 @@ public class Customer
     }
 
     /// <summary>
+    /// Возвращает или меняет приоритет клиента.
+    /// </summary>
+    public bool IsPriority { get; set; }
+
+    /// <summary>
     /// Создаёт экземпляр класса <see cref="Customer"/>
     /// </summary>
     /// <param name="fullName">Полное имя. До 200 символов.</param>
     /// <param name="address">Адрес доставки. До 500 символов.</param>
-    public Customer(string fullName, Address address, Cart cart, List<Order> orders)
+    public Customer(string fullName, Address address, Cart cart, List<Order> orders, bool isPriority)
     {
         Id = _allCustomersCount;
         _allCustomersCount++;
@@ -136,6 +141,7 @@ public class Customer
         Address = address;
         Cart = cart;
         Orders = orders;
+        IsPriority = isPriority;
     }
 
     /// <summary>
@@ -149,6 +155,7 @@ public class Customer
         Address = new Address();
         Cart = new Cart();
         Orders = new List<Order>();
+        IsPriority = false;
     }
 
     /// <summary>

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Address address2 = new Address();
+            Address address3 = new Address();
             CustomersGroupBox = new GroupBox();
             tableLayoutPanel1 = new TableLayoutPanel();
             RemoveCustomerButton = new Button();
@@ -43,6 +43,7 @@
             CustomerIDLabel = new Label();
             CustomerLayoutPanel = new TableLayoutPanel();
             CustomerDeliveryAddress = new Controls.AddressControl();
+            PriorityCheck = new CheckBox();
             CustomersGroupBox.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             SelectedCustomerGroupBox.SuspendLayout();
@@ -118,6 +119,7 @@
             // SelectedCustomerGroupBox
             // 
             SelectedCustomerGroupBox.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            SelectedCustomerGroupBox.Controls.Add(PriorityCheck);
             SelectedCustomerGroupBox.Controls.Add(CustomersPanel2);
             SelectedCustomerGroupBox.Controls.Add(CustomersPanel);
             SelectedCustomerGroupBox.Controls.Add(FullNameTextBox);
@@ -127,7 +129,7 @@
             SelectedCustomerGroupBox.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             SelectedCustomerGroupBox.Location = new Point(485, 3);
             SelectedCustomerGroupBox.Name = "SelectedCustomerGroupBox";
-            SelectedCustomerGroupBox.Size = new Size(474, 117);
+            SelectedCustomerGroupBox.Size = new Size(474, 167);
             SelectedCustomerGroupBox.TabIndex = 1;
             SelectedCustomerGroupBox.TabStop = false;
             SelectedCustomerGroupBox.Text = "Selected Customer";
@@ -137,7 +139,7 @@
             CustomersPanel2.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             CustomersPanel2.Location = new Point(0, 267);
             CustomersPanel2.Name = "CustomersPanel2";
-            CustomersPanel2.Size = new Size(474, 200);
+            CustomersPanel2.Size = new Size(474, 250);
             CustomersPanel2.TabIndex = 1;
             // 
             // CustomersPanel
@@ -201,19 +203,31 @@
             // 
             // CustomerDeliveryAddress
             // 
-            address2.Apartment = 0;
-            address2.Building = " ";
-            address2.City = " ";
-            address2.Country = " ";
-            address2.Index = 0;
-            address2.Street = " ";
-            CustomerDeliveryAddress.CustomerAddress = address2;
+            address3.Apartment = 0;
+            address3.Building = " ";
+            address3.City = " ";
+            address3.Country = " ";
+            address3.Index = 0;
+            address3.Street = " ";
+            CustomerDeliveryAddress.CustomerAddress = address3;
             CustomerDeliveryAddress.Dock = DockStyle.Bottom;
-            CustomerDeliveryAddress.Location = new Point(482, 123);
+            CustomerDeliveryAddress.Location = new Point(482, 173);
             CustomerDeliveryAddress.Name = "CustomerDeliveryAddress";
-            CustomerDeliveryAddress.Size = new Size(474, 494);
+            CustomerDeliveryAddress.Size = new Size(474, 444);
             CustomerDeliveryAddress.TabIndex = 1;
             CustomerDeliveryAddress.Load += addressControl1_Load;
+            // 
+            // PriorityCheck
+            // 
+            PriorityCheck.AutoSize = true;
+            PriorityCheck.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            PriorityCheck.Location = new Point(6, 121);
+            PriorityCheck.Name = "PriorityCheck";
+            PriorityCheck.Size = new Size(92, 24);
+            PriorityCheck.TabIndex = 5;
+            PriorityCheck.Text = "Is Priority";
+            PriorityCheck.UseVisualStyleBackColor = true;
+            PriorityCheck.CheckedChanged += PriorityCheck_CheckedChanged;
             // 
             // CustomersTab
             // 
@@ -247,5 +261,6 @@
         private Panel CustomersPanel2;
         private TableLayoutPanel tableLayoutPanel1;
         private Controls.AddressControl CustomerDeliveryAddress;
+        private CheckBox PriorityCheck;
     }
 }

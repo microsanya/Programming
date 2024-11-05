@@ -39,6 +39,8 @@
             OrderAddressControl = new Controls.AddressControl();
             orderBindingSource5 = new BindingSource(components);
             SelectedOrderGroupBox = new GroupBox();
+            DeliveryTimeComboBox = new ComboBox();
+            TimeLabel = new Label();
             OrderDate = new DateTimePicker();
             StatusOrderComboBox = new ComboBox();
             orderBindingSource3 = new BindingSource(components);
@@ -162,6 +164,8 @@
             // 
             // SelectedOrderGroupBox
             // 
+            SelectedOrderGroupBox.Controls.Add(DeliveryTimeComboBox);
+            SelectedOrderGroupBox.Controls.Add(TimeLabel);
             SelectedOrderGroupBox.Controls.Add(OrderDate);
             SelectedOrderGroupBox.Controls.Add(StatusOrderComboBox);
             SelectedOrderGroupBox.Controls.Add(IdOrderTextBox);
@@ -175,6 +179,26 @@
             SelectedOrderGroupBox.TabIndex = 0;
             SelectedOrderGroupBox.TabStop = false;
             SelectedOrderGroupBox.Text = "Selected Order";
+            // 
+            // DeliveryTimeComboBox
+            // 
+            DeliveryTimeComboBox.FormattingEnabled = true;
+            DeliveryTimeComboBox.Items.AddRange(new object[] { "9:00 – 11:00", "11:00 – 13:00", "13:00 – 15:00", "15:00 – 17:00", "17:00 – 19:00", "19:00 – 21:00" });
+            DeliveryTimeComboBox.Location = new Point(326, 66);
+            DeliveryTimeComboBox.Name = "DeliveryTimeComboBox";
+            DeliveryTimeComboBox.Size = new Size(174, 28);
+            DeliveryTimeComboBox.TabIndex = 8;
+            DeliveryTimeComboBox.SelectedIndexChanged += DeliveryTimeComboBox_SelectedIndexChanged;
+            // 
+            // TimeLabel
+            // 
+            TimeLabel.AutoSize = true;
+            TimeLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            TimeLabel.Location = new Point(358, 29);
+            TimeLabel.Name = "TimeLabel";
+            TimeLabel.Size = new Size(103, 20);
+            TimeLabel.TabIndex = 7;
+            TimeLabel.Text = "Delivery Time:";
             // 
             // OrderDate
             // 
@@ -303,5 +327,7 @@
         private BindingSource orderBindingSource4;
         private BindingSource orderBindingSource2;
         private DateTimePicker OrderDate;
+        private ComboBox DeliveryTimeComboBox;
+        private Label TimeLabel;
     }
 }

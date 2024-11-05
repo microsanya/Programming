@@ -211,8 +211,17 @@ namespace OOPNextTerm.View.Tabes
                 return;
             }
 
-            Order order = new Order(DateTime.Now, CurrentCustomer.Address, CurrentCustomer.Cart.Items, CurrentCustomer.Cart.Amount, OrderStatus.New);
-            CurrentCustomer.Orders.Add(order);
+            if (CurrentCustomer.IsPriority == false)
+            {
+                Order order = new Order(DateTime.Now, CurrentCustomer.Address, CurrentCustomer.Cart.Items, CurrentCustomer.Cart.Amount, OrderStatus.New);
+                CurrentCustomer.Orders.Add(order);
+            }
+            else
+            {
+                Random rnd = new Random();
+                PriorityOrder order = new PriorityOrder(DateTime.Now, CurrentCustomer.Address, CurrentCustomer.Cart.Items, CurrentCustomer.Cart.Amount, OrderStatus.New, DateTime.Now, RandomCustomerData.OrderTimes[rnd.Next(6)]);
+                CurrentCustomer.Orders.Add(order);
+            }
 
             ClearCart();
             UpdateAmount();
