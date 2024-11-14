@@ -32,6 +32,10 @@
             AddItemButton = new Button();
             RemoveItemButton = new Button();
             ItemsListGroupBox = new GroupBox();
+            SortLabel = new Label();
+            SortComboBox = new ComboBox();
+            FindTextBox = new TextBox();
+            FindLabel = new Label();
             ButtonsLayoutPanel = new TableLayoutPanel();
             SelectedItemGroupBox = new GroupBox();
             CategoryComboBox = new ComboBox();
@@ -57,9 +61,9 @@
             ItemsListBox.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             ItemsListBox.FormattingEnabled = true;
             ItemsListBox.ItemHeight = 20;
-            ItemsListBox.Location = new Point(3, 23);
+            ItemsListBox.Location = new Point(3, 63);
             ItemsListBox.Name = "ItemsListBox";
-            ItemsListBox.Size = new Size(469, 524);
+            ItemsListBox.Size = new Size(469, 444);
             ItemsListBox.TabIndex = 1;
             ItemsListBox.SelectedIndexChanged += ItemsListBox_SelectedIndexChanged;
             // 
@@ -91,6 +95,10 @@
             // 
             // ItemsListGroupBox
             // 
+            ItemsListGroupBox.Controls.Add(SortLabel);
+            ItemsListGroupBox.Controls.Add(SortComboBox);
+            ItemsListGroupBox.Controls.Add(FindTextBox);
+            ItemsListGroupBox.Controls.Add(FindLabel);
             ItemsListGroupBox.Controls.Add(ButtonsLayoutPanel);
             ItemsListGroupBox.Controls.Add(ItemsListBox);
             ItemsListGroupBox.Dock = DockStyle.Fill;
@@ -101,6 +109,44 @@
             ItemsListGroupBox.TabIndex = 4;
             ItemsListGroupBox.TabStop = false;
             ItemsListGroupBox.Text = "Items";
+            // 
+            // SortLabel
+            // 
+            SortLabel.AutoSize = true;
+            SortLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            SortLabel.Location = new Point(3, 516);
+            SortLabel.Name = "SortLabel";
+            SortLabel.Size = new Size(70, 20);
+            SortLabel.TabIndex = 8;
+            SortLabel.Text = "Order by:";
+            // 
+            // SortComboBox
+            // 
+            SortComboBox.FormattingEnabled = true;
+            SortComboBox.Items.AddRange(new object[] { "Name", "Cost (Ascending)", "Cost (Descending)" });
+            SortComboBox.Location = new Point(79, 513);
+            SortComboBox.Name = "SortComboBox";
+            SortComboBox.Size = new Size(393, 28);
+            SortComboBox.TabIndex = 7;
+            SortComboBox.SelectedIndexChanged += SortComboBox_SelectedIndexChanged;
+            // 
+            // FindTextBox
+            // 
+            FindTextBox.Location = new Point(52, 33);
+            FindTextBox.Name = "FindTextBox";
+            FindTextBox.Size = new Size(417, 27);
+            FindTextBox.TabIndex = 6;
+            FindTextBox.TextChanged += FindTextBox_TextChanged;
+            // 
+            // FindLabel
+            // 
+            FindLabel.AutoSize = true;
+            FindLabel.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            FindLabel.Location = new Point(6, 36);
+            FindLabel.Name = "FindLabel";
+            FindLabel.Size = new Size(40, 20);
+            FindLabel.TabIndex = 5;
+            FindLabel.Text = "Find:";
             // 
             // ButtonsLayoutPanel
             // 
@@ -258,6 +304,7 @@
             Name = "ItemsTab";
             Size = new Size(963, 625);
             ItemsListGroupBox.ResumeLayout(false);
+            ItemsListGroupBox.PerformLayout();
             ButtonsLayoutPanel.ResumeLayout(false);
             SelectedItemGroupBox.ResumeLayout(false);
             SelectedItemGroupBox.PerformLayout();
@@ -283,5 +330,9 @@
         private TableLayoutPanel ButtonsLayoutPanel;
         private ComboBox CategoryComboBox;
         private Label CategoryLabel;
+        private TextBox FindTextBox;
+        private Label FindLabel;
+        private Label SortLabel;
+        private ComboBox SortComboBox;
     }
 }
