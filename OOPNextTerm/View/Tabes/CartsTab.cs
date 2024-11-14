@@ -1,4 +1,5 @@
-﻿using OOPNextTerm.View.Tabs;
+﻿using OOPNextTerm.Model;
+using OOPNextTerm.View.Tabs;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -110,6 +111,80 @@ namespace OOPNextTerm.View.Tabes
         }
 
         /// <summary>
+        /// Обновляет список доступных скидок в CheckedListBox.
+        /// Устанавливает флажки для всех скидок.
+        /// </summary>
+        private void UpdateDiscountsCheckedListBox()
+        {
+            DiscountsListBox.Items.Clear();
+            if (CurrentCustomer == null)
+            {
+                return;
+            }
+            DiscountsListBox.Items.AddRange(CurrentCustomer.Discounts.ToArray());
+            CheckAllItems();
+            UpdateDiscountAndTotalAmount();
+        }
+
+        /// <summary>
+        /// Устанавливает флажки для всех элементов в списке скидок.
+        /// </summary>
+        private void CheckAllItems()
+        {
+            for (int i = 0; i < DiscountsListBox.Items.Count; i++)
+            {
+                DiscountsListBox.SetItemChecked(i, true);
+            }
+        }
+
+        /// <summary>
+        /// Обновляет сумму скидки и итоговую сумму заказа.
+        /// </summary>
+        private void UpdateDiscountAndTotalAmount()
+        {
+            int discountAmount = 0;
+            DAmountNum.Text = "0";
+            TOTALNUM.Text = "0";
+            if (CurrentCustomer == null)
+            {
+                return;
+            }
+            foreach (IDiscount discount in DiscountsListBox.CheckedItems)
+            {
+                discountAmount += (int)discount.Calculate(CurrentCustomer.Cart.Items);
+            }
+            DAmountNum.Text = discountAmount.ToString();
+            TOTALNUM.Text = (CurrentCustomer.Cart.Amount - discountAmount).ToString();
+        }
+
+        /// <summary>
+        /// Создает заказ, применяя выбранные скидки.
+        /// Обновляет информацию о скидках и возвращает общую сумму скидки.
+        /// </summary>
+        /// <returns>Сумма примененных скидок.</returns>
+        public int CreateOrder()
+        {
+            int discountAmount = 0;
+            DAmountNum.Text = "0";
+            TOTALNUM.Text = "0";
+            if (CurrentCustomer == null)
+            {
+                return 0;
+            }
+            foreach (IDiscount discount in DiscountsListBox.CheckedItems)
+            {
+                discountAmount += (int)discount.Apply(CurrentCustomer.Cart.Items);
+            }
+
+            foreach (IDiscount discount in CurrentCustomer.Discounts)
+            {
+                discount.Update(CurrentCustomer.Cart.Items);
+            }
+            UpdateDiscountsCheckedListBox();
+            return discountAmount;
+        }
+
+        /// <summary>
         /// Очищает все товары в корзине текущего клиента и CartItemsListBox.
         /// </summary>
         private void ClearCart()
@@ -213,18 +288,29 @@ namespace OOPNextTerm.View.Tabes
 
             if (CurrentCustomer.IsPriority == false)
             {
-                Order order = new Order(DateTime.Now, CurrentCustomer.Address, CurrentCustomer.Cart.Items, OrderStatus.New, CurrentCustomer.Cart.Amount);
+                double discountAmount = CreateOrder();
+                Order order = new Order(DateTime.Now, CurrentCustomer.Address, CurrentCustomer.Cart.Items, OrderStatus.New, discountAmount);
                 CurrentCustomer.Orders.Add(order);
             }
             else
             {
+                double discountAmount = CreateOrder();
                 Random rnd = new Random();
-                PriorityOrder order = new PriorityOrder(DateTime.Now, CurrentCustomer.Address, CurrentCustomer.Cart.Items, OrderStatus.New, 0.0, DateTime.Now, RandomCustomerData.OrderTimes[rnd.Next(6)]);
+                PriorityOrder order = new PriorityOrder(DateTime.Now, CurrentCustomer.Address, CurrentCustomer.Cart.Items, OrderStatus.New, discountAmount, DateTime.Now, RandomCustomerData.OrderTimes[rnd.Next(6)]);
                 CurrentCustomer.Orders.Add(order);
             }
 
             ClearCart();
             UpdateAmount();
+        }
+
+        /// <summary>
+        /// Обработчик события изменения выбранного элемента в списке скидок.
+        /// Обновляет скидку и общую сумму.
+        /// </summary>
+        private void DiscountsListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateDiscountAndTotalAmount();
         }
     }
 }

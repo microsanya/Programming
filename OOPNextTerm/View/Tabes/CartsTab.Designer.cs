@@ -32,6 +32,12 @@
             ItemsCartGroupBox = new GroupBox();
             AddToCartButton = new Button();
             ItemsCartListBox = new ListBox();
+            TOTALNUM = new Label();
+            TOTALLabel = new Label();
+            DAmountNum = new Label();
+            DAmount = new Label();
+            DiscountsListBox = new CheckedListBox();
+            DiscountLabel = new Label();
             ClearCartButton = new Button();
             RemoveItemButton = new Button();
             CreateOrderButton = new Button();
@@ -60,6 +66,12 @@
             // 
             // CartContainer.Panel2
             // 
+            CartContainer.Panel2.Controls.Add(TOTALNUM);
+            CartContainer.Panel2.Controls.Add(TOTALLabel);
+            CartContainer.Panel2.Controls.Add(DAmountNum);
+            CartContainer.Panel2.Controls.Add(DAmount);
+            CartContainer.Panel2.Controls.Add(DiscountsListBox);
+            CartContainer.Panel2.Controls.Add(DiscountLabel);
             CartContainer.Panel2.Controls.Add(ClearCartButton);
             CartContainer.Panel2.Controls.Add(RemoveItemButton);
             CartContainer.Panel2.Controls.Add(CreateOrderButton);
@@ -109,10 +121,71 @@
             ItemsCartListBox.Size = new Size(382, 504);
             ItemsCartListBox.TabIndex = 0;
             // 
+            // TOTALNUM
+            // 
+            TOTALNUM.AutoSize = true;
+            TOTALNUM.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            TOTALNUM.Location = new Point(263, 569);
+            TOTALNUM.Name = "TOTALNUM";
+            TOTALNUM.Size = new Size(60, 41);
+            TOTALNUM.TabIndex = 14;
+            TOTALNUM.Text = "0,0";
+            // 
+            // TOTALLabel
+            // 
+            TOTALLabel.AutoSize = true;
+            TOTALLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            TOTALLabel.Location = new Point(265, 549);
+            TOTALLabel.Name = "TOTALLabel";
+            TOTALLabel.Size = new Size(58, 20);
+            TOTALLabel.TabIndex = 13;
+            TOTALLabel.Text = "TOTAL:";
+            // 
+            // DAmountNum
+            // 
+            DAmountNum.AutoSize = true;
+            DAmountNum.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            DAmountNum.Location = new Point(446, 466);
+            DAmountNum.Name = "DAmountNum";
+            DAmountNum.Size = new Size(60, 41);
+            DAmountNum.TabIndex = 12;
+            DAmountNum.Text = "0,0";
+            // 
+            // DAmount
+            // 
+            DAmount.AutoSize = true;
+            DAmount.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            DAmount.Location = new Point(411, 428);
+            DAmount.Name = "DAmount";
+            DAmount.Size = new Size(137, 20);
+            DAmount.TabIndex = 11;
+            DAmount.Text = "Discount Amount:";
+            // 
+            // DiscountsListBox
+            // 
+            DiscountsListBox.BackColor = SystemColors.Control;
+            DiscountsListBox.BorderStyle = BorderStyle.None;
+            DiscountsListBox.FormattingEnabled = true;
+            DiscountsListBox.Location = new Point(14, 428);
+            DiscountsListBox.Name = "DiscountsListBox";
+            DiscountsListBox.Size = new Size(251, 110);
+            DiscountsListBox.TabIndex = 10;
+            DiscountsListBox.SelectedIndexChanged += DiscountsListBox_SelectedIndexChanged;
+            // 
+            // DiscountLabel
+            // 
+            DiscountLabel.AutoSize = true;
+            DiscountLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            DiscountLabel.Location = new Point(14, 405);
+            DiscountLabel.Name = "DiscountLabel";
+            DiscountLabel.Size = new Size(82, 20);
+            DiscountLabel.TabIndex = 9;
+            DiscountLabel.Text = "Discounts:";
+            // 
             // ClearCartButton
             // 
             ClearCartButton.FlatStyle = FlatStyle.Popup;
-            ClearCartButton.Location = new Point(411, 549);
+            ClearCartButton.Location = new Point(411, 332);
             ClearCartButton.Name = "ClearCartButton";
             ClearCartButton.Size = new Size(142, 61);
             ClearCartButton.TabIndex = 8;
@@ -123,7 +196,7 @@
             // RemoveItemButton
             // 
             RemoveItemButton.FlatStyle = FlatStyle.Popup;
-            RemoveItemButton.Location = new Point(263, 549);
+            RemoveItemButton.Location = new Point(263, 332);
             RemoveItemButton.Name = "RemoveItemButton";
             RemoveItemButton.Size = new Size(142, 61);
             RemoveItemButton.TabIndex = 7;
@@ -134,7 +207,7 @@
             // CreateOrderButton
             // 
             CreateOrderButton.FlatStyle = FlatStyle.Popup;
-            CreateOrderButton.Location = new Point(14, 549);
+            CreateOrderButton.Location = new Point(14, 332);
             CreateOrderButton.Name = "CreateOrderButton";
             CreateOrderButton.Size = new Size(142, 61);
             CreateOrderButton.TabIndex = 6;
@@ -146,7 +219,7 @@
             // 
             AmountTotalLabel.AutoSize = true;
             AmountTotalLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            AmountTotalLabel.Location = new Point(411, 476);
+            AmountTotalLabel.Location = new Point(446, 288);
             AmountTotalLabel.Name = "AmountTotalLabel";
             AmountTotalLabel.Size = new Size(60, 41);
             AmountTotalLabel.TabIndex = 5;
@@ -156,7 +229,7 @@
             // 
             AmountLabel.AutoSize = true;
             AmountLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            AmountLabel.Location = new Point(411, 456);
+            AmountLabel.Location = new Point(482, 257);
             AmountLabel.Name = "AmountLabel";
             AmountLabel.Size = new Size(71, 20);
             AmountLabel.TabIndex = 4;
@@ -166,15 +239,15 @@
             // 
             CartListBox.FormattingEnabled = true;
             CartListBox.ItemHeight = 20;
-            CartListBox.Location = new Point(14, 94);
+            CartListBox.Location = new Point(14, 70);
             CartListBox.Name = "CartListBox";
-            CartListBox.Size = new Size(539, 344);
+            CartListBox.Size = new Size(539, 184);
             CartListBox.TabIndex = 3;
             // 
             // CartLabel
             // 
             CartLabel.AutoSize = true;
-            CartLabel.Location = new Point(14, 61);
+            CartLabel.Location = new Point(14, 47);
             CartLabel.Name = "CartLabel";
             CartLabel.Size = new Size(39, 20);
             CartLabel.TabIndex = 2;
@@ -230,5 +303,11 @@
         private Label AmountTotalLabel;
         private Label AmountLabel;
         private Button AddToCartButton;
+        private Label TOTALNUM;
+        private Label TOTALLabel;
+        private Label DAmountNum;
+        private Label DAmount;
+        private CheckedListBox DiscountsListBox;
+        private Label DiscountLabel;
     }
 }

@@ -96,7 +96,8 @@ namespace OOPNextTerm.View.Tabes
                 OrderID = o.Id,
                 OrderTime = o.OrderDate,
                 OrderStatus = o.OrderStatus,
-                CustomerName = _customers.First(c => c.Orders.Contains(o)).FullName
+                CustomerName = _customers.First(c => c.Orders.Contains(o)).FullName,
+                Total = o.Total,
             }).ToList();
 
             OrdersGridView.DataSource = allOrdersForDisplay;
