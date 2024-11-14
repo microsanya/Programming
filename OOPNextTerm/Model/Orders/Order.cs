@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 /// <summary>
 /// Хранит в себе данные о заказе.
 /// </summary>
-public class Order
+public class Order : IEquatable<Order>
 {
     /// <summary>
     /// Кол-во заказов.
@@ -145,5 +145,19 @@ public class Order
         Items = new List<Item>(items);
         OrderStatus = orderStatus;
         DiscountAmount = discountAmount;
+    }
+
+    /// <inheritdoc/>
+    public bool Equals(Order? order2)
+    {
+        if (order2 == null)
+        {     
+            return false;
+        }
+        if (object.ReferenceEquals(this, order2))
+        {
+            return true;
+        }
+        return (Id == order2.Id);
     }
 }

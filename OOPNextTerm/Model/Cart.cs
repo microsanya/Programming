@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 /// <summary>
 /// Хранит данные о корзине товаров.
 /// </summary>
-public class Cart
+public class Cart : ICloneable
 {
     /// <summary>
     /// Список товаров в корзине.
@@ -63,5 +63,13 @@ public class Cart
     public Cart()
     {
         Items = new List<Item>();
+    }
+
+    /// <inheritdoc/>
+    public object Clone()
+    {
+        Cart copy = new();
+        copy.Items = new List<Item>(Items);
+        return copy;
     }
 }

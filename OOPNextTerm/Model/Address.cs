@@ -3,11 +3,12 @@ using System.Diagnostics.Metrics;
 using System.Windows.Forms;
 using System;
 using System.Xml.Linq;
+using System.Reflection;
 
 /// <summary>
 /// Хранит себе данные об одном адресе покупателя.
 /// </summary>
-public class Address
+public class Address : ICloneable, IEquatable<Address>
 {
     /// <summary>
     /// Индекс
@@ -171,5 +172,43 @@ public class Address
         Street = " ";
         Building = " ";
         Apartment = 0;
+    }
+
+    /// <inheritdoc/>
+    public object Clone()
+    {
+        return new Address(Index, Country, City, Street, Building, Apartment);
+    }
+
+    /// <inheritdoc/>
+    public bool Equals(Address address2)
+    {
+        if (address2 == null)
+        {
+            return false;
+        }
+        if (object.ReferenceEquals(this, address2))
+        {
+            return true;
+        }
+
+        PropertyInfo[] properties = typeof(Address).GetProperties();
+
+        foreach (PropertyInfo property in properties)
+        {
+            var value1 = property.GetValue(this);
+            var value2 = property.GetValue(address2);
+
+            if (value1 == null && value2 == null)
+            {
+                continue;
+            }
+            if (value1 == null || value2 == null || value1 != value2)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

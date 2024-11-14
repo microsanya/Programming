@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 /// <summary>
 /// Хранит данные о скидке накопительных баллов.
 /// </summary>
-public class PointsDiscount : IDiscount
+public class PointsDiscount : IDiscount, IComparable<PointsDiscount>
 {
     /// <summary>
     /// Количество баллов.
@@ -103,5 +103,28 @@ public class PointsDiscount : IDiscount
     public override string ToString()
     {
         return Info;
+    }
+
+    /// <inheritdoc/>
+    public int CompareTo(PointsDiscount? pointsDiscount2)
+    {
+        if (pointsDiscount2 == null)
+        {
+            return 1;
+        }
+        if (object.ReferenceEquals(this, pointsDiscount2))
+        {
+            return 0;
+        }
+
+        if (PointsBalance < pointsDiscount2.PointsBalance)
+        {
+            return -1;
+        }
+        else if (PointsBalance == pointsDiscount2.PointsBalance)
+        {
+            return 0;
+        }
+        return 1;
     }
 }
