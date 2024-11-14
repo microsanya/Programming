@@ -103,8 +103,8 @@ namespace OOPNextTerm.View.Tabes
             int apartment = Convert.ToInt32(words[5]);
             Address customerAddress = new Address(index, country, city, street, building, apartment);
 
-            Order order = new Order(DateTime.Now, customerAddress, new List<Item>(), 0.0, OrderStatus.New);
-            PriorityOrder = new PriorityOrder(DateTime.Now, customerAddress, new List<Item>(), 0.0, OrderStatus.New, DateTime.Today, RandomCustomerData.OrderTimes[rnd.Next(6)]);
+            Order order = new Order(DateTime.Now, customerAddress, new List<Item>(), OrderStatus.New, 0.0);
+            PriorityOrder = new PriorityOrder(DateTime.Now, customerAddress, new List<Item>(), OrderStatus.New, 0.0, DateTime.Today, RandomCustomerData.OrderTimes[rnd.Next(6)]);
             IdTextBox.Text = PriorityOrder.Id.ToString();
             DeliveryAddressControl.UpdateData(customerAddress);
         }

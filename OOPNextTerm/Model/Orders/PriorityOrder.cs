@@ -48,7 +48,8 @@ public class PriorityOrder : Order
             _orderTime = value;
         }
     }
-    public PriorityOrder(DateTime orderDate, Address orderAddress, List<Item> items, double totalAmount, OrderStatus orderStatus, DateTime needOrderDate, string orderTime) : base(orderDate, orderAddress, items, totalAmount, orderStatus)
+    public PriorityOrder(DateTime orderDate, Address orderAddress, List<Item> items, OrderStatus orderStatus, double discountAmount, DateTime needOrderDate, string orderTime) : base(orderDate, 
+        orderAddress,items, orderStatus, discountAmount)
     {
         NeedOrderDate = needOrderDate;
         OrderTime = orderTime;

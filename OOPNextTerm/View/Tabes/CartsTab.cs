@@ -213,13 +213,13 @@ namespace OOPNextTerm.View.Tabes
 
             if (CurrentCustomer.IsPriority == false)
             {
-                Order order = new Order(DateTime.Now, CurrentCustomer.Address, CurrentCustomer.Cart.Items, CurrentCustomer.Cart.Amount, OrderStatus.New);
+                Order order = new Order(DateTime.Now, CurrentCustomer.Address, CurrentCustomer.Cart.Items, OrderStatus.New, CurrentCustomer.Cart.Amount);
                 CurrentCustomer.Orders.Add(order);
             }
             else
             {
                 Random rnd = new Random();
-                PriorityOrder order = new PriorityOrder(DateTime.Now, CurrentCustomer.Address, CurrentCustomer.Cart.Items, CurrentCustomer.Cart.Amount, OrderStatus.New, DateTime.Now, RandomCustomerData.OrderTimes[rnd.Next(6)]);
+                PriorityOrder order = new PriorityOrder(DateTime.Now, CurrentCustomer.Address, CurrentCustomer.Cart.Items, OrderStatus.New, 0.0, DateTime.Now, RandomCustomerData.OrderTimes[rnd.Next(6)]);
                 CurrentCustomer.Orders.Add(order);
             }
 

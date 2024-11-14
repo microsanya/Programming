@@ -1,4 +1,4 @@
-﻿using OOPNextTerm.Model.Discounts;
+﻿using OOPNextTerm.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;

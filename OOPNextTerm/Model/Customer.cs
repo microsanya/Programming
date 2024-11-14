@@ -1,3 +1,4 @@
+using OOPNextTerm.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -129,6 +130,11 @@ public class Customer
     public bool IsPriority { get; set; }
 
     /// <summary>
+    /// Список возможных скидок.
+    /// </summary>
+    public List<IDiscount> Discounts { get; set; }
+
+    /// <summary>
     /// Создаёт экземпляр класса <see cref="Customer"/>
     /// </summary>
     /// <param name="fullName">Полное имя. До 200 символов.</param>
@@ -142,6 +148,8 @@ public class Customer
         Cart = cart;
         Orders = orders;
         IsPriority = isPriority;
+        Discounts = new List<IDiscount>();
+        Discounts.Add(new PointsDiscount(0));
     }
 
     /// <summary>
@@ -156,6 +164,8 @@ public class Customer
         Cart = new Cart();
         Orders = new List<Order>();
         IsPriority = false;
+        Discounts = new List<IDiscount>();
+        Discounts.Add(new PointsDiscount(0));
     }
 
     /// <summary>

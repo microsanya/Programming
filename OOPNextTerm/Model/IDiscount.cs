@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OOPNextTerm.Model.Discounts
+namespace OOPNextTerm.Model
 {
     public interface IDiscount
     {

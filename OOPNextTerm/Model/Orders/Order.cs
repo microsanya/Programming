@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -89,6 +90,40 @@ public class Order
     }
 
     /// <summary>
+    /// Размер скидки.
+    /// </summary>
+    double _discountAmount;
+
+    /// <summary>
+    /// Получает или задаёт размер скидки.
+    /// </summary>
+    public double DiscountAmount
+    {
+        get
+        {
+            return _discountAmount;
+        }
+        set
+        {
+            ValueValidator.AssertValueInRange(value, 0, 1000000000000000);
+            _discountAmount = value;
+        }
+    }
+
+    /// <summary>
+    /// Получает стоимость заказа с применённой скидкой.
+    /// </summary>
+    public double Total
+    {
+        get
+        {
+            double total = TotalAmount - DiscountAmount;
+            ValueValidator.AssertValueInRange(total, 0, 1000000000000000);
+            return TotalAmount - DiscountAmount;
+        }
+    }
+
+    /// <summary>
     /// Статус заказа.
     /// </summary>
     public OrderStatus OrderStatus { get; set; }
@@ -99,9 +134,9 @@ public class Order
     /// <param name="orderDate">Дата заказа.</param>
     /// <param name="orderAddress">Адрес заказа.</param>
     /// <param name="items">Список товаров.</param>
-    /// <param name="totalAmount">Общая сумма.</param>
     /// <param name="orderStatus">Cтатус заказа.</param>
-    public Order(DateTime orderDate, Address orderAddress, List<Item> items, double totalAmount, OrderStatus orderStatus)
+    /// <param name="discountAmount">Скидка.</param>
+    public Order(DateTime orderDate, Address orderAddress, List<Item> items, OrderStatus orderStatus, double discountAmount)
     {
         Id = _allOrdersCount;
         _allOrdersCount++;
@@ -109,5 +144,6 @@ public class Order
         OrderAddress = orderAddress;
         Items = new List<Item>(items);
         OrderStatus = orderStatus;
+        DiscountAmount = discountAmount;
     }
 }
