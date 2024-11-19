@@ -144,10 +144,25 @@ public class Item : ICloneable, IEquatable<Item>, IComparable<Item>
 		ItemCategory = Category.Electronics;
     }
 
-	/// <summary>
-	/// Переопределение отображения названия.
-	/// </summary>
-	/// <returns>Название товара.</returns>
+    /// <summary>
+    /// Событие изменения названия товара.
+    /// </summary>
+    public event EventHandler<EventArgs> NameChanged;
+
+    /// <summary>
+    /// Событие изменения описания товара.
+    /// </summary>
+    public event EventHandler<EventArgs> InfoChanged;
+
+    /// <summary>
+    /// Событие изменения стоимости товара.
+    /// </summary>
+    public event EventHandler<EventArgs> CostChanged;
+
+    /// <summary>
+    /// Переопределение отображения названия.
+    /// </summary>
+    /// <returns>Название товара.</returns>
     public override string ToString()
     {
         return Name;

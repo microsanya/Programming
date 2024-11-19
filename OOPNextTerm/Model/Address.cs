@@ -174,6 +174,11 @@ public class Address : ICloneable, IEquatable<Address>
         Apartment = 0;
     }
 
+    /// <summary>
+    /// Событие изменения адреса.
+    /// </summary>
+    public event EventHandler<EventArgs> AddressChanged;
+
     /// <inheritdoc/>
     public object Clone()
     {
