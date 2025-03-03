@@ -64,6 +64,7 @@ public class Item : ICloneable, IEquatable<Item>, IComparable<Item>
 		{
 			ValueValidator.AssertOnNeedSize(value, 200, Name);
 			_name = value;
+			NameChanged?.Invoke(this, EventArgs.Empty);
 		}
 	}
 
@@ -85,6 +86,7 @@ public class Item : ICloneable, IEquatable<Item>, IComparable<Item>
 		{
 			ValueValidator.AssertOnNeedSize(value, 1000, Info);
 			_info = value;
+			InfoChanged?.Invoke(this, EventArgs.Empty);
 		}
 	}
 
@@ -106,6 +108,7 @@ public class Item : ICloneable, IEquatable<Item>, IComparable<Item>
 		{
 			ValueValidator.AssertValueInRange(value, 0, 100000);
 			_cost = value;
+			CostChanged?.Invoke(this, EventArgs.Empty);
 		}
 	}
 
