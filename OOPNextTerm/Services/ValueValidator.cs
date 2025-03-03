@@ -8,7 +8,7 @@ using System.Text.RegularExpressions;
 static class ValueValidator
 {
     /// <summary>
-    /// Проверяет, что принимаемое целочисленное значение положительно.
+    /// Проверяет, что принимаемая строка нужного размера.
     /// </summary>
     /// <param name="value">Проверяемая строка.</param>
     /// <param name="maxLength">Максимальная длина.</param>
@@ -19,6 +19,21 @@ static class ValueValidator
         if (value.Length > maxLength)
         {
             throw new ArgumentException($"{propertyName} needs to be less than {maxLength}");
+        }
+    }
+
+    /// <summary>
+    /// Проверяет, что принимаемое число нужного размера.
+    /// </summary>
+    /// <param name="value"></param>
+    /// <param name="needLength"></param>
+    /// <exception cref="ArgumentException"></exception>
+    public static void AssertOnNeedNumberCount(int value, int needLength)
+    {
+        string check = Convert.ToString(value);
+        if (check.Length != needLength)
+        {
+            throw new ArgumentException($"Wrong value in {new StackTrace().GetFrame(1).GetMethod().Name}, it needs to be this size: {needLength}");
         }
     }
 

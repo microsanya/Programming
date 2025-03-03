@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OOPNextTerm.Model;
+using OOPNextTerm.View.Controls;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,7 +15,6 @@ namespace OOPNextTerm.View.Tabes
 {
     public partial class CustomersTab : UserControl
     {
-
         /// <summary>
         /// Инициализация пользовательского элемента.
         /// </summary>
@@ -26,23 +27,82 @@ namespace OOPNextTerm.View.Tabes
         /// Закрытое поле, хранящее массив покупателей.
         /// </summary>
         private List<Customer> _customers = new List<Customer>();
+
+        /// <summary>
+        /// Возвращает и задает массив покупателей.
+        /// </summary>
+        public List<Customer> Customers
+        {
+            get
+            {
+                return _customers;
+            }
+            set
+            {
+                _customers = value;
+            }
+        }
+
         /// <summary>
         /// Ранее созданный покупатель.
         /// </summary>
         private Customer _currentCustomer = new Customer();
 
         /// <summary>
-        /// Обновление данных в текстовых полях по указанному товару.
+        /// Список скидок, доступных клиенту.
         /// </summary>
-        /// <param name="item">Сам товар.</param>
+        private List<IDiscount> _discounts;
+
+        /// <summary>
+        /// Получает или задает список скидок. При установке обновляет отображение скидок.
+        /// </summary>
+        public List<IDiscount> Discounts
+        {
+            get
+            {
+                return _discounts;
+            }
+            set
+            {
+                _discounts = value;
+                UpdateDiscounts();
+            }
+        }
+
+        /// <summary>
+        /// Обновляет список скидок в интерфейсе.
+        /// Если список пуст, добавляет накопительную скидку по умолчанию.
+        /// </summary>
+        private void UpdateDiscounts()
+        {
+            DiscountsListBox.Items.Clear();
+            if (Discounts == null) return;
+            if (Discounts.Count == 0)
+            {
+                Discounts.Add(new PointsDiscount(0));
+            }
+            DiscountsListBox.Items.AddRange(Discounts.ToArray());
+        }
+
+        /// <summary>
+        /// Обновление данных в текстовых полях по указанному покупателю.
+        /// </summary>
+        /// <param name="customer">Сам покупатель.</param>
         private void UpdateCustomerInfo(Customer customer)
         {
             // ID
             CustomerIDTextBox.Text = Convert.ToString(customer.Id);
             // Full Name
             FullNameTextBox.Text = customer.FullName;
-            // Address
-            AddressTextBox.Text = customer.Address;
+            //Priority
+            if (customer.IsPriority == true)
+            {
+                PriorityCheck.Checked = true;
+            }
+            else
+            {
+                PriorityCheck.Checked = false;
+            }
         }
 
         /// <summary>
@@ -62,6 +122,7 @@ namespace OOPNextTerm.View.Tabes
                 string addingString = $"ID: {customer.Id}; Full Name: {customer.FullName}";
                 CustomersListBox.Items.Add(addingString);
             }
+            CustomerDeliveryAddress.ClearForm();
         }
 
         /// <summary>
@@ -73,9 +134,17 @@ namespace OOPNextTerm.View.Tabes
         {
             if (CustomersListBox.SelectedIndex >= 0 && CustomersListBox.SelectedIndex < _customers.Count)
             {
+                CustomerDeliveryAddress.ListBoxIsNull = false;
                 int selectedCustomerNumber = CustomersListBox.SelectedIndex;
                 _currentCustomer = _customers[selectedCustomerNumber];
                 UpdateCustomerInfo(_currentCustomer);
+                CustomerDeliveryAddress.UpdateData(_currentCustomer.Address);
+                Discounts = _currentCustomer.Discounts;
+            }
+            else
+            {
+                CustomerDeliveryAddress.ListBoxIsNull = true;
+                CustomerDeliveryAddress.ClearForm();
             }
         }
 
@@ -127,33 +196,67 @@ namespace OOPNextTerm.View.Tabes
         }
 
         /// <summary>
-        /// Редактирование адреса покупателя.
+        /// Прогрузка формы.
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void AddressTextBox_TextChanged(object sender, EventArgs e)
-        {
-            if (AddressTextBox.Text.Length < 500)
-            {
-                AddressTextBox.BackColor = System.Drawing.Color.White;
-                _customers[CustomersListBox.SelectedIndex].Address = AddressTextBox.Text;
-                Customer customer = _customers[CustomersListBox.SelectedIndex];
-                CustomersListBox.Items[CustomersListBox.SelectedIndex] = $"ID: {customer.Id}; Full Name: {customer.FullName}";
-            }
-            else
-            {
-                AddressTextBox.BackColor = System.Drawing.Color.LightPink;
-            }
-        }
-
-        private void CustomersPanel_Paint(object sender, PaintEventArgs e)
+        private void addressControl1_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        /// <summary>
+        /// Обрабатывает изменение приоритета клиента.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void PriorityCheck_CheckedChanged(object sender, EventArgs e)
         {
+            if (_currentCustomer == null)
+            {
+                return;
+            }
 
+            _currentCustomer.IsPriority = PriorityCheck.Checked;
+        }
+
+        /// <summary>
+        /// Обрабатывает нажатие кнопки добавления скидки.
+        /// Открывает форму для добавления новой скидки.
+        /// </summary>
+        private void AddDiscount_Click(object sender, EventArgs e)
+        {
+            if (Discounts == null)
+            {
+                return;
+            }
+            using (DiscountForm addDiscountForm = new DiscountForm())
+            {
+                if (addDiscountForm.ShowDialog() == DialogResult.OK)
+                {
+                    Discounts.Add(addDiscountForm.PercentDiscount);
+                    DiscountsListBox.Items.Add(addDiscountForm.PercentDiscount);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Обрабатывает нажатие кнопки удаления скидки.
+        /// Удаляет выбранную скидку из списка, если она не является накопительной.
+        /// </summary>
+        private void RemoveDiscount_Click(object sender, EventArgs e)
+        {
+            if (Discounts == null || DiscountsListBox.SelectedItem == null) 
+            {
+                return;
+            }
+            if (DiscountsListBox.SelectedItem is PointsDiscount)
+            {
+                MessageBox.Show("Нельзя удалить накопительную скидку!");
+                return;
+            }
+            Discounts.Remove((IDiscount)DiscountsListBox.SelectedItem);
+            DiscountsListBox.Items.Remove(DiscountsListBox.SelectedItem);
         }
     }
 }

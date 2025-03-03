@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OOPNextTerm.Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,17 +16,38 @@ namespace OOPNextTerm.View.Tabs
     {
 
         /// <summary>
+        /// Событие изменения товаров.
+        /// </summary>
+        public event EventHandler<EventArgs> ItemsChanged;
+
+        /// <summary>
         /// Инициализация формы.
         /// </summary>
         public ItemsTab()
         {
             InitializeComponent();
+            SortComboBox.SelectedIndex = 0;
         }
 
         /// <summary>
         /// Закрытое поле, хранящее массив товаров.
         /// </summary>
         private List<Item> _items = new List<Item>();
+
+        /// <summary>
+        /// Возвращает и задаёт массив товаров.
+        /// </summary>
+        public List<Item> Items
+        {
+            get
+            {
+                return _items;
+            }
+            set
+            {
+                _items = value;
+            }
+        }
         /// <summary>
         /// Ранее созданный товар.
         /// </summary>
@@ -41,6 +63,8 @@ namespace OOPNextTerm.View.Tabs
             IdTextBox.Text = Convert.ToString(item.Id);
             // Cost
             CostTextBox.Text = Convert.ToString(item.Cost);
+            // Category
+            CategoryComboBox.SelectedIndex = Convert.ToInt32(item.ItemCategory);
             // Name
             NameTextBox.Text = item.Name;
             // Description
@@ -64,6 +88,8 @@ namespace OOPNextTerm.View.Tabs
                 string addingString = $"ID: {item.Id}; Cost: {item.Cost}; Name: {item.Name}";
                 ItemsListBox.Items.Add(addingString);
             }
+
+            ItemsChanged?.Invoke(this, EventArgs.Empty);
         }
 
         /// <summary>
@@ -105,6 +131,7 @@ namespace OOPNextTerm.View.Tabs
                 {
                     ItemsListBox.SelectedIndex = selectedIndex;
                 }
+                ItemsChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -128,6 +155,7 @@ namespace OOPNextTerm.View.Tabs
                     Item item = _items[ItemsListBox.SelectedIndex];
                     ItemsListBox.Items[ItemsListBox.SelectedIndex] = $"ID: {item.Id}; Cost: {item.Cost}; Name: {item.Name}";
                 }
+                ItemsChanged?.Invoke(this, EventArgs.Empty);
                 return;
             }
             else
@@ -149,6 +177,7 @@ namespace OOPNextTerm.View.Tabs
                 _items[ItemsListBox.SelectedIndex].Name = NameTextBox.Text;
                 Item item = _items[ItemsListBox.SelectedIndex];
                 ItemsListBox.Items[ItemsListBox.SelectedIndex] = $"ID: {item.Id}; Cost: {item.Cost}; Name: {item.Name}";
+                ItemsChanged?.Invoke(this, EventArgs.Empty);
             }
             else
             {
@@ -169,11 +198,73 @@ namespace OOPNextTerm.View.Tabs
                 _items[ItemsListBox.SelectedIndex].Info = DescriptionTextBox.Text;
                 Item item = _items[ItemsListBox.SelectedIndex];
                 ItemsListBox.Items[ItemsListBox.SelectedIndex] = $"ID: {item.Id}; Cost: {item.Cost}; Name: {item.Name}";
+                ItemsChanged?.Invoke(this, EventArgs.Empty);
             }
             else
             {
                 DescriptionTextBox.BackColor = System.Drawing.Color.LightPink;
             }
+        }
+
+        /// <summary>
+        /// Изменение категории товара.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CategoryComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _items[ItemsListBox.SelectedIndex].ItemCategory = (Category)CategoryComboBox.SelectedIndex;
+            ItemsChanged?.Invoke(this, EventArgs.Empty);
+        }
+
+        /// <summary>
+        /// Обрабатывает событие изменения текста в текстовом поле.
+        /// Обновляет список элементов, сбрасывает текущий элемент и уведомляет о выборе.
+        /// </summary>
+        private void FindTextBox_TextChanged(object sender, EventArgs e)
+        {
+            UpdateItemsListBox();
+            _currentItem = new Item();
+            ItemsListBox.SelectedItem = null;
+        }
+
+        /// <summary>
+        /// Обновляет список клиентов в <c>ItemsListBox</c> и выделяет текущий товар.
+        /// </summary>
+        private void UpdateItemsListBox()
+        {
+            if (Items == null)
+            {
+                return;
+            }
+
+            var filteredItems = DataTools.Filter(Items, (item) => item.Name.Contains(FindTextBox.Text, StringComparison.OrdinalIgnoreCase));
+            List<Item> sortedItems;
+
+            switch (SortComboBox.SelectedIndex)
+            {
+                case 1:
+                    sortedItems = DataTools.Sort(filteredItems, (item1, item2) => item1.Cost > item2.Cost);
+                    break;
+                case 2:
+                    sortedItems = DataTools.Sort(filteredItems, (item1, item2) => item1.Cost < item2.Cost);
+                    break;
+                default:
+                    sortedItems = DataTools.Sort(filteredItems, (item1, item2) => string.Compare(item1.Name, item2.Name, StringComparison.OrdinalIgnoreCase) > 0);
+                    break;
+            }
+            ItemsListBox.Items.Clear();
+            ItemsListBox.Items.AddRange(sortedItems.ToArray());
+        }
+
+        /// <summary>
+        /// Обрабатывает событие изменения выбранного элемента в сортировке.
+        /// Обновляет список элементов и восстанавливает выбранный элемент.
+        /// </summary>
+        private void SortComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            UpdateItemsListBox();
+            ItemsListBox.SelectedItem = _currentItem;
         }
     }
 }

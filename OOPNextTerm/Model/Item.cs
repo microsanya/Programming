@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 /// <summary>
 /// Хранит данные о товаре.
 /// </summary>
-public class Item
+public class Item : ICloneable, IEquatable<Item>, IComparable<Item>
 {
 
     /// <summary>
@@ -64,6 +64,7 @@ public class Item
 		{
 			ValueValidator.AssertOnNeedSize(value, 200, Name);
 			_name = value;
+			NameChanged?.Invoke(this, EventArgs.Empty);
 		}
 	}
 
@@ -85,6 +86,7 @@ public class Item
 		{
 			ValueValidator.AssertOnNeedSize(value, 1000, Info);
 			_info = value;
+			InfoChanged?.Invoke(this, EventArgs.Empty);
 		}
 	}
 
@@ -106,22 +108,30 @@ public class Item
 		{
 			ValueValidator.AssertValueInRange(value, 0, 100000);
 			_cost = value;
+			CostChanged?.Invoke(this, EventArgs.Empty);
 		}
 	}
 
 	/// <summary>
-	/// Создаёт экземпляр класса <see cref="Item"/>
+	/// Возвращает и задаёт категорию товара.
 	/// </summary>
-	/// <param name="name">Название. До 200 символов.</param>
-	/// <param name="info">Описание. До 1000 символов.</param>
-	/// <param name="cost">Цена. От 0 до 100000.</param>
-	public Item(string name, string info, double cost)
+	public Category ItemCategory { get; set; }
+
+    /// <summary>
+    /// Создаёт экземпляр класса <see cref="Item"/>
+    /// </summary>
+    /// <param name="name">Название. До 200 символов.</param>
+    /// <param name="info">Описание. До 1000 символов.</param>
+    /// <param name="cost">Цена. От 0 до 100000.</param>
+    /// <param name="category">Категория товара.</param>
+    public Item(string name, string info, double cost, Category category)
 	{
         Id = _allItemsCount;
         _allItemsCount++;
 		Name = name;
 		Info = info;
 		Cost = cost;
+		ItemCategory = category;
 	}
 
 	/// <summary>
@@ -134,5 +144,76 @@ public class Item
         Name = " ";
 		Info = " ";
 		Cost = 0;
-	}
+		ItemCategory = Category.Electronics;
+    }
+
+    /// <summary>
+    /// Событие изменения названия товара.
+    /// </summary>
+    public event EventHandler<EventArgs> NameChanged;
+
+    /// <summary>
+    /// Событие изменения описания товара.
+    /// </summary>
+    public event EventHandler<EventArgs> InfoChanged;
+
+    /// <summary>
+    /// Событие изменения стоимости товара.
+    /// </summary>
+    public event EventHandler<EventArgs> CostChanged;
+
+    /// <summary>
+    /// Переопределение отображения названия.
+    /// </summary>
+    /// <returns>Название товара.</returns>
+    public override string ToString()
+    {
+        return Name;
+    }
+
+    /// <inheritdoc/>
+    public object Clone()
+    {
+        return new Item(Name, Info, Cost, ItemCategory);
+    }
+
+    /// <inheritdoc/>
+    public bool Equals(Item? item2)
+    {
+        if (item2 == null)
+		{
+			return false;
+		}
+            
+        if (object.ReferenceEquals(this, item2))
+		{
+            return true;
+        }
+
+        return (Id == item2.Id);
+    }
+
+    /// <inheritdoc/>
+    public int CompareTo(Item? item2)
+    {
+        if (item2 == null)
+		{
+            return 1;
+        }
+
+		if (object.ReferenceEquals(this, item2))
+		{
+			return 0;
+		}
+
+        if (Cost < item2.Cost)
+        {
+            return -1;
+        }
+        else if (Cost == item2.Cost)
+        {
+            return 0;
+        }
+        return 1;
+    }
 }

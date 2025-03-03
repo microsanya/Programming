@@ -1,3 +1,4 @@
+using OOPNextTerm.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,12 +70,12 @@ public class Customer
     /// <summary>
     /// Адрес доставки покупателя.
     /// </summary>
-    private string _address;
+    private Address _address;
 
     /// <summary>
     /// Возвращает и задаёт адрес доставки покупателя, должен быть до 500 символов.
     /// </summary>
-    public string Address
+    public Address Address
     {
         get
         {
@@ -82,22 +83,73 @@ public class Customer
         }
         set
         {
-            ValueValidator.AssertOnNeedSize(value, 500, Address);
             _address = value;
         }
     }
+
+    /// <summary>
+    /// Корзина товаров покупателя.
+    /// </summary>
+    private Cart _cart;
+
+    /// <summary>
+    /// Возвращает и задаёт корзину покупателя.
+    /// </summary>
+    public Cart Cart
+    {
+        get
+        {
+            return _cart;
+        }
+        set
+        {
+            _cart = value;
+        }
+    }
+
+    /// <summary>
+    /// Список заказов.
+    /// </summary>
+    private List<Order> _orders;
+
+    public List<Order> Orders
+    {
+        get
+        {
+            return _orders;
+        }
+        set
+        {
+            _orders = value;
+        }
+    }
+
+    /// <summary>
+    /// Возвращает или меняет приоритет клиента.
+    /// </summary>
+    public bool IsPriority { get; set; }
+
+    /// <summary>
+    /// Список возможных скидок.
+    /// </summary>
+    public List<IDiscount> Discounts { get; set; }
 
     /// <summary>
     /// Создаёт экземпляр класса <see cref="Customer"/>
     /// </summary>
     /// <param name="fullName">Полное имя. До 200 символов.</param>
     /// <param name="address">Адрес доставки. До 500 символов.</param>
-    public Customer(string fullName, string address)
+    public Customer(string fullName, Address address, Cart cart, List<Order> orders, bool isPriority)
     {
         Id = _allCustomersCount;
         _allCustomersCount++;
         FullName = fullName;
         Address = address;
+        Cart = cart;
+        Orders = orders;
+        IsPriority = isPriority;
+        Discounts = new List<IDiscount>();
+        Discounts.Add(new PointsDiscount(0));
     }
 
     /// <summary>
@@ -108,6 +160,20 @@ public class Customer
         Id = _allCustomersCount;
         _allCustomersCount++;
         FullName = " ";
-        Address = " ";
+        Address = new Address();
+        Cart = new Cart();
+        Orders = new List<Order>();
+        IsPriority = false;
+        Discounts = new List<IDiscount>();
+        Discounts.Add(new PointsDiscount(0));
+    }
+
+    /// <summary>
+    /// Переопределения отображения имени.
+    /// </summary>
+    /// <returns>Полное имя покупателя.</returns>
+    public override string ToString()
+    {
+        return FullName;
     }
 }

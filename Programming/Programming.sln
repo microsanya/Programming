@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirTravel", "..\AirTravel\A
 EndProject
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AirTravelSetup", "..\AirTravelSetup\AirTravelSetup.vdproj", "{9BFCAF25-3EFF-4F59-834B-F1D5E23B743F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OOPNextTerm", "..\OOPNextTerm\OOPNextTerm.csproj", "{12A854A5-86C9-49A3-8BE1-793FC87CA555}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OOPNextTerm", "..\OOPNextTerm\OOPNextTerm.csproj", "{12A854A5-86C9-49A3-8BE1-793FC87CA555}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
